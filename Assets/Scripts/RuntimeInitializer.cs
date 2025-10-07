@@ -1,5 +1,4 @@
 using Crockhead.Core;
-//using MiniScript;
 using UnityEngine;
 using Crockhead.Scripting;
 
@@ -24,7 +23,7 @@ public static class RuntimeInitializer
 				return Variable.Null();
 
 			var message = parameters[0].ToString();
-			Debug.Log(message);
+			Debug.Log($"[Crockhead.Scripting] {message}");
 			return Variable.Null();
 		}
 
