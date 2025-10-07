@@ -1,0 +1,9 @@
+// 시작.
+function doSomething()
+{
+	Print("Hello World1");
+	Print("Hello World2");
+	Print("Hello World3");
+	Print("Hello World4");
+	Print("Hello World5");
+}

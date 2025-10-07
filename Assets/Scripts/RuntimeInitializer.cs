@@ -1,5 +1,7 @@
 using Crockhead.Core;
+//using MiniScript;
 using UnityEngine;
+using Crockhead.Scripting;
 
 
 /// <summary>
@@ -15,5 +17,21 @@ public static class RuntimeInitializer
 	{
 		Debug.Log("[RuntimeInitializer] Run()");
 		SharedInstances.Clear();
+
+		static Variable Print(Variable[] parameters)
+		{
+			if (parameters.Length == 0)
+				return Variable.Null();
+
+			var message = parameters[0].ToString();
+			Debug.Log(message);
+			return Variable.Null();
+		}
+
+		var textAsset = Resources.Load<TextAsset>("script");
+		var scriptEngine = new ScriptEngine();
+		scriptEngine.Load(textAsset.text);
+		scriptEngine.AddFunction("Print", Print);
+		scriptEngine.Execute("doSomething");
 	}
 }

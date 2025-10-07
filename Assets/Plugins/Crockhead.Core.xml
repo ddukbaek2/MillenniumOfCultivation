@@ -799,6 +799,61 @@
             식별자 생성.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.FilePathAttribute">
+            <summary>
+            연결된 파일 경로를 수식하는 특성.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.FilePathAttribute.m_Value">
+            <summary>
+            값.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.FilePathAttribute.m_IsEnabled">
+            <summary>
+            사용 여부.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.FilePathAttribute.Value">
+            <summary>
+            값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.FilePathAttribute.IsEnabled">
+            <summary>
+            사용 여부 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FilePathAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.IReader`1">
+            <summary>
+            리더.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.IReader`1.Result">
+            <summary>
+            읽은 결과.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.IReader`1.Read">
+            <summary>
+            읽기.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.IWritter">
+            <summary>
+            라이터.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.IWritter.Write">
+            <summary>
+            쓰기.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.INotifiable">
             <summary>
             통보 대상 인터페이스.
@@ -1349,36 +1404,6 @@
             이어서 명령 처리.
             </summary>
         </member>
-        <member name="T:Crockhead.Core.FilePathAttribute">
-            <summary>
-            연결된 파일 경로를 수식하는 특성.
-            </summary>
-        </member>
-        <member name="F:Crockhead.Core.FilePathAttribute.m_Value">
-            <summary>
-            값.
-            </summary>
-        </member>
-        <member name="F:Crockhead.Core.FilePathAttribute.m_IsEnabled">
-            <summary>
-            사용 여부.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.FilePathAttribute.Value">
-            <summary>
-            값 프로퍼티.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.FilePathAttribute.IsEnabled">
-            <summary>
-            사용 여부 프로퍼티.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.FilePathAttribute.#ctor(System.String,System.Boolean)">
-            <summary>
-            생성됨.
-            </summary>
-        </member>
         <member name="T:Crockhead.Core.IRegistry`1">
             <summary>
             등록 주체 인터페이스.
@@ -1484,7 +1509,22 @@
             공유 클래스 프로퍼티.
             </summary>
         </member>
+        <member name="P:Crockhead.Core.SharedClass`1.IsExplicitCreated">
+            <summary>
+            현재 인스턴스가 명시적인 생성인지 여부. (직접 Create() 호출)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SharedClass`1.Arguments">
+            <summary>
+            생성시 입력한 아규먼트.
+            </summary>
+        </member>
         <member name="M:Crockhead.Core.SharedClass`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SharedClass`1.OnCreate(System.Object[])">
             <summary>
             생성됨.
             </summary>
@@ -1494,14 +1534,19 @@
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.SharedClass`1.OnCreate(System.Object[])">
-            <summary>
-            생성됨.
-            </summary>
-        </member>
         <member name="M:Crockhead.Core.SharedClass`1.Create(System.Object[])">
             <summary>
             생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SharedClass`1.IsSharedInstance(`0)">
+            <summary>
+            대상 인스턴스가 공유 인스턴스인지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SharedClass`1.Dispose(`0)">
+            <summary>
+            해제.
             </summary>
         </member>
         <member name="T:Crockhead.Core.SharedInstances">
