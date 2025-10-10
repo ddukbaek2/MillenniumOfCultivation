@@ -1,4 +1,4 @@
-﻿// Author: Daniele Giardini - http://www.demigiant.com
+// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2015/03/12 16:03
 
 using System;
@@ -66,7 +66,7 @@ namespace DG.DOTweenEditor
                 DOTweenAnimation[] anims = src.gameObject.GetComponents<DOTweenAnimation>();
                 foreach (DOTweenAnimation anim in anims) AddAnimationToGlobalPreview(anim);
             }
-            if (GUILayout.Button("► Play All <i>in Scene</i>", Styles.btPreview)) {
+            if (GUILayout.Button("► Play All <i>in ForegroundActiveScene</i>", Styles.btPreview)) {
                 if (!isPreviewing) StartupGlobalPreview();
                 // DOTweenAnimation[] anims = Object.FindObjectsOfType<DOTweenAnimation>(); // OBSOLETE
                 DOTweenAnimation[] anims = DeEditorCompatibilityUtils.FindObjectsOfType<DOTweenAnimation>();
@@ -85,7 +85,7 @@ namespace DG.DOTweenEditor
             if (GUILayout.Button("■ Stop All <i>on GameObject</i>", Styles.btPreview)) {
                 StopPreview(src.gameObject);
             }
-            if (GUILayout.Button("■ Stop All <i>in Scene</i>", Styles.btPreview)) {
+            if (GUILayout.Button("■ Stop All <i>in ForegroundActiveScene</i>", Styles.btPreview)) {
                 StopAllPreviews();
             }
             EditorGUI.EndDisabledGroup();

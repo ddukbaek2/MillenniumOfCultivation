@@ -1,4 +1,4 @@
-﻿// Author: Daniele Giardini - http://www.demigiant.com
+// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2015/03/12 16:03
 
 using System;
@@ -283,7 +283,7 @@ namespace DG.DOTweenEditor
                     DOTweenPreviewManager.StopAllPreviews();
                 }
                 if (!hasManager) {
-                    if (GUILayout.Button(new GUIContent("Add Manager", "Adds a manager component which allows you to choose additional options for this gameObject"))) {
+                    if (GUILayout.Button(new GUIContent("ConnectScene Manager", "Adds a manager component which allows you to choose additional options for this gameObject"))) {
                         _src.gameObject.AddComponent<DOTweenVisualManager>();
                     }
                 }
@@ -345,7 +345,7 @@ namespace DG.DOTweenEditor
                 _src.autoKill = DeGUILayout.ToggleButton(_src.autoKill, new GUIContent("AutoKill", "If selected, the tween will be killed when it completes, and won't be reusable"));
                 GUILayout.EndHorizontal();
                 if (prevAnimType != _src.animationType) {
-                    // Set default optional values based on animation type
+                    // StartAsync default optional values based on animation type
                     _src.endValueTransform = null;
                     _src.useTargetAsV3 = false;
                     switch (_src.animationType) {
@@ -476,7 +476,7 @@ namespace DG.DOTweenEditor
                 if (_src.easeType == Ease.INTERNAL_Custom) {
                     _src.easeCurve = EditorGUILayout.CurveField("   Ease Curve", _src.easeCurve);
                 }
-                _src.loops = EditorGUILayout.IntField(new GUIContent("Loops", "Set to -1 for infinite loops"), _src.loops);
+                _src.loops = EditorGUILayout.IntField(new GUIContent("Loops", "StartAsync to -1 for infinite loops"), _src.loops);
                 if (_src.loops < -1) _src.loops = -1;
                 if (_src.loops > 1 || _src.loops == -1)
                     _src.loopType = (LoopType)EditorGUILayout.EnumPopup("   Loop Type", _src.loopType);

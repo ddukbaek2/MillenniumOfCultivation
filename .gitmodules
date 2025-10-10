@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/Crockhead.Unity"]
+	path = Assets/Plugins/Crockhead.Unity
+	url = https://github.com/ddukbaek2/Crockhead.Unity.git

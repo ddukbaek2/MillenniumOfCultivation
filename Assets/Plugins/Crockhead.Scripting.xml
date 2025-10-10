@@ -9,7 +9,7 @@
             표현식 인터페이스.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.IExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.IExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -57,12 +57,12 @@
         </member>
         <member name="P:Crockhead.Scripting.Number.Numerator">
             <summary>
-            수 프로퍼티.
+            분자 프로퍼티.
             </summary>
         </member>
         <member name="P:Crockhead.Scripting.Number.Denominator">
             <summary>
-            수 프로퍼티. (항상 > 0)
+            분모 프로퍼티. (항상 > 0)
             </summary>
         </member>
         <member name="P:Crockhead.Scripting.Number.IsZero">
@@ -97,17 +97,27 @@
         </member>
         <member name="M:Crockhead.Scripting.Number.ToDisplayString(System.Int32)">
             <summary>
-            출력 가능한 문자열 변환.
+            출력 문자열 변환.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.Number.FromInteger(System.Int64)">
+        <member name="M:Crockhead.Scripting.Number.Parse(System.Int64)">
             <summary>
             정수로 생성.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.Number.ParseDecimal(System.String)">
+        <member name="M:Crockhead.Scripting.Number.Parse(System.String)">
             <summary>
-            문자열로 생성.
+            소숫점이 존재하는 문자열로 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Equality(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Inequality(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            비교 연산.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Number.op_Addition(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
@@ -155,7 +165,7 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.AssignmentExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.AssignmentExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -185,7 +195,7 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.BinaryExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.BinaryExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -210,7 +220,7 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.CallExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.CallExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -230,7 +240,7 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.LiteralExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.LiteralExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -250,7 +260,7 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.VariableExpression.Evaluate(Crockhead.Scripting.ExpressionContext)">
+        <member name="M:Crockhead.Scripting.VariableExpression.Evaluate(Crockhead.Scripting.Context)">
             <summary>
             평가.
             </summary>
@@ -292,18 +302,17 @@
         </member>
         <member name="T:Crockhead.Scripting.Parser">
             <summary>
-            구문 분석기.
-            <para>코드를 읽어서 처리 가능한 형태로 구조화.</para>
+            파서.
             </summary>
         </member>
         <member name="F:Crockhead.Scripting.Parser.m_Lexer">
             <summary>
-            어휘 분석기.
+            구문 해석기.
             </summary>
         </member>
         <member name="F:Crockhead.Scripting.Parser.m_Token">
             <summary>
-            코드에서 현재 처리 할 내용.
+            현재 해석 할 문자열 덩어리.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Parser.#ctor(System.String)">
@@ -316,9 +325,64 @@
             해석.
             </summary>
         </member>
+        <member name="M:Crockhead.Scripting.Parser.Next">
+            <summary>
+            다음 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.IsSymbol(System.String)">
+            <summary>
+            기호 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectIdentifier">
+            <summary>
+            식별자 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectSymbol(System.String)">
+            <summary>
+            기호 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectKeyword(System.String)">
+            <summary>
+            키워드 검사.
+            </summary>
+        </member>
         <member name="M:Crockhead.Scripting.Parser.ParseStatement">
             <summary>
             구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseIfStatement">
+            <summary>
+            조건 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseForStatement">
+            <summary>
+            반복 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseSwitchStatement">
+            <summary>
+            분기 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseBreak">
+            <summary>
+            탈출 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseContinue">
+            <summary>
+            이어하기 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseBlock">
+            <summary>
+            블록 해석.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Parser.ParseExpression">
@@ -328,47 +392,17 @@
         </member>
         <member name="M:Crockhead.Scripting.Parser.ParseAddSub">
             <summary>
-            연산자 더하기, 빼기 해석.
+            더하기 빼기 해석.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Parser.ParseMulDivMod">
             <summary>
-            연산자 곱하기, 나누기, 나머지 해석.
+            곱하기 나누기 나머지 해석.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Parser.ParsePrimary">
             <summary>
-            연산자 해석.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.Next">
-            <summary>
-            다음 요소로 이동.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.IsSymbol(System.String)">
-            <summary>
-            심볼 여부.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.ExpectSymbol(System.String)">
-            <summary>
-            심볼 체크.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.ExpectKeyword(System.String)">
-            <summary>
-            키워드 체크.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.ExpectIdentifier">
-            <summary>
-            식별자 체크.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Parser.ThrowSyntax(System.String)">
-            <summary>
-            문법 오류 예외 던지기.
+            기본 해석.
             </summary>
         </member>
         <member name="T:Crockhead.Scripting.Token">
@@ -447,6 +481,18 @@
             파일의 끝.
             </summary>
         </member>
+        <member name="T:Crockhead.Scripting.BreakStatement">
+            <summary>
+            탈출 구문.
+            <para>break;</para>
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ContinueStatement">
+            <summary>
+            이어하기 구문.
+            <para>continue;</para>
+            </summary>
+        </member>
         <member name="T:Crockhead.Scripting.ExpressionStatement">
             <summary>
             표현식 구문.
@@ -458,6 +504,37 @@
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.ExpressionStatement.#ctor(Crockhead.Scripting.IExpression)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ForStatement">
+            <summary>
+            반복 구문.
+            <para>for ( init ; cond ; post ) { body }</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Initializer">
+            <summary>
+            초기화 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Condition">
+            <summary>
+            조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Post">
+            <summary>
+            현재 루프가 끝날때 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Body">
+            <summary>
+            루프 내에서 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ForStatement.#ctor(Crockhead.Scripting.IStatement,Crockhead.Scripting.IExpression,Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
             <summary>
             생성됨.
             </summary>
@@ -492,6 +569,36 @@
             생성됨.
             </summary>
         </member>
+        <member name="T:Crockhead.Scripting.IfStatement">
+            <summary>
+            조건 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Condition">
+            <summary>
+            조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Then">
+            <summary>
+            성공시 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.ElseIf">
+            <summary>
+            실패시 대체 조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Else">
+            <summary>
+            모두 실패시 거짓일 때 처리.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.IfStatement.#ctor(Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement},System.Collections.Generic.List{System.ValueTuple{Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement}}},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
         <member name="T:Crockhead.Scripting.ReturnStatement">
             <summary>
             반환 구문.
@@ -507,6 +614,32 @@
             생성됨.
             </summary>
         </member>
+        <member name="T:Crockhead.Scripting.SwitchStatement">
+            <summary>
+            분기 구문.
+            <para>switch (expr) { case v: ...; default: ...; }</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.Expression">
+            <summary>
+            표현식 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.Cases">
+            <summary>
+            분기 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.DefaultBody">
+            <summary>
+            기본 분기 구문.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SwitchStatement.#ctor(Crockhead.Scripting.IExpression,System.Collections.Generic.List{System.ValueTuple{Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement}}},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
         <member name="T:Crockhead.Scripting.VariableDeclarationStatement">
             <summary>
             변수 선언 구문.
@@ -517,9 +650,9 @@
             이름 프로퍼티.
             </summary>
         </member>
-        <member name="P:Crockhead.Scripting.VariableDeclarationStatement.Initializer">
+        <member name="P:Crockhead.Scripting.VariableDeclarationStatement.Expression">
             <summary>
-            표현식 프로퍼티.
+            초기값 표현식 프로퍼티.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.VariableDeclarationStatement.#ctor(System.String,Crockhead.Scripting.IExpression)">
@@ -562,43 +695,43 @@
             생성됨.
             </summary>
         </member>
-        <member name="T:Crockhead.Scripting.ExpressionContext">
+        <member name="T:Crockhead.Scripting.Context">
             <summary>
             표현식 객체가 평가시 변수 접근이나 함수 호출시 사용되는 컨텍스트.
             <para>현재 스크립트 실행 주체와 표현식 객체를 간접적으로 연결하기 위한 설계적 용도.</para>
             </summary>
         </member>
-        <member name="F:Crockhead.Scripting.ExpressionContext.m_Session">
+        <member name="F:Crockhead.Scripting.Context.m_Session">
             <summary>
             실행 주체.
             </summary>
         </member>
-        <member name="F:Crockhead.Scripting.ExpressionContext.m_Scope">
+        <member name="F:Crockhead.Scripting.Context.m_Scope">
             <summary>
             현재 스코프.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.ExpressionContext.#ctor(Crockhead.Scripting.Session,Crockhead.Scripting.Scope)">
+        <member name="M:Crockhead.Scripting.Context.#ctor(Crockhead.Scripting.Session,Crockhead.Scripting.Scope)">
             <summary>
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.ExpressionContext.SetVariable(System.String,Crockhead.Scripting.Variable)">
+        <member name="M:Crockhead.Scripting.Context.SetVariable(System.String,Crockhead.Scripting.Variable)">
             <summary>
             변수 설정.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.ExpressionContext.GetVariable(System.String)">
+        <member name="M:Crockhead.Scripting.Context.GetVariable(System.String)">
             <summary>
             변수 반환.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.ExpressionContext.TryGetVariable(System.String,Crockhead.Scripting.Variable@)">
+        <member name="M:Crockhead.Scripting.Context.TryGetVariable(System.String,Crockhead.Scripting.Variable@)">
             <summary>
             변수 반환 시도.
             </summary>
         </member>
-        <member name="M:Crockhead.Scripting.ExpressionContext.Call(System.String,Crockhead.Scripting.Variable[])">
+        <member name="M:Crockhead.Scripting.Context.Call(System.String,Crockhead.Scripting.Variable[])">
             <summary>
             함수 호출.
             </summary>
@@ -623,6 +756,11 @@
             생성됨.
             </summary>
         </member>
+        <member name="M:Crockhead.Scripting.Function.Equals(System.Object)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
         <member name="T:Crockhead.Scripting.OnBindingFunctionDelegate">
             <summary>
             바인딩 할 함수 델리게이트.
@@ -641,11 +779,6 @@
         <member name="F:Crockhead.Scripting.Scope.m_Parent">
             <summary>
             상위 변수 공간.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Scripting.Scope.#ctor">
-            <summary>
-            생성됨.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Scope.#ctor(Crockhead.Scripting.Scope)">
@@ -680,17 +813,17 @@
         </member>
         <member name="T:Crockhead.Scripting.Session">
             <summary>
-            스크립트 실행 흐름 주체.
+            실행 세션.
             </summary>
         </member>
         <member name="F:Crockhead.Scripting.Session.m_BindingFunctions">
             <summary>
-            바인딩 전역 함수 목록.
+            바인딩 한 함수 목록.
             </summary>
         </member>
         <member name="F:Crockhead.Scripting.Session.m_Functions">
             <summary>
-            전역 함수 목록.
+            스크립트 함수 목록.
             </summary>
         </member>
         <member name="F:Crockhead.Scripting.Session.m_Scope">
@@ -705,7 +838,7 @@
         </member>
         <member name="M:Crockhead.Scripting.Session.Call(System.String,Crockhead.Scripting.Variable[])">
             <summary>
-            이름으로 함수 호출.
+            함수 이름으로 호출.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Session.Call(Crockhead.Scripting.FunctionDefinition,Crockhead.Scripting.Variable[])">
@@ -721,6 +854,11 @@
         <member name="M:Crockhead.Scripting.Session.ExecuteStatement(Crockhead.Scripting.Scope,Crockhead.Scripting.IStatement)">
             <summary>
             구문 실행.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.ValuesEqual(Crockhead.Scripting.Variable,Crockhead.Scripting.Variable)">
+            <summary>
+            switch-case 비교용 헬퍼.
             </summary>
         </member>
         <member name="T:Crockhead.Scripting.SyntaxDiagnostic">
@@ -766,6 +904,16 @@
         <member name="M:Crockhead.Scripting.SyntaxDiagnostic.ToString">
             <summary>
             문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.BreakTrigger">
+            <summary>
+            break 유발자.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ContinueTrigger">
+            <summary>
+            continue 유발자.
             </summary>
         </member>
         <member name="T:Crockhead.Scripting.ReturnTrigger">
@@ -1078,6 +1226,11 @@
         <member name="M:Crockhead.Scripting.Variable.ToNumber">
             <summary>
             숫자 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.ToFunction">
+            <summary>
+            함수 변환.
             </summary>
         </member>
         <member name="M:Crockhead.Scripting.Variable.ToString">
