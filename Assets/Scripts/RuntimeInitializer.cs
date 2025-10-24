@@ -1,6 +1,7 @@
 using Crockhead.Core;
 using UnityEngine;
 using Crockhead.Scripting;
+//using Crockhead.Unity.UIKitLite;
 using Crockhead.Unity.UI;
 
 
@@ -15,7 +16,7 @@ public static class RuntimeInitializer
 	[RuntimeInitializeOnLoadMethod]
 	public static void Run()
 	{
-		Debug.Log("[RuntimeInitializer] StartAsync()");
+		Debug.Log("[RuntimeInitializer] AnimateAsync()");
 		SharedInstances.Clear();
 
 		//RunScripting();
@@ -45,16 +46,31 @@ public static class RuntimeInitializer
 	}
 
 	/// <summary>
-	/// UI 생성 및 시작.
+	/// UIKitLite 생성 및 시작.
 	/// </summary>
 	private static void RunUI()
 	{
-		var application = UIHelper.CreateApplication();
-		var scene = UIHelper.CreateScene();
-		application.ConnectScene(scene);
-		var window = UIHelper.CreateWindow(new Vector2Int(1920, 1080));
-		scene.AddWindow(window);
-		window.RootViewController = new MainViewController();
-		window.MakeKeyAndVisible();
+		//var application = UIHelper.CreateApplication();
+		//var scene = UIHelper.CreateScene();
+		//application.ConnectScene(scene);
+		//var window = UIHelper.CreateWindow(new Vector2Int(1920, 1080));
+		//scene.AddWindow(window);
+		//window.RootViewController = new MainViewController();
+		//window.MakeKeyAndVisible();
+
+
+		var canvasView = UIHelper.CreateCanvasView(new Vector2Int(1920, 1080));
+		var eventSystem = UIHelper.CreateEventSystem();
+		var introController = new UIController();
+		canvasView.Present(introController);
+		//canvasView.Present();
+	}
+
+
+	public class IntroController : UIController
+	{
+		public IntroController() : base()
+		{
+		}
 	}
 }

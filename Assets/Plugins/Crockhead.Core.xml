@@ -4,6 +4,61 @@
         <name>Crockhead.Core</name>
     </assembly>
     <members>
+        <member name="T:Crockhead.Core.Attributes">
+            <summary>
+            특성 유틸리티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Attributes.TryGetAttribute(System.Type,System.Type,System.Attribute@)">
+            <summary>
+            어트리뷰트 가져오기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Attributes.TryGetAttribute``1(System.Type,``0@)">
+            <summary>
+            어트리뷰트 가져오기.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.Collections">
+            <summary>
+            컬렉션 유틸리티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.ToList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            리스트를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.ToArray``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            리스트를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.Count``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            갯수를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.ValueOf``1(System.Collections.Generic.IEnumerable{``0},System.Int32,``0)">
+            <summary>
+            순서에 대한 요소를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            요소의 순서를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.FirstOrDefault``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            첫번째 요소 혹은 기본값을 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Collections.LastOrDefault``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            마지막 요소 혹은 기본값을 반환.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.Disposable">
             <summary>
             해제 가능한 객체.
@@ -623,6 +678,181 @@
             등록 여부 반환.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.Group`1">
+            <summary>
+            집합.
+            <para>합집합: A + B</para>
+            <para>차집합: A - B</para>
+            <para>교집합: A - (A - B)</para>
+            <para>대칭차집합: (A - B) + (B - A)</para>
+            <para>해시 비교 할 경우 T의 순서 정렬을 위해 IComparable 구현 필요.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Group`1.m_Values">
+            <summary>
+            집합 컬렉션.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Group`1.Count">
+            <summary>
+            전체 요소 수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Group`1.Values">
+            <summary>
+            집합 컬렉션 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.#ctor(Crockhead.Core.Group{`0})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.#ctor(`0)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Add(`0)">
+            <summary>
+            추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Remove(`0)">
+            <summary>
+            제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.RemoveRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Contains(`0)">
+            <summary>
+            포함 되어있는지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.GetEnumerator">
+            <summary>
+            열거자 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            열거자 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Equals(System.Object)">
+            <summary>
+            동일 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.GetHashCode">
+            <summary>
+            해시값 반환. (요소가 동일하면 해시도 동일)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.ToString">
+            <summary>
+            문자열 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Equality(Crockhead.Core.Group{`0},Crockhead.Core.Group{`0})">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Inequality(Crockhead.Core.Group{`0},Crockhead.Core.Group{`0})">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Addition(Crockhead.Core.Group{`0},Crockhead.Core.Group{`0})">
+            <summary>
+            더하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Addition(Crockhead.Core.Group{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            더하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Subtraction(Crockhead.Core.Group{`0},Crockhead.Core.Group{`0})">
+            <summary>
+            빼기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.op_Subtraction(Crockhead.Core.Group{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            빼기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Create">
+            <summary>
+            그룹 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Create(`0)">
+            <summary>
+            그룹 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Create(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            그룹 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Add(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            합집합.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Subtract(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            차집합.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.Equals(Crockhead.Core.Group{`0},Crockhead.Core.Group{`0})">
+            <summary>
+            동일 여부. (포함된 요소가 모두 동일하면 동일 판단)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.CreateHashCode(Crockhead.Core.Group{`0})">
+            <summary>
+            해시 코드 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.CreateHashCode(Crockhead.Core.Group{`0},System.Collections.Generic.IComparer{`0})">
+            <summary>
+            해시 코드 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Group`1.CreateUnorderedHashCode(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            순서 없는 해시 코드 생성.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.GuidIdentifiers">
             <summary>
             Guid 타입의 고유 식별자 생성기.
@@ -852,6 +1082,111 @@
         <member name="M:Crockhead.Core.IWritter.Write">
             <summary>
             쓰기.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.Number">
+            <summary>
+            정수와 실수가 포함된 임의정밀도를 가진 유리수. (BigInteger 기반)
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Number.Zero">
+            <summary>
+            제로 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Number.Numerator">
+            <summary>
+            분자 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Number.Denominator">
+            <summary>
+            분모 프로퍼티. (항상 0보다 크다)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Number.IsZero">
+            <summary>
+            0인지 여부 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.#ctor(System.Numerics.BigInteger)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.#ctor(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.Equals(Crockhead.Core.Number)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.Equals(System.Object)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.GetHashCode">
+            <summary>
+            해시값 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.ToDisplayString(System.Int32)">
+            <summary>
+            출력 문자열 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.Parse(System.Int64)">
+            <summary>
+            정수로 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.Parse(System.String)">
+            <summary>
+            소숫점이 존재하는 문자열로 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Equality(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Inequality(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Addition(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            더하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Subtraction(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            빼기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Multiply(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            곱하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Division(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            나누기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Number.op_Modulus(Crockhead.Core.Number,Crockhead.Core.Number)">
+            <summary>
+            나머지 연산.
             </summary>
         </member>
         <member name="T:Crockhead.Core.INotifiable">

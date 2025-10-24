@@ -1,10 +1,10 @@
 using Crockhead.Unity;
-using Crockhead.Unity.UI;
+using Crockhead.Unity.UIKitLite;
 
 /// <summary>
 /// 메인 뷰 컨트롤러.
 /// </summary>
-[AssetPath("Assets/Resources/UI/UIIntroView.prefab", AssetPathType.Resources)]
+[AssetPath("Assets/Resources/UIKitLite/UIIntroView.prefab", AssetPathType.Resources)]
 public class MainViewController : UIViewController
 {
 	/// <summary>
