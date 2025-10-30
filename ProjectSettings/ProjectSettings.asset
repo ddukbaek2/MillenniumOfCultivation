@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: CrockheadStudio
+  companyName: Crockhead Studio
   productName: Millennium Of Cultivation
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -70,6 +70,7 @@ PlayerSettings:
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
   androidUseSwappy: 1
+  androidDisplayOptions: 1
   androidBlitType: 0
   androidResizeableActivity: 1
   androidDefaultWindowWidth: 1920
@@ -165,7 +166,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.CrockheadStudio.MillenniumOfCultivation
+    Android: com.crockheadstudio.millenniumofcultivation
     Standalone: com.DefaultCompany.2D-URP
   buildNumber:
     Standalone: 0
