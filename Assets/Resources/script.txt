@@ -1,6 +1,8 @@
 // 앱.
-func App {
-	func doSomething() {
+func App
+{
+	func doSomething()
+	{
 		Print("Hello World1");
 		Print("Hello World2");
 		Print("Hello World3");
