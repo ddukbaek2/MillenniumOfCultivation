@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "com.crockhead.unity": {
+    "com.crockheadstudio.unity": {
       "version": "https://github.com/ddukbaek2/Crockhead.Unity.git#release",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dd86f3764a935df7d1d57e22dac1dab0a4b7c7ff"
+      "hash": "f4cdb9c6c8fdeb1d8ce0bca6feadb07727146919"
     },
     "com.unity.2d.animation": {
       "version": "10.2.1",
