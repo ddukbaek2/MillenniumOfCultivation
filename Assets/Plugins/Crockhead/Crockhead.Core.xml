@@ -164,6 +164,21 @@
             해제 되었는지 여부 프로퍼티.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.Object">
+            <summary>
+            기본 객체.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Object.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Object.Finalize">
+            <summary>
+            파괴됨.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.Reflections">
             <summary>
             리플렉션 기능 관련 주요 유틸리티.
@@ -231,6 +246,401 @@
         <member name="F:Crockhead.Core.Void.Value">
             <summary>
             빈 값.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.ILockedCollection`1">
+            <summary>
+            쓰레드 안전한 컬렉션 인터페이스.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.ILockedCollection`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.ILockedCollection`1.Values">
+            <summary>
+            값 목록 프로퍼티. (스냅샷)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ILockedCollection`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ILockedCollection`1.Clear">
+            <summary>
+            모든 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ILockedCollection`1.Contains(`0)">
+            <summary>
+            항목 포함 여부.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedCollection`1">
+            <summary>
+            쓰레드 안전한 컬렉션.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedCollection`1.m_SynchronizationObject">
+            <summary>
+            락 오브젝트.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedCollection`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedCollection`1.Values">
+            <summary>
+            값 목록 프로퍼티. (스냅샷)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.CreateLockedScope(System.Boolean)">
+            <summary>
+            락 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.Clear">
+            <summary>
+            모든 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.Contains(`0)">
+            <summary>
+            포함 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.GetEnumerator">
+            <summary>
+            반복자 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            반복자 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedCollection`1.CreateSnapshot(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            반복자의 스냅샷 생성.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedScope">
+            <summary>
+            쓰레드 선점 구간 처리기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedScope.m_SynchronizationObject">
+            <summary>
+            대상 락 오브젝트.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.#ctor(System.Object,System.Boolean)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.System#IDisposable#Dispose">
+            <summary>
+            해제.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.Lock">
+            <summary>
+            락 시작.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.Unlock">
+            <summary>
+            락 종료.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.IsLocked">
+            <summary>
+            락 시작 되었는지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedScope.Run(System.Object,System.Action)">
+            <summary>
+            락 시작.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedList`1">
+            <summary>
+            스레드 안전한 리스트. (Lock 기반)
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedList`1.m_Values">
+            <summary>
+            리스트.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedList`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedList`1.Item(System.Int32)">
+            <summary>
+            인덱서 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.Clear">
+            <summary>
+            모든 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.Contains(`0)">
+            <summary>
+            항목 포함 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.Add(`0)">
+            <summary>
+            항목 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            여러 항목 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.Insert(System.Int32,`0)">
+            <summary>
+            특정 위치에 항목 삽입.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.Remove(`0)">
+            <summary>
+            항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.RemoveAt(System.Int32)">
+            <summary>
+            특정 위치의 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.IndexOf(`0)">
+            <summary>
+            항목의 위치 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.ForEach(System.Action{`0})">
+            <summary>
+            전체 항목 순회 (읽기 전용).
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedList`1.ForEachUnlocked(System.Action{`0})">
+            <summary>
+            전체 항목 순회 (읽기 전용).
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedQueue`1">
+            <summary>
+            쓰레드 안전한 큐.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedQueue`1.m_Values">
+            <summary>
+            큐.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedQueue`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.Clear">
+            <summary>
+            모든 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.Contains(`0)">
+            <summary>
+            항목 포함 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.Enqueue(`0)">
+            <summary>
+            추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.Dequeue">
+            <summary>
+            제거하며 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedQueue`1.Peek">
+            <summary>
+            제거하지 않고 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedSet`1">
+            <summary>
+            스레드 안전한 해시셋. (Lock 기반)
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedSet`1.m_Values">
+            <summary>
+            컬렉션.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedSet`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.Clear">
+            <summary>
+            모든 원소 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.Contains(`0)">
+            <summary>
+            원소 포함 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.Add(`0)">
+            <summary>
+            원소 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.Remove(`0)">
+            <summary>
+            원소 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합의 원소를 현재 집합에 모두 추가. (합집합)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합과 현재 집합에 공통적으로 존재하는 원소만 보존. (교집합)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합에 있는 원소를 현재 집합에서 모두 제거. (차집합)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합과 현재 집합 중 각각 한쪽에만 존재하는 원소만 보존. (대칭차집합)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            현재 집합의 모든 원소가 대상 집합에 포함되어 있는지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합의 모든 원소가 포함되어 있는지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합과 공통 원소를 하나라도 가지는지 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            대상 집합과 원소 목록이 동일한지 여부.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.LockedStack`1">
+            <summary>
+            쓰레드 안전한 스택.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.LockedStack`1.m_Values">
+            <summary>
+            스택.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.LockedStack`1.Count">
+            <summary>
+            현재 개수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.CreateArray">
+            <summary>
+            배열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.Clear">
+            <summary>
+            모든 항목 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.Contains(`0)">
+            <summary>
+            항목 포함 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.Push(`0)">
+            <summary>
+            추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.Pop">
+            <summary>
+            제거하며 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.LockedStack`1.Peek">
+            <summary>
+            제거하지 않고 반환.
             </summary>
         </member>
         <member name="T:Crockhead.Core.LockedDictionary`2">
@@ -326,91 +736,6 @@
         <member name="M:Crockhead.Core.LockedDictionary`2.ToArray">
             <summary>
             전체 항목 스냅샷 반환.
-            </summary>
-        </member>
-        <member name="T:Crockhead.Core.LockedList`1">
-            <summary>
-            스레드 안전한 리스트. (Lock 기반)
-            </summary>
-        </member>
-        <member name="F:Crockhead.Core.LockedList`1.m_Lock">
-            <summary>
-            락 오브젝트.
-            </summary>
-        </member>
-        <member name="F:Crockhead.Core.LockedList`1.m_Items">
-            <summary>
-            리스트.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.LockedList`1.Item(System.Int32)">
-            <summary>
-            인덱서 프로퍼티.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.LockedList`1.Count">
-            <summary>
-            현재 개수 프로퍼티.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.#ctor">
-            <summary>
-            생성됨.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.Add(`0)">
-            <summary>
-            항목 추가.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            여러 항목 추가.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.Insert(System.Int32,`0)">
-            <summary>
-            특정 위치에 항목 삽입.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.Remove(`0)">
-            <summary>
-            항목 제거.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.RemoveAt(System.Int32)">
-            <summary>
-            특정 위치의 항목 제거.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.Clear">
-            <summary>
-            모든 항목 제거.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.IndexOf(`0)">
-            <summary>
-            항목의 위치 반환.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.Contains(`0)">
-            <summary>
-            항목 포함 여부 확인.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.ToArray">
-            <summary>
-            전체 항목 스냅샷 반환.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.ForEach(System.Action{`0})">
-            <summary>
-            전체 항목 순회 (읽기 전용).
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.LockedList`1.ForEachUnlocked(System.Action{`0})">
-            <summary>
-            전체 항목 순회 (읽기 전용).
             </summary>
         </member>
         <member name="T:Crockhead.Core.LockedMultiDictionary`2">
@@ -1238,7 +1563,7 @@
         <member name="F:Crockhead.Core.Notifier.m_CachedDictionary">
             <summary>
             메서드 정보 목록. (캐시)
-            <para>{ Key: typeof(INotifiable), Value: { Key: typeof(INotification), Value: MethodInfo[] } }</para>
+            <para>{ Key: typeof(INotifiable), GetValue: { Key: typeof(INotification), GetValue: MethodInfo[] } }</para>
             </summary>
         </member>
         <member name="M:Crockhead.Core.Notifier.#ctor">
@@ -1978,6 +2303,146 @@
         <member name="M:Crockhead.Core.SharedInstances.IsSet``1">
             <summary>
             값 존재 유무.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Unity.Iteratable`1">
+            <summary>
+            반복체.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Unity.Iteratable`1.Iterator">
+            <summary>
+            반복자.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Unity.Iteratable`1.Iterator.Null">
+            <summary>
+            빈 이터레이터.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Unity.Iteratable`1.Iterator.Iteratable">
+            <summary>
+            반복체.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Unity.Iteratable`1.Iterator.Index">
+            <summary>
+            인덱스.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.#ctor(Crockhead.Unity.Iteratable{`0},System.Int32)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.Value">
+            <summary>
+            요소의 값 참조 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.Begin">
+            <summary>
+            처음 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.End">
+            <summary>
+            마지막 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.Previous">
+            <summary>
+            이전 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.Next">
+            <summary>
+            다음 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.IsBegin">
+            <summary>
+            처음 요소 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.IsEnd">
+            <summary>
+            마지막 요소 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.Equals(Crockhead.Unity.Iteratable{`0}.Iterator@,Crockhead.Unity.Iteratable{`0}.Iterator@)">
+            <summary>
+            동등성 비교.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.op_Decrement(Crockhead.Unity.Iteratable{`0}.Iterator)">
+            <summary>
+            이전 요소 이동.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Iterator.op_Increment(Crockhead.Unity.Iteratable{`0}.Iterator)">
+            <summary>
+            다음 요소 이동.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Unity.Iteratable`1.m_Values">
+            <summary>
+            값 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Unity.Iteratable`1.m_Iterators">
+            <summary>
+            이터레이터 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Unity.Iteratable`1.m_Count">
+            <summary>
+            갯수.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Unity.Iteratable`1.Count">
+            <summary>
+            갯수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.GetValue(System.Int32)">
+            <summary>
+            값 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.GetIterator(System.Int32)">
+            <summary>
+            반복자 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Begin">
+            <summary>
+            처음 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.End">
+            <summary>
+            마지막 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Previous(System.Int32)">
+            <summary>
+            이전 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Next(System.Int32)">
+            <summary>
+            다음 요소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Unity.Iteratable`1.Validate(Crockhead.Unity.Iteratable{`0}.Iterator)">
+            <summary>
+            유효한 이터레이터인지 여부.
             </summary>
         </member>
         <member name="T:Crockhead.Experimental.AsyncOperation">
