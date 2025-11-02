@@ -8,7 +8,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public AttackCard(int instanceId) : base(instanceId)
+		public AttackCard(ulong instanceId) : base(instanceId)
 		{
 		}
 

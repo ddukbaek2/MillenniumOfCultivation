@@ -24,24 +24,9 @@ namespace MillenniumOfCultivation.Battle
 		private Event m_Event;
 
 		/// <summary>
-		/// 턴 횟수.
-		/// </summary>
-		private int m_Turn;
-
-		/// <summary>
-		/// 전투 상태.
-		/// </summary>
-		private Phase m_Phase;
-
-		/// <summary>
 		/// 전투 주체 프로퍼티.
 		/// </summary>
 		public Battle Battle => m_Battle;
-
-		/// <summary>
-		/// 턴 횟수 프로퍼티.
-		/// </summary>
-		public int Turn => m_Turn;
 
 		/// <summary>
 		/// 플레이어 페이즈 여부 프로퍼티.
@@ -59,6 +44,11 @@ namespace MillenniumOfCultivation.Battle
 		public Event Event => m_Event;
 
 		/// <summary>
+		/// 턴 횟수 프로퍼티.
+		/// </summary>
+		public int Turn => m_Battle.Turn;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		public Context(Battle battle) : base()
@@ -66,7 +56,6 @@ namespace MillenniumOfCultivation.Battle
 			m_Battle = battle;
 			m_Controller = null;
 			m_Event = null;
-			m_Turn = 0;
 		}
 
 		/// <summary>
@@ -93,14 +82,21 @@ namespace MillenniumOfCultivation.Battle
 		}
 
 		/// <summary>
-		/// 이벤트 발급.
+		/// 이벤트 스택 중에 실행될 이벤트 생성.
 		/// </summary>
-		internal void InternalRaise<TEvent>() where TEvent : Event, new()
+		public void Now<TEvent>() where TEvent : Event, new()
 		{
 			var @event = new TEvent();
 			InternalSetEvent(@event);
-			@event.InternalEnd(this);
-			@event.InternalEnd(this);
+			//@event.Complete(this);
+			//@event.Complete(this);
+		}
+
+		/// <summary>
+		/// 이벤트 스택이 끝나고 실행 될 예약 이벤트 생성.
+		/// </summary>
+		public void Next<TEvent>() where TEvent : Event, new()
+		{
 		}
 	}
 }

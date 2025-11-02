@@ -9,12 +9,20 @@ public class Identifiable : Disposable
 	/// <summary>
 	/// 인스턴스 고유 식별자.
 	/// </summary>
-	public int InstanceId { get; }
+	public ulong InstanceId { get; }
 
 	/// <summary>
 	/// 생성됨.
 	/// </summary>
-	public Identifiable(int instanceId) : base()
+	public Identifiable() : base()
+	{
+		InstanceId = 0;
+	}
+
+	/// <summary>
+	/// 생성됨.
+	/// </summary>
+	public Identifiable(ulong instanceId) : base()
 	{
 		InstanceId = instanceId;
 	}

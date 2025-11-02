@@ -30,6 +30,16 @@ namespace MillenniumOfCultivation.Battle
 		private Context m_Context;
 
 		/// <summary>
+		/// 턴 횟수.
+		/// </summary>
+		private int m_Turn;
+
+		/// <summary>
+		/// 고유 식별자 생성기.
+		/// </summary>
+		private NumberIdentifiers m_NumberIdentifiers;
+
+		/// <summary>
 		/// 진행 중 여부 프로퍼티.
 		/// </summary>
 		public bool IsStarted => m_IsStarted;
@@ -45,6 +55,11 @@ namespace MillenniumOfCultivation.Battle
 		public Context Context => m_Context;
 
 		/// <summary>
+		/// 턴 횟수 프로퍼티.
+		/// </summary>
+		public int Turn => m_Turn;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		public Battle() : base()
@@ -53,6 +68,8 @@ namespace MillenniumOfCultivation.Battle
 			m_Controllers = new List<Controller>();
 			m_Stack = new Stack<Event>();
 			m_Context = null;
+			m_Turn = 0;
+			m_NumberIdentifiers = new NumberIdentifiers();
 		}
 
 		/// <summary>
@@ -63,6 +80,29 @@ namespace MillenniumOfCultivation.Battle
 			//foreach (var controller in m_Controllers)
 			//	Disposables.Dispose(controller);
 			//Disposables.Dispose(m_Context);
+		}
+
+		/// <summary>
+		/// 이벤트 스택 업데이트.
+		/// </summary>
+		private void Update()
+		{
+			if (m_Stack.Count == 0)
+				return;
+
+			var current = m_Stack.Peek();
+			if (!current.IsStarted)
+			{
+				current.Start(m_Context);
+				return;
+			}
+
+			if (!current.IsCompleted)
+			{
+				current.Complete(m_Context);
+				m_Stack.Pop();
+				return;
+			}
 		}
 
 		/// <summary>
@@ -84,25 +124,18 @@ namespace MillenniumOfCultivation.Battle
 			m_Controllers.Add(player);
 			m_Controllers.AddRange(enemies);
 
-			// 시작 이벤트.
-			m_Context.InternalRaise<BattleStartEvent>();
-			m_Context.InternalRaise<TurnStartEvent>();
-			m_Context.InternalRaise<PhaseStartEvent>();
+			// 전투 시작 이벤트.
+			m_Context.Next<BattleEvent>();
+			Update();
 		}
 
 		/// <summary>
-		/// 종료.
+		/// 강제 종료.
 		/// </summary>
-		public void Stop(bool suspended = true)
+		public void Stop()
 		{
 			if (!m_IsStarted)
 				return;
-
-			if (!suspended)
-			{
-				// 종료 이벤트.
-				m_Context.InternalRaise<BattleEndEvent>();
-			}
 
 			m_IsStarted = false;
 			Disposables.Dispose(m_Context);

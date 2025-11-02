@@ -1,14 +1,14 @@
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 차례 시작 이벤트.
+	/// 영웅 캐릭터. (전투 진입시 존재하는 주요 객체)
 	/// </summary>
-	public class PhaseStartEvent : Event
+	public abstract class HeroCharacter : Character
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public PhaseStartEvent() : base()
+		public HeroCharacter(ulong instanceId) : base(instanceId)
 		{
 		}
 

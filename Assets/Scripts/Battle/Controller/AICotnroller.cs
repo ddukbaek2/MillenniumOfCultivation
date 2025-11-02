@@ -8,7 +8,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public AICotnroller(int instanceId) : base(instanceId)
+		public AICotnroller(ulong instanceId) : base(instanceId)
 		{
 		}
 

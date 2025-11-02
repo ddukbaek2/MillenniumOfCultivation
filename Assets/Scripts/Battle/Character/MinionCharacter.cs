@@ -1,14 +1,14 @@
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 차례 종료 이벤트.
+	/// 하수인 캐릭터. (필드에 스폰되거나 디스폰되어도 전투 종료와는 무관한 소비형 캐릭터 객체)
 	/// </summary>
-	public class PhaseEndEvent : Event
+	public abstract class MinionCharacter : Character
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public PhaseEndEvent() : base()
+		public MinionCharacter(ulong instanceId) : base(instanceId)
 		{
 		}
 

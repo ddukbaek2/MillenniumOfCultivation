@@ -13,7 +13,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Minion(int instanceId) : base(instanceId)
+		public Minion(ulong instanceId) : base(instanceId)
 		{
 			MinionTableId = 0;
 		}

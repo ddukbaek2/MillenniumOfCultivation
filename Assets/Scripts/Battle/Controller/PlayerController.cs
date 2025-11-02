@@ -8,7 +8,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public PlayerController(int instanceId) : base(instanceId)
+		public PlayerController(ulong instanceId) : base(instanceId)
 		{
 		}
 

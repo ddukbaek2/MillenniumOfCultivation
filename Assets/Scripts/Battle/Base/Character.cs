@@ -1,14 +1,17 @@
+using System.Collections.Generic;
+
+
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 전투 종료 이벤트.
+	/// 컨트롤러가 제어하는 대상이자 전투의 주도 객체.
 	/// </summary>
-	public class BattleEndEvent : Event
+	public abstract class Character : Identifiable
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleEndEvent() : base()
+		public Character(ulong instanceId) : base(instanceId)
 		{
 		}
 

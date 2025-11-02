@@ -1,15 +1,21 @@
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 전투 시작 이벤트.
+	/// 아이템.
 	/// </summary>
-	public class BattleStartEvent : Event
+	public abstract class Item : Identifiable
 	{
+		/// <summary>
+		/// 카드 테이블 식별자.
+		/// </summary>
+		public int CardTableId { set; get; }
+
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleStartEvent() : base()
+		public Item(ulong instanceId) : base(instanceId)
 		{
+			CardTableId = 0;
 		}
 
 		/// <summary>
