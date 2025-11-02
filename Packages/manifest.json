@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.crockheadstudio.unity": "https://github.com/ddukbaek2/Crockhead.Unity.git#release",
+    "com.crockheadstudio.unity": "https://github.com/ddukbaek2/Crockhead.Unity.git",
     "com.unity.collab-proxy": "2.9.3",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.ide.rider": "3.0.38",
