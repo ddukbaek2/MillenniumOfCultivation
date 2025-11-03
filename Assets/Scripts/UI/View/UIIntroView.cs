@@ -1,20 +1,40 @@
-using Crockhead.Unity.UIKitLite;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-/// <summary>
-/// 인트로 뷰.
-/// </summary>
-public class UIIntroView : UIViewBehaviour
+namespace MillenniumOfCultivation.UI
 {
-	[SerializeField] private Image m_Image;
-
 	/// <summary>
-	/// 생성됨.
+	/// 인트로 뷰.
 	/// </summary>
-	protected override void Awake()
+	public class UIIntroView : UIPanelView
 	{
-		base.Awake();
+		#region INSPECTOR
+		[SerializeField] private Image m_LogoImage;
+		#endregion
+
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		protected override void Awake()
+		{
+			base.Awake();
+		}
+
+		/// <summary>
+		/// 초기화됨.
+		/// </summary>
+		protected override void Start()
+		{
+			base.Start();
+		}
+
+		/// <summary>
+		/// 파괴됨.
+		/// </summary>
+		protected override void OnDestroy()
+		{
+			base.OnDestroy();
+		}
 	}
 }

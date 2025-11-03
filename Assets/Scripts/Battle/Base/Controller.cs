@@ -31,7 +31,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Controller(ulong instanceId) : base(instanceId)
+		public Controller() : base()
 		{
 			m_Deck = new List<Card>();
 			m_Background = new List<Card>();

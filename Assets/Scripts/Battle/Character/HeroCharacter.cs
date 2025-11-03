@@ -1,15 +1,21 @@
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 영웅 캐릭터. (전투 진입시 존재하는 주요 객체)
+	/// 영웅 캐릭터.
 	/// </summary>
 	public abstract class HeroCharacter : Character
 	{
 		/// <summary>
+		/// 영웅 테이블 식별자 프로퍼티.
+		/// </summary>
+		public int HeroTableId { set; get; }
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public HeroCharacter(ulong instanceId) : base(instanceId)
+		public HeroCharacter(int heroTableId) : base()
 		{
+			HeroTableId = heroTableId;
 		}
 
 		/// <summary>

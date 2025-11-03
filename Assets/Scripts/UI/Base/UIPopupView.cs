@@ -1,12 +1,11 @@
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
-	/// 전투 화면.
+	/// 팝업 화면.
 	/// </summary>
-	public class UIBattleView : UIPanelView
+	public class UIPopupView : UIView
 	{
 		#region INSPECTOR
-		//[SerializeField]
 		#endregion
 
 		/// <summary>

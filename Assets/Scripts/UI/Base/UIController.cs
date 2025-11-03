@@ -1,14 +1,17 @@
-namespace MillenniumOfCultivation.Battle
+using Crockhead.Core;
+
+
+namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
-	/// 인공지능 조작 주체.
+	/// 뷰 컨트롤러.
 	/// </summary>
-	public class AIController : Controller
+	public class UIController : Disposable
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public AIController() : base()
+		public UIController() : base()
 		{
 		}
 
@@ -17,7 +20,7 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)
 		{
-			base.OnDispose(explicitDisposing);
+			//base.OnDispose(explicitDisposing);
 		}
 	}
 }

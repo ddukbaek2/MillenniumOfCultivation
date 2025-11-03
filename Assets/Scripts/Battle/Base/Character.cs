@@ -9,10 +9,16 @@ namespace MillenniumOfCultivation.Battle
 	public abstract class Character : Identifiable
 	{
 		/// <summary>
+		/// 스테이터스 프로퍼티.
+		/// </summary>
+		public Status Status { get; }
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Character(ulong instanceId) : base(instanceId)
+		public Character() : base()
 		{
+			Status = new Status();
 		}
 
 		/// <summary>

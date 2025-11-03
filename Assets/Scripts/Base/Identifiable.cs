@@ -6,6 +6,8 @@ using Crockhead.Core;
 /// </summary>
 public class Identifiable : Disposable
 {
+	private static NumberIdentifiers s_NumberIdentifiers = new NumberIdentifiers();
+
 	/// <summary>
 	/// 인스턴스 고유 식별자.
 	/// </summary>
@@ -16,7 +18,7 @@ public class Identifiable : Disposable
 	/// </summary>
 	public Identifiable() : base()
 	{
-		InstanceId = 0;
+		InstanceId = s_NumberIdentifiers.Generate();
 	}
 
 	/// <summary>
@@ -32,5 +34,6 @@ public class Identifiable : Disposable
 	/// </summary>
 	protected override void OnDispose(bool explicitDisposing)
 	{
+		s_NumberIdentifiers.Release(InstanceId);
 	}
 }

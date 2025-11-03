@@ -13,9 +13,9 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Card(ulong instanceId) : base(instanceId)
+		public Card(int cardTableId) : base()
 		{
-			CardTableId = 0;
+			CardTableId = cardTableId;
 		}
 
 		/// <summary>

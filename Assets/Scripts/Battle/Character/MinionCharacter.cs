@@ -6,10 +6,16 @@ namespace MillenniumOfCultivation.Battle
 	public abstract class MinionCharacter : Character
 	{
 		/// <summary>
+		/// 미니언 테이블 식별자 프로퍼티.
+		/// </summary>
+		public int MinionTableId { set; get; }
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public MinionCharacter(ulong instanceId) : base(instanceId)
+		public MinionCharacter(int minionTableId) : base()
 		{
+			MinionTableId = minionTableId;
 		}
 
 		/// <summary>

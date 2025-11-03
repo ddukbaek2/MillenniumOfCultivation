@@ -26,8 +26,8 @@ public static class RuntimeInitializer
 	/// </summary>
 	private static void RunBattle()
 	{
-		var player = new PlayerController(0);
-		var enemy = new AIController(0);
+		var player = new PlayerController();
+		var enemy = new AIController();
 
 		var battle = new Battle();		
 		battle.Start(player, new List<AIController>() { enemy });
@@ -38,5 +38,8 @@ public static class RuntimeInitializer
 	/// </summary>
 	private static void RunUI()
 	{
+		var canvasObj = GameObject.Find("UI/Canvas");
+
+		//GameObject.Instantiate();
 	}
 }

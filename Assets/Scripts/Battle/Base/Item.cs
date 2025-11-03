@@ -6,16 +6,16 @@ namespace MillenniumOfCultivation.Battle
 	public abstract class Item : Identifiable
 	{
 		/// <summary>
-		/// 카드 테이블 식별자.
+		/// 아이템 테이블 식별자.
 		/// </summary>
-		public int CardTableId { set; get; }
+		public int ItemTableId { set; get; }
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Item(ulong instanceId) : base(instanceId)
+		public Item(int itemTableId) : base()
 		{
-			CardTableId = 0;
+			ItemTableId = itemTableId;
 		}
 
 		/// <summary>
