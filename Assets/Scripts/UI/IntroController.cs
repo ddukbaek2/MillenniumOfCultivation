@@ -7,7 +7,7 @@ namespace MillenniumOfCultivation.UI
 	/// 인트로 뷰 컨트롤러.
 	/// </summary>
 	[AssetPath("Assets/Resources/UIKitLite/UIIntroView.prefab", AssetPathType.Resources)]
-	public class IntroViewController : UIController
+	public class IntroController : UIController
 	{
 	}
 }
