@@ -90,6 +90,7 @@ namespace MillenniumOfCultivation.Battle
 			InternalSetEvent(@event);
 			//@event.Complete(this);
 			//@event.Complete(this);
+			m_Battle.Now<TEvent>();
 		}
 
 		/// <summary>
@@ -97,6 +98,8 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		public void Next<TEvent>() where TEvent : Event, new()
 		{
+			var @event = new TEvent();
+			m_Battle.Next<TEvent>();
 		}
 	}
 }

@@ -1,4 +1,6 @@
 using Crockhead.Core;
+using MillenniumOfCultivation.Battle;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -16,6 +18,19 @@ public static class RuntimeInitializer
 		Debug.Log("[RuntimeInitializer] Run()");
 		SharedInstances.Clear();
 		RunUI();
+		RunBattle();
+	}
+
+	/// <summary>
+	/// 전투 시작.
+	/// </summary>
+	private static void RunBattle()
+	{
+		var player = new PlayerController(0);
+		var enemy = new AIController(0);
+
+		var battle = new Battle();		
+		battle.Start(player, new List<AIController>() { enemy });
 	}
 
 	/// <summary>

@@ -1,4 +1,5 @@
 using Crockhead.Core;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation.Battle
@@ -14,6 +15,11 @@ namespace MillenniumOfCultivation.Battle
 		private bool m_IsStarted;
 
 		/// <summary>
+		/// 처리 중 여부.
+		/// </summary>
+		private bool m_IsProcessed;
+
+		/// <summary>
 		/// 완료 여부.
 		/// </summary>
 		private bool m_IsCompleted;
@@ -22,6 +28,11 @@ namespace MillenniumOfCultivation.Battle
 		/// 시작 여부 프로퍼티.
 		/// </summary>
 		public bool IsStarted => m_IsStarted;
+
+		/// <summary>
+		/// 처리 중 여부 프로퍼티.
+		/// </summary>
+		public bool IsProcessed => m_IsProcessed;
 
 		/// <summary>
 		/// 완료 여부 프로퍼티.
@@ -34,6 +45,7 @@ namespace MillenniumOfCultivation.Battle
 		public Event() : base()
 		{
 			m_IsStarted = false;
+			m_IsProcessed = false;
 			m_IsCompleted = false;
 		}
 
@@ -50,6 +62,8 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		protected virtual void OnStart(Context context)
 		{
+			var type = GetType();
+			Debug.Log($"[{type.Name}] OnStart()");
 		}
 
 		/// <summary>
@@ -57,6 +71,8 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		protected virtual void OnProcess(Context context)
 		{
+			var type = GetType();
+			Debug.Log($"[{type.Name}] OnProcess()");
 		}
 
 		/// <summary>
@@ -64,6 +80,8 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		protected virtual void OnTransition(Context context, Event previous, Event next)
 		{
+			var type = GetType();
+			Debug.Log($"[{type.Name}] OnTransition()");
 		}
 
 		/// <summary>
@@ -71,6 +89,8 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		protected virtual void OnComplete(Context context)
 		{
+			var type = GetType();
+			Debug.Log($"[{type.Name}] OnComplete()");
 		}
 
 		/// <summary>
@@ -78,7 +98,7 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		public void Start(Context context)
 		{
-			if (m_IsStarted || m_IsCompleted)
+			if (m_IsStarted)
 				return;
 
 			m_IsStarted = true;
@@ -90,9 +110,10 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		public void Process(Context context)
 		{
-			if (m_IsStarted || m_IsCompleted)
+			if (!m_IsStarted || m_IsProcessed)
 				return;
 
+			m_IsProcessed = true;
 			OnProcess(context);
 		}
 
@@ -112,7 +133,7 @@ namespace MillenniumOfCultivation.Battle
 		/// </summary>
 		public void Complete(Context context)
 		{
-			if (!m_IsStarted || m_IsCompleted)
+			if (!m_IsStarted || !m_IsProcessed || m_IsCompleted)
 				return;
 
 			m_IsCompleted = true;

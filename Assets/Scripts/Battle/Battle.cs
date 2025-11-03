@@ -1,5 +1,7 @@
 using Crockhead.Core;
+using Crockhead.Unity;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation.Battle
@@ -83,9 +85,9 @@ namespace MillenniumOfCultivation.Battle
 		}
 
 		/// <summary>
-		/// 이벤트 스택 업데이트.
+		/// 이벤트 스택 처리.
 		/// </summary>
-		private void Update()
+		private void Process()
 		{
 			if (m_Stack.Count == 0)
 				return;
@@ -94,24 +96,30 @@ namespace MillenniumOfCultivation.Battle
 			if (!current.IsStarted)
 			{
 				current.Start(m_Context);
-				return;
+				Coroutines.WaitForNextFrame(Process);
 			}
-
-			if (!current.IsCompleted)
+			else if (!current.IsProcessed)
+			{
+				current.Process(m_Context);
+				Coroutines.WaitForNextFrame(Process);
+			}
+			else if (!current.IsCompleted)
 			{
 				current.Complete(m_Context);
 				m_Stack.Pop();
-				return;
+				Coroutines.WaitForNextFrame(Process);
 			}
 		}
 
 		/// <summary>
 		/// 시작.
 		/// </summary>
-		public void Start(PlayerController player, List<Controller> enemies)
+		public void Start(PlayerController player, List<AIController> enemies)
 		{
 			if (m_IsStarted)
 				return;
+
+			Debug.Log("[Battle] Start()");
 
 			m_IsStarted = true;
 
@@ -126,7 +134,7 @@ namespace MillenniumOfCultivation.Battle
 
 			// 전투 시작 이벤트.
 			m_Context.Next<BattleEvent>();
-			Update();
+			Coroutines.WaitForNextFrame(Process);
 		}
 
 		/// <summary>
@@ -137,9 +145,32 @@ namespace MillenniumOfCultivation.Battle
 			if (!m_IsStarted)
 				return;
 
+			Debug.Log("[Battle] Stop()");
+
 			m_IsStarted = false;
 			Disposables.Dispose(m_Context);
 			m_Controllers.Clear();
+		}
+
+		/// <summary>
+		/// 이벤트 스택 중에 실행될 이벤트 생성.
+		/// </summary>
+		public void Now<TEvent>() where TEvent : Event, new()
+		{
+			var @event = new TEvent();
+			m_Stack.Push(@event);
+			//InternalSetEvent(@event);
+			//@event.Complete(this);
+			//@event.Complete(this);
+		}
+
+		/// <summary>
+		/// 이벤트 스택이 끝나고 실행 될 예약 이벤트 생성.
+		/// </summary>
+		public void Next<TEvent>() where TEvent : Event, new()
+		{
+			var @event = new TEvent();
+			m_Stack.Push(@event);
 		}
 	}
 }
