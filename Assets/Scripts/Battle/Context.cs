@@ -11,7 +11,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 전투 주체.
 		/// </summary>
-		private Battle m_Battle;
+		private Process m_Battle;
 
 		/// <summary>
 		/// 현재 컨트롤러.
@@ -26,7 +26,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 전투 주체 프로퍼티.
 		/// </summary>
-		public Battle Battle => m_Battle;
+		public Process Battle => m_Battle;
 
 		/// <summary>
 		/// 플레이어 페이즈 여부 프로퍼티.
@@ -51,7 +51,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Context(Battle battle) : base()
+		public Context(Process battle) : base()
 		{
 			m_Battle = battle;
 			m_Controller = null;

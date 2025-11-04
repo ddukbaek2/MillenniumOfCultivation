@@ -7,9 +7,9 @@ using UnityEngine;
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>
-	/// 전투 주체.
+	/// 전투 처리 주체.
 	/// </summary>
-	public class Battle : Disposable
+	public class Process : Disposable
 	{
 		/// <summary>
 		/// 진행 중 여부.
@@ -64,7 +64,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Battle() : base()
+		public Process() : base()
 		{
 			m_IsStarted = false;
 			m_Controllers = new List<Controller>();
@@ -87,7 +87,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 스택 처리.
 		/// </summary>
-		private void Process()
+		private void Processing()
 		{
 			if (m_Stack.Count == 0)
 				return;
@@ -96,18 +96,18 @@ namespace MillenniumOfCultivation.Battle
 			if (!current.IsStarted)
 			{
 				current.Start(m_Context);
-				Coroutines.WaitForNextFrame(Process);
+				Coroutines.WaitForNextFrame(Processing);
 			}
 			else if (!current.IsProcessed)
 			{
 				current.Process(m_Context);
-				Coroutines.WaitForNextFrame(Process);
+				Coroutines.WaitForNextFrame(Processing);
 			}
 			else if (!current.IsCompleted)
 			{
 				current.Complete(m_Context);
 				m_Stack.Pop();
-				Coroutines.WaitForNextFrame(Process);
+				Coroutines.WaitForNextFrame(Processing);
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace MillenniumOfCultivation.Battle
 			if (m_IsStarted)
 				return;
 
-			Debug.Log("[Battle] Start()");
+			Debug.Log("[Processing] Start()");
 
 			m_IsStarted = true;
 
@@ -134,7 +134,7 @@ namespace MillenniumOfCultivation.Battle
 
 			// 전투 시작 이벤트.
 			m_Context.Next<BattleEvent>();
-			Coroutines.WaitForNextFrame(Process);
+			Coroutines.WaitForNextFrame(Processing);
 		}
 
 		/// <summary>
@@ -145,7 +145,7 @@ namespace MillenniumOfCultivation.Battle
 			if (!m_IsStarted)
 				return;
 
-			Debug.Log("[Battle] Stop()");
+			Debug.Log("[Processing] Stop()");
 
 			m_IsStarted = false;
 			Disposables.Dispose(m_Context);

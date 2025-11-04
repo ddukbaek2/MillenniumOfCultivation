@@ -18,6 +18,16 @@ namespace MillenniumOfCultivation.UI
 		#endregion
 
 		/// <summary>
+		/// 렉트 트랜스폼 프로퍼티.
+		/// </summary>
+		public RectTransform RectTransform => m_RectTransform;
+
+		/// <summary>
+		/// 백그라운드 이미지 프로퍼티.
+		/// </summary>
+		public Image BackgroundImage => m_BackgroundImage;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		protected override void Awake()
@@ -43,11 +53,6 @@ namespace MillenniumOfCultivation.UI
 					backgroundTransform = obj.GetComponent<RectTransform>();
 					m_BackgroundImage = obj.AddComponent<Image>();
 				}
-
-				backgroundTransform.anchoredPosition3D = Vector3.zero;
-				backgroundTransform.sizeDelta = Vector2.zero;
-				backgroundTransform.anchorMin = Vector2.zero;
-				backgroundTransform.anchorMax = Vector2.one;
 			}
 		}
 

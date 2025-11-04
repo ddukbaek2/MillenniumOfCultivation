@@ -1,3 +1,7 @@
+using DG.Tweening;
+using UnityEngine;
+
+
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>

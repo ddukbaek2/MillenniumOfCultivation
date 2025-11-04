@@ -1,3 +1,6 @@
+using UnityEngine;
+
+
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
@@ -14,6 +17,12 @@ namespace MillenniumOfCultivation.UI
 		protected override void Awake()
 		{
 			base.Awake();
+
+			// 크기 설정.
+			RectTransform.anchoredPosition3D = Vector3.zero;
+			RectTransform.sizeDelta = Vector2.zero;
+			RectTransform.anchorMin = Vector2.zero;
+			RectTransform.anchorMax = Vector2.one;
 		}
 
 		/// <summary>
