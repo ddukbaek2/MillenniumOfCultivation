@@ -30,9 +30,13 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		private static void RunUI()
 		{
-			var cardView = UIManager.SharedInstance.CreateView<UIView>("Assets/Resources/UI/UICardView.prefab");
-			cardView.RectTransform.anchoredPosition = Vector2.zero;
-			var animation = UITweenAnimation.StartFlootAnimation(cardView.RectTransform, 32f, 3f);
+			// 매니저 생성.
+			UIManager.Create();
+
+			// 카드 생성.
+			var card = new CardController();
+			card.LoadView(); // card.View
+			card.SetViewState(CardController.ViewState.Idle);
 		}
 
 		/// <summary>

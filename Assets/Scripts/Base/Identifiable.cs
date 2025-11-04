@@ -1,39 +1,42 @@
 using Crockhead.Core;
 
 
-/// <summary>
-/// 식별 될 수 있는 객체.
-/// </summary>
-public class Identifiable : Disposable
+namespace MillenniumOfCultivation
 {
-	private static NumberIdentifiers s_NumberIdentifiers = new NumberIdentifiers();
-
 	/// <summary>
-	/// 인스턴스 고유 식별자.
+	/// 식별 될 수 있는 객체.
 	/// </summary>
-	public ulong InstanceId { get; }
-
-	/// <summary>
-	/// 생성됨.
-	/// </summary>
-	public Identifiable() : base()
+	public class Identifiable : Disposable
 	{
-		InstanceId = s_NumberIdentifiers.Generate();
-	}
+		private static NumberIdentifiers s_NumberIdentifiers = new NumberIdentifiers();
 
-	/// <summary>
-	/// 생성됨.
-	/// </summary>
-	public Identifiable(ulong instanceId) : base()
-	{
-		InstanceId = instanceId;
-	}
+		/// <summary>
+		/// 인스턴스 고유 식별자.
+		/// </summary>
+		public ulong InstanceId { get; }
 
-	/// <summary>
-	/// 해제됨.
-	/// </summary>
-	protected override void OnDispose(bool explicitDisposing)
-	{
-		s_NumberIdentifiers.Release(InstanceId);
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		public Identifiable() : base()
+		{
+			InstanceId = s_NumberIdentifiers.Generate();
+		}
+
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		public Identifiable(ulong instanceId) : base()
+		{
+			InstanceId = instanceId;
+		}
+
+		/// <summary>
+		/// 해제됨.
+		/// </summary>
+		protected override void OnDispose(bool explicitDisposing)
+		{
+			s_NumberIdentifiers.Release(InstanceId);
+		}
 	}
 }

@@ -50,15 +50,18 @@ namespace MillenniumOfCultivation.UI
 			var moveUpwardTweener = target.DOAnchorPosY(value, duration);
 			moveUpwardTweener.SetRelative(true);
 			moveUpwardTweener.SetEase(Ease.InOutSine);
+			moveUpwardTweener.SetUpdate(UpdateType.Normal, true);
 
 			var moveDownwardTweener = target.DOAnchorPosY(-value, duration);
 			moveDownwardTweener.SetRelative(true);
 			moveDownwardTweener.SetEase(Ease.InOutSine);
+			moveDownwardTweener.SetUpdate(UpdateType.Normal, true);
 
 			var sequence = DOTween.Sequence();
 			sequence.Append(moveUpwardTweener);
 			sequence.Append(moveDownwardTweener);
 			sequence.SetLoops(-1, LoopType.Restart);
+			sequence.SetUpdate(UpdateType.Normal, true);
 
 			var animation = new UITweenAnimation(target, sequence);
 			return animation;
