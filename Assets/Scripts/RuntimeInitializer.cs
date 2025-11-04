@@ -30,6 +30,8 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		private static void RunUI()
 		{
+			Input.multiTouchEnabled = false;
+
 			// 매니저 생성.
 			UIManager.Create();
 

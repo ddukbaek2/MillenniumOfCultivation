@@ -61,9 +61,6 @@ namespace MillenniumOfCultivation
 			base.OnViewDidLoad();
 
 			View.RectTransform.anchoredPosition = Vector2.zero;
-
-			// 애니메이션 생성.
-			var cardAnimation = UITweenAnimation.StartFlootAnimation(View.RectTransform, 32f, 3f);
 		}
 
 		/// <summary>
