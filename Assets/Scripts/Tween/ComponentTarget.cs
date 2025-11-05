@@ -6,7 +6,7 @@ namespace MillenniumOfCultivation.Tween
 	/// <summary>
 	/// 컴포넌트 대상.
 	/// </summary>
-	public abstract class ComponentTarget<TComponent> : Target where TComponent : Component
+	public class ComponentTarget<TComponent> : Target where TComponent : Component
 	{
 		/// <summary>
 		/// 적용 대상.

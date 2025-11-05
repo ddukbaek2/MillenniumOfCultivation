@@ -1,18 +1,26 @@
 using Crockhead.Core;
+using System;
 
 
 namespace MillenniumOfCultivation.Tween
 {
 	/// <summary>
 	/// 변위자.
+	/// <para>값을 from==>to로 변환.</para>
 	/// </summary>
 	public abstract class Displacer : Disposable
 	{
 		/// <summary>
+		/// 변위 종류.
+		/// </summary>
+		private DisplaceType m_Type;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Displacer() : base()
+		public Displacer(DisplaceType type) : base()
 		{
+			m_Type = type;
 		}
 
 		/// <summary>
@@ -23,18 +31,22 @@ namespace MillenniumOfCultivation.Tween
 		}
 
 		/// <summary>
-		/// 변위됨.
-		/// </summary>
-		protected virtual void OnDisplacing(Value value, float progress)
-		{
-		}
-
-		/// <summary>
 		/// 변위.
 		/// </summary>
-		public void Displace(Value from, Value to, float progress)
+		public virtual Value Displace(Value from, Value to, float progress)
 		{
-			OnDisplacing(to, progress);
+			//var value = (to / from) * progress;
+			var value = Value.Create(ValueType.Float);
+
+			switch (m_Type)
+			{
+				case DisplaceType.Linear:
+					{
+						break;
+					}
+			}
+
+			return value;
 		}
 	}
 }

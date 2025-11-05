@@ -55,6 +55,11 @@ namespace MillenniumOfCultivation.Tween
 		public bool IsPlaying => m_IsPlaying;
 
 		/// <summary>
+		/// 적용 주체 프로퍼티.
+		/// </summary>
+		public Displacer Displacer => m_Displacer;
+
+		/// <summary>
 		/// 1회 진행율 프로퍼티.
 		/// </summary>
 		public float Progress => Mathf.Clamp01(m_ElapsedTime / m_Duration);
@@ -62,7 +67,7 @@ namespace MillenniumOfCultivation.Tween
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Tweener(Target target, Value fromValue, Value toValue, Displacer displacer) : base()
+		public Tweener(Target target, Displacer displacer, Value fromValue, Value toValue) : base()
 		{
 			m_IsPlaying = false;
 			m_Duration = 0f;
@@ -94,9 +99,27 @@ namespace MillenniumOfCultivation.Tween
 		/// </summary>
 		protected virtual void OnUpdate(float timeDelta)
 		{
-			var progress = m_ElapsedTime / m_Duration;
-			m_Displacer.Displace(m_FromValue, m_ToValue, progress);
-			m_Target.SetValue(m_ToValue);
+			m_ElapsedTime += timeDelta;
+
+			var value = m_Displacer.Displace(m_FromValue, m_ToValue, Progress);
+			m_Target.SetCurrentValue(value);
+
+			if (m_ElapsedTime >= m_Duration)
+			{
+				if (m_Repeat > 0)
+				{
+					--m_Repeat;
+
+					if (m_Repeat > 0)
+					{
+						m_ElapsedTime -= m_Duration;
+					}
+					else
+					{
+						Stop(true);
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -119,11 +142,11 @@ namespace MillenniumOfCultivation.Tween
 
 			if (applyFromValue)
 			{
-				m_Target.SetValue(m_FromValue);
+				m_Target.SetCurrentValue(m_FromValue);
 			}
 			else
 			{
-				m_FromValue = m_Target.Value;
+				m_FromValue = m_Target.CurrentValue;
 			}
 
 			OnStarted();
@@ -153,26 +176,7 @@ namespace MillenniumOfCultivation.Tween
 			if (!m_IsPlaying)
 				return;
 
-			m_ElapsedTime += timeDelta;
-
 			OnUpdate(timeDelta);
-
-			if (m_ElapsedTime >= m_Duration)
-			{	
-				if (m_Repeat > 0)
-				{
-					--m_Repeat;
-
-					if (m_Repeat > 0)
-					{
-						m_ElapsedTime -= m_Duration;
-					}
-					else
-					{
-						Stop(true);
-					}
-				}
-			}
 		}
 
 		/// <summary>
@@ -187,7 +191,7 @@ namespace MillenniumOfCultivation.Tween
 
 			if (applyToValue)
 			{
-				m_Target.SetValue(m_ToValue);
+				m_Target.SetCurrentValue(m_ToValue);
 			}
 
 			OnCompleted();

@@ -9,21 +9,21 @@ namespace MillenniumOfCultivation.Tween
 	public abstract class Target : Disposable
 	{
 		/// <summary>
-		/// 값.
+		/// 현재 값.
 		/// </summary>
-		private Value m_Value;
+		private Value m_CurrentValue;
 
 		/// <summary>
-		/// 값 프로퍼티.
+		/// 현재 값 프로퍼티.
 		/// </summary>
-		public Value Value => m_Value;
+		public Value CurrentValue => m_CurrentValue;
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		public Target(ValueType type) : base()
 		{
-			m_Value = Value.Create(type);
+			m_CurrentValue = Value.Create(type);
 		}
 
 		/// <summary>
@@ -38,14 +38,14 @@ namespace MillenniumOfCultivation.Tween
 		/// </summary>
 		protected virtual void OnChangedValue(Value value)
 		{
-			m_Value = value;
 		}
 
 		/// <summary>
 		/// 값 설정.
 		/// </summary>
-		public void SetValue(Value value)
+		public void SetCurrentValue(Value value)
 		{
+			m_CurrentValue = value;
 			OnChangedValue(value);
 		}
 	}
