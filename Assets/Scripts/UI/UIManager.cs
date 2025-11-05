@@ -11,11 +11,15 @@ namespace MillenniumOfCultivation.UI
 	/// </summary>
 	public class UIManager : SharedComponent<UIManager>
 	{
-		/// <summary>
-		/// 인스펙터 프로퍼티.
-		/// </summary>
 		#region INSEPCTOR
+		/// <summary>
+		/// 카메라.
+		/// </summary>
 		[SerializeField] private Camera m_Camera;
+
+		/// <summary>
+		/// 캔버스.
+		/// </summary>
 		[SerializeField] private Canvas m_Canvas;
 		#endregion
 
@@ -28,14 +32,14 @@ namespace MillenniumOfCultivation.UI
 
 			if (m_Camera == null)
 			{
-				m_Camera = transform.Find("Camera").GetComponent<Camera>();
+				m_Camera = TransformHelper.GetOrAddComponent<Camera>(transform, "Camera");
 			}
 
 			if (m_Canvas == null)
 			{
-				m_Canvas = transform.Find("Canvas").GetComponent<Canvas>();
+				m_Canvas = TransformHelper.GetOrAddComponent<Canvas>(transform, "Canvas");
 			}
-
+			
 			BindingUICamera();
 		}
 

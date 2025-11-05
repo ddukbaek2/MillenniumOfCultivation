@@ -61,19 +61,24 @@ namespace MillenniumOfCultivation.UI
 			{
 				var assetPath = assetPathAttribute.Value;
 
+				// 바인딩일 경우.
 				var viewBindingAttribute = assetPathAttribute as UIViewBindingAttribute;
 				if (viewBindingAttribute != null)
 				{
-					m_View = UIManager.SharedInstance.CreateViewFromAsset<UIView>(assetPath);
+					// 리소스에 존재하는 애셋을 불러와 지정 뷰 생성.
+					// 지정 뷰 클래스가 이미 애셋에 부착되어 있을 경우 해당 뷰 클래스를 사용.
+					m_View = UIManager.SharedInstance.CreateViewFromAsset(assetPath, viewBindingAttribute.ViewType);
 				}
 				else
 				{
+					// 리소스에 존재하는 애셋을 불러와 기본 뷰 생성.
+					// 대상 뷰 클래스가 이미 애셋에 부착되어 있을 경우 해당 뷰 클래스를 사용. 
 					m_View = UIManager.SharedInstance.CreateViewFromAsset<UIView>(assetPath);
 				}
 			}
 			else
 			{
-
+				// 기본 뷰 생성.
 				m_View = UIManager.SharedInstance.CreateView<UIView>();
 			}
 

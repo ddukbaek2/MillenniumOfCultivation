@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -34,6 +35,17 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.Awake();
 
+			// 하나의 게임 오브젝트에는 뷰 클래스는 하나만 붙어 있어야 한다.
+			var existViews = GetComponents<UIView>();
+			foreach (var existView in existViews)
+			{
+				if (this == existView)
+					continue;
+
+				Debug.LogError($"[UIView] Removal Old UIView: {existView}");
+				GameObject.Destroy(existView);
+			}
+
 			if (m_RectTransform == null)
 			{
 				m_RectTransform = GetComponent<RectTransform>();
@@ -41,18 +53,7 @@ namespace MillenniumOfCultivation.UI
 
 			if (m_BackgroundImage == null)
 			{
-				var backgroundTransform = transform.Find("Background") as RectTransform;
-				if (backgroundTransform != null)
-				{
-					m_BackgroundImage = backgroundTransform.GetComponent<Image>();
-				}
-				else
-				{
-					var obj = new GameObject("Background");
-					obj.transform.SetParent(transform, true);
-					backgroundTransform = obj.GetComponent<RectTransform>();
-					m_BackgroundImage = obj.AddComponent<Image>();
-				}
+				m_BackgroundImage = TransformHelper.GetOrAddComponent<Image>(transform, "Background");
 			}
 		}
 
@@ -70,6 +71,15 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// 자식 트랜스폼에 대한 컴포넌트 반환 혹은 생성 후 반환.
+		/// </summary>
+		public TComponent GetOrAddComponent<TComponent>(string transformPath) where TComponent : Component
+		{
+			var component = TransformHelper.GetOrAddComponent<TComponent>(transform, transformPath);
+			return component;
 		}
 	}
 }

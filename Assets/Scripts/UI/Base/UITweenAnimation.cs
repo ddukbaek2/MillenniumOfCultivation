@@ -16,6 +16,11 @@ namespace MillenniumOfCultivation.UI
 		public RectTransform RectTransform { get; }
 
 		/// <summary>
+		/// 트윈 목록.
+		/// </summary>
+		public Tweener[] Tweeners { get; }
+
+		/// <summary>
 		/// 시퀀스.
 		/// </summary>
 		public Sequence Sequence { get; }
@@ -23,10 +28,11 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		private UITweenAnimation(RectTransform target, Sequence sequence = null) : base()
+		private UITweenAnimation(RectTransform target, Sequence sequence = null, Tweener[] tweeners = null) : base()
 		{
 			RectTransform = target;
 			Sequence = sequence;
+			Tweeners = tweeners;
 		}
 
 		/// <summary>
@@ -40,9 +46,9 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
-		/// 애니메이션 시작.
+		/// 카드 대기 애니메이션 시작.
 		/// </summary>
-		public static UITweenAnimation StartFlootAnimation(RectTransform target, float value, float duration)
+		public static UITweenAnimation StartFlootCardAnimation(RectTransform target, float value, float duration)
 		{
 			value = Mathf.Abs(value);
 			duration = duration * 0.5f;
@@ -69,6 +75,15 @@ namespace MillenniumOfCultivation.UI
 			//sequence.SetAutoKill(false);
 			//sequence.SetRecyclable(false);
 			var animation = new UITweenAnimation(target, sequence);
+			return animation;
+		}
+
+		/// <summary>
+		/// 카드 선택 애니메이션 시작.
+		/// </summary>
+		public static UITweenAnimation StartFocusCardAnimation(RectTransform target, float value, float duration)
+		{
+			var animation = new UITweenAnimation(target);
 			return animation;
 		}
 	}

@@ -6,9 +6,9 @@ using UnityEngine;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// 카드 컨트롤러.
+	/// 카드 UI 컨트롤러.
 	/// </summary>
-	[UIViewBindingAttribute(typeof(UICardView), "Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
+	[UIViewBinding(typeof(UICardView), "Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
 	public class CardController : UIController
 	{
 		/// <summary>
@@ -25,6 +25,11 @@ namespace MillenniumOfCultivation
 			/// 대기.
 			/// </summary>
 			Idle,
+
+			/// <summary>
+			/// 카드 선택.
+			/// </summary>
+			Select,
 		}
 
 		/// <summary>
@@ -50,7 +55,15 @@ namespace MillenniumOfCultivation
 			//cardView.RectTransform.anchoredPosition = Vector2.zero;
 
 			//// 애니메이션 생성.
-			//var cardAnimation = UITweenAnimation.StartFlootAnimation(cardView.RectTransform, 32f, 3f);
+			//var cardAnimation = UITweenAnimation.StartFlootCardAnimation(cardView.RectTransform, 32f, 3f);
+		}
+
+		/// <summary>
+		/// 해제됨.
+		/// </summary>
+		protected override void OnDispose(bool explicitDisposing)
+		{
+			base.OnDispose(explicitDisposing);
 		}
 
 		/// <summary>
@@ -68,6 +81,9 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		public void SetViewState(ViewState state, bool forced = true)
 		{
+			if (state == ViewState.None)
+				return;
+
 			if (m_State == state && !forced)
 				return;
 
@@ -77,7 +93,12 @@ namespace MillenniumOfCultivation
 			{
 				case ViewState.Idle:
 					{
-						UITweenAnimation.StartFlootAnimation(View.RectTransform, 32f, 2f);
+						UITweenAnimation.StartFlootCardAnimation(View.RectTransform, 32f, 2f);
+						break;
+					}
+
+				case ViewState.Select:
+					{
 						break;
 					}
 			}
