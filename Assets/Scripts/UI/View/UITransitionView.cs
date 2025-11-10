@@ -35,7 +35,7 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
-			BackgroundImage.color = Color.clear;
+			BackgroundColor = Color.clear;
 			m_IsTransitioning = false;
 		}
 

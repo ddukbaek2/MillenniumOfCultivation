@@ -44,7 +44,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 백그라운드 컬러 프로퍼티.
 		/// </summary>
-		public Color BackgroundImageColor
+		public Color BackgroundColor
 		{
 			set => m_BackgroundImage.color = value;
 			get => m_BackgroundImage.color;
@@ -89,8 +89,9 @@ namespace MillenniumOfCultivation.UI
 			{
 				m_BackgroundImage = GetOrAddComponent<Image>("Background");
 				m_BackgroundImage.rectTransform.SetAsFirstSibling();
-				m_BackgroundImage.color = Color.clear;
 			}
+
+			BackgroundColor = Color.clear;
 		}
 
 		/// <summary>

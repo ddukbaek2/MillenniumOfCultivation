@@ -21,6 +21,9 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			// 색상 설정.
+			BackgroundColor = Color.clear;
+
 			// 크기 설정.
 			RectTransform.anchoredPosition3D = Vector3.zero;
 			RectTransform.sizeDelta = Vector2.zero;

@@ -19,6 +19,9 @@ namespace MillenniumOfCultivation.UI
 		protected override void Awake()
 		{
 			base.Awake();
+
+			if (IsDestroyed())
+				return;
 		}
 
 		/// <summary>

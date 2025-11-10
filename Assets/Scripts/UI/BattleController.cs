@@ -47,7 +47,7 @@ namespace MillenniumOfCultivation.UI
 				m_Cards.Add(card);
 
 				card.LoadView(); // card.View
-				card.View.RectTransform.SetParent(battleView.Content, false);
+				card.View.RectTransform.SetParent(battleView.Content, true);
 				card.SetViewState(CardController.ViewState.Idle);
 			}
 		}

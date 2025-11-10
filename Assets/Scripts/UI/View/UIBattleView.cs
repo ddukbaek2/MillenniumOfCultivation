@@ -23,6 +23,14 @@ namespace MillenniumOfCultivation.UI
 		protected override void Awake()
 		{
 			base.Awake();
+
+			if (IsDestroyed())
+				return;
+
+			if (m_Content == null)
+			{
+				m_Content = GetOrAddComponent<RectTransform>("Content");
+			}
 		}
 
 		/// <summary>
