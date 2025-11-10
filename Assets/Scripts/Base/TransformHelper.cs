@@ -47,6 +47,9 @@ namespace MillenniumOfCultivation
 							var obj = new GameObject(transformName);
 							target = obj.transform;
 							target.SetParent(parent, true);
+							target.localPosition = Vector3.zero;
+							target.localScale = Vector3.one;
+							target.localRotation = Quaternion.identity;
 						}
 
 						parent = target;

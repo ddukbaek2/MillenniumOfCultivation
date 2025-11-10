@@ -1,5 +1,6 @@
 using Crockhead.Unity;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation.UI
@@ -48,6 +49,9 @@ namespace MillenniumOfCultivation.UI
 
 				card.LoadView(); // card.View
 				card.View.RectTransform.SetParent(battleView.Content, true);
+				//card.View.RectTransform.localPosition = Vector3.zero;
+				//card.View.RectTransform.localScale = Vector3.one;
+				//card.View.RectTransform.localRotation = Quaternion.identity;
 				card.SetViewState(CardController.ViewState.Idle);
 			}
 		}
