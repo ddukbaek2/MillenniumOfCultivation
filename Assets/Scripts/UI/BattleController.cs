@@ -1,4 +1,5 @@
 using Crockhead.Unity;
+using System.Collections.Generic;
 
 
 namespace MillenniumOfCultivation.UI
@@ -6,14 +7,20 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 전투 UI 컨트롤러.
 	/// </summary>
-	[UIViewBinding(typeof(UIBattleView), "Assets/Resources/UIKitLite/UIBattleView.prefab", AssetPathType.Resources)]
+	[UIViewBinding(typeof(UIBattleView), "Assets/Resources/UI/UIBattleView.prefab", AssetPathType.Resources)]
 	public class BattleController : UIController
 	{
 		/// <summary>
+		/// 카드 목록.
+		/// </summary>
+		private List<CardController> m_Cards;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleController() : base()
+		public BattleController(UIWindow window) : base(window)
 		{
+			m_Cards = new List<CardController>();
 		}
 
 		/// <summary>
@@ -30,6 +37,19 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnViewDidLoad()
 		{
 			base.OnViewDidLoad();
+
+			var battleView = GetView<UIBattleView>();
+
+			// 카드 생성.
+			for (var i = 0; i < 10; ++i)
+			{
+				var card = new CardController(Window);
+				m_Cards.Add(card);
+
+				card.LoadView(); // card.View
+				card.View.RectTransform.SetParent(battleView.Content, false);
+				card.SetViewState(CardController.ViewState.Idle);
+			}
 		}
 	}
 }

@@ -1,0 +1,59 @@
+using Crockhead.Unity;
+using System.Collections;
+using System.Threading.Tasks;
+
+
+namespace MillenniumOfCultivation.UI
+{
+	/// <summary>
+	/// 화면 최상위 영역 UI 컨트롤러.
+	/// </summary>
+	[UIViewBinding(typeof(UITransitionView), "Assets/Resources/UI/UITransitionView.prefab", AssetPathType.Resources)]
+	public class TransitionController : UIController
+	{
+		public enum TransitionType
+		{
+			FadeOut,
+			FadeIn,
+		}
+
+
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		public TransitionController(UIWindow window) : base(window)
+		{
+		}
+
+		/// <summary>
+		/// 해제됨.
+		/// </summary>
+		protected override void OnDispose(bool explicitDisposing)
+		{
+			base.OnDispose(explicitDisposing);
+		}
+
+		/// <summary>
+		/// 뷰 로드됨.
+		/// </summary>
+		protected override void OnViewDidLoad()
+		{
+			base.OnViewDidLoad();
+
+			//View.RectTransform.anchoredPosition = Vector2.zero;
+		}
+
+		/// <summary>
+		/// 트랜지션 시작.
+		/// </summary>
+		public async Task StartTransition(TransitionType type)
+		{
+			static IEnumerator Process(UITransitionView view, TransitionType type)
+			{
+				yield break;
+			}
+
+			await Tasks.StartForeground(Process((UITransitionView)View, type));
+		}
+	}
+}

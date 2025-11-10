@@ -45,7 +45,7 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public CardController() : base()
+		public CardController(UIWindow window) : base(window)
 		{
 			m_State = ViewState.None;
 			m_Animation = null;
@@ -77,9 +77,9 @@ namespace MillenniumOfCultivation
 		}
 
 		/// <summary>
-		/// 뷰 상태 변경.
+		/// 뷰 상태 설정.
 		/// </summary>
-		public void SetViewState(ViewState state, bool forced = true)
+		public void SetViewState(ViewState state, bool forced = false)
 		{
 			if (state == ViewState.None)
 				return;

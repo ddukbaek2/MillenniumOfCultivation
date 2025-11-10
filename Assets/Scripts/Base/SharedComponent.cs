@@ -21,6 +21,11 @@ namespace MillenniumOfCultivation
 		public static TComponent SharedInstance => Create();
 
 		/// <summary>
+		/// 객체가 파괴 되었는지 여부.
+		/// </summary>
+		private bool m_IsDestroyed;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		protected virtual void Awake()
@@ -49,6 +54,21 @@ namespace MillenniumOfCultivation
 
 			SharedInstances.Unset<TComponent>();
 		}
+
+		/// <summary>
+		/// 현재 객체가 파괴 되었는지 여부.
+		/// </summary>
+		public bool IsDestroyed()
+		{
+			if (this == null)
+				return true;
+
+			if (m_IsDestroyed)
+				return true;
+
+			return false;
+		}
+
 
 		/// <summary>
 		/// 생성.

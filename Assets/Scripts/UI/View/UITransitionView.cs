@@ -1,21 +1,16 @@
-using UnityEngine;
+using System;
 
 
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
-	/// 전투 화면.
+	/// 트랜지션 뷰.
 	/// </summary>
-	public class UIBattleView : UIPanelView
+	public class UITransitionView : UIPanelView
 	{
 		#region INSPECTOR
-		[SerializeField] RectTransform m_Content;
+		//[SerializeField] private Image m_LogoImage;
 		#endregion
-
-		/// <summary>
-		/// 컨텐트 프로퍼티.
-		/// </summary>
-		public RectTransform Content => m_Content;
 
 		/// <summary>
 		/// 생성됨.
@@ -39,6 +34,14 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// 트랜지션 효과 시작.
+		/// </summary>
+		public void StartTransition(TransitionController.TransitionType type, Action completion)
+		{
+
 		}
 	}
 }

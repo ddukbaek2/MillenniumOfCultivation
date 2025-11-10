@@ -1,5 +1,5 @@
-using Crockhead.Unity;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -12,16 +12,38 @@ namespace MillenniumOfCultivation.UI
 	public class UIManager : SharedComponent<UIManager>
 	{
 		#region INSEPCTOR
-		/// <summary>
-		/// 카메라.
-		/// </summary>
 		[SerializeField] private Camera m_Camera;
+		#endregion
 
 		/// <summary>
-		/// 캔버스.
+		/// 윈도우 목록 관리.
 		/// </summary>
-		[SerializeField] private Canvas m_Canvas;
-		#endregion
+		private UIWindowManagement m_WindowManagement;
+
+		/// <summary>
+		/// 트랜지션 윈도우. (별도 관리)
+		/// </summary>
+		private UIWindow m_TransitionWindow;
+
+		/// <summary>
+		/// 트랜지션 컨트롤러.
+		/// </summary>
+		private TransitionController m_TransitionController;
+
+		/// <summary>
+		/// 윈도우 관리 프로퍼티.
+		/// </summary>
+		public UIWindowManagement WindowManagement => m_WindowManagement;
+
+		/// <summary>
+		/// 메인 윈도우 프로퍼티.
+		/// </summary>
+		public UIWindow FrontWindow => m_WindowManagement.FrontWindow;
+
+		/// <summary>
+		/// 트랜지션 컨트롤러 프로퍼티.
+		/// </summary>
+		public TransitionController TransitionController;
 
 		/// <summary>
 		/// 생성됨.
@@ -30,17 +52,32 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.Awake();
 
+			if (IsDestroyed())
+				return;
+
+			// 카메라 설정.
 			if (m_Camera == null)
 			{
 				m_Camera = TransformHelper.GetOrAddComponent<Camera>(transform, "Camera");
 			}
 
-			if (m_Canvas == null)
-			{
-				m_Canvas = TransformHelper.GetOrAddComponent<Canvas>(transform, "Canvas");
-			}
-			
+			// 카메라 바인딩.
 			BindingUICamera();
+
+			// 윈도우 찾아보고 없으면 생성해서 등록.
+			m_WindowManagement = new UIWindowManagement();
+			var window = TransformHelper.GetOrAddComponent<UIWindow>(transform, "Window");
+			window.SetCamera(m_Camera);
+			window.SetResolution(new Vector2Int(1280, 800));
+			m_WindowManagement.Register(window);
+
+			// 트랜지션용 오버레이 윈도우. (등록하지 않음)
+			m_TransitionWindow = TransformHelper.GetOrAddComponent<UIWindow>(transform, "TransitionWindow");
+			m_TransitionWindow.SetCamera(m_Camera);
+			m_TransitionWindow.SortingOrder = 1000;
+			m_TransitionWindow.SetResolution(new Vector2Int(1280, 800));
+			m_TransitionController = new TransitionController(m_TransitionWindow);
+			m_TransitionController.LoadView();
 		}
 
 		/// <summary>
@@ -69,81 +106,16 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
-		/// 뷰 생성.
+		/// 시작.
 		/// </summary>
-		public UIView CreateView(Type viewType = null, RectTransform parentRectTransform = null)
+		public void Run(UIController controller)
 		{
-			if (viewType == null)
-				viewType = typeof(UIView);
-			if (parentRectTransform == null)
-				parentRectTransform = m_Canvas.GetComponent<RectTransform>();
+			if (controller.Window == null)
+				controller.Window = FrontWindow;
+			controller.LoadView();
 
-			var obj = new GameObject(viewType.Name);
-			var view = (UIView)obj.AddComponent(viewType);
-			view.RectTransform.SetParent(parentRectTransform, true);
-			return view;
-		}
-
-		/// <summary>
-		/// 뷰 생성.
-		/// </summary>
-		public UIView CreateViewFromAsset(string assetPath, Type viewType = null, RectTransform parentRectTransform = null)
-		{
-			try
-			{
-				if (viewType == null)
-					viewType = typeof(UIView);
-				if (parentRectTransform == null)
-					parentRectTransform = m_Canvas.GetComponent<RectTransform>();
-
-				using var assetReader = new AssetReader<GameObject>(assetPath, AssetPathType.Resources);
-				var operation = assetReader.Read();
-				if (operation.IsSucceeded)
-				{
-					var asset = operation.Result;
-					var obj = GameObject.Instantiate<GameObject>(asset);
-					obj.name = viewType.Name;
-					var view = (UIView)obj.GetOrAddComponent(viewType);
-					view.RectTransform.SetParent(parentRectTransform, true);
-					return view;
-				}
-				else
-				{
-					Debug.LogException(operation.Exception);
-					throw operation.Exception;
-				}
-			}
-			catch
-			{
-				throw;
-			}
-		}
-
-		/// <summary>
-		/// 뷰 생성.
-		/// </summary>
-		public TUIView CreateView<TUIView>(RectTransform parentRectTransform = null) where TUIView : UIView
-		{
-			var viewType = typeof(TUIView);
-			var view = (TUIView)CreateView(viewType, parentRectTransform);
-			return view;
-		}
-
-		/// <summary>
-		/// 뷰 생성.
-		/// </summary>
-		public TUIView CreateViewFromAsset<TUIView>(string assetPath, RectTransform parentRectTransform = null) where TUIView : UIView
-		{
-			try
-			{
-				var viewType = typeof(TUIView);
-				var view = (TUIView)CreateViewFromAsset(assetPath, viewType, parentRectTransform);
-				return view;
-			}
-			catch
-			{
-				throw;
-			}
+			//var battle = new BattleController();
+			//battle.LoadView(); // battle.View
 		}
 	}
 }

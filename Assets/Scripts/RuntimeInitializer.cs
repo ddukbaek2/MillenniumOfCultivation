@@ -35,10 +35,9 @@ namespace MillenniumOfCultivation
 			// 매니저 생성.
 			UIManager.Create();
 
-			// 카드 생성.
-			var card = new CardController();
-			card.LoadView(); // card.View
-			card.SetViewState(CardController.ViewState.Idle);
+			// 시작.
+			var battleController = new BattleController(UIManager.SharedInstance.FrontWindow);
+			UIManager.SharedInstance.Run(battleController);		
 		}
 
 		/// <summary>

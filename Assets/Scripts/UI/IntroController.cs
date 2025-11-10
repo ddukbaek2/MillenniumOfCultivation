@@ -7,13 +7,13 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 인트로 UI 컨트롤러.
 	/// </summary>
-	[AssetPath("Assets/Resources/UIKitLite/UIIntroView.prefab", AssetPathType.Resources)]
+	[UIViewBinding(typeof(UIIntroView), "Assets/Resources/UI/UIIntroView.prefab", AssetPathType.Resources)]
 	public class IntroController : UIController
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public IntroController() : base()
+		public IntroController(UIWindow window) : base(window)
 		{
 		}
 
@@ -34,5 +34,7 @@ namespace MillenniumOfCultivation.UI
 
 			//View.RectTransform.anchoredPosition = Vector2.zero;
 		}
+
+		
 	}
 }
