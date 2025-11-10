@@ -18,6 +18,9 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.Awake();
 
+			if (IsDestroyed())
+				return;
+
 			// 크기 설정.
 			RectTransform.anchoredPosition3D = Vector3.zero;
 			RectTransform.sizeDelta = Vector2.zero;

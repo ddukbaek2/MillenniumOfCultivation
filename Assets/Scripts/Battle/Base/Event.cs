@@ -90,7 +90,7 @@ namespace MillenniumOfCultivation.Battle
 		protected virtual void OnComplete(Context context)
 		{
 			var type = GetType();
-			Debug.Log($"[{type.Name}] OnComplete()");
+			Debug.Log($"[{type.Name}] OnTransitionCompleted()");
 		}
 
 		/// <summary>

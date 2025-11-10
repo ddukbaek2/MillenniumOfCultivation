@@ -1,6 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
+using Crockhead.Core;
+using Crockhead.Unity;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.Rendering.Universal;
 
 
@@ -9,10 +12,12 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// UI 매니저.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UIManager.prefab", AssetPathType.Resources)]
 	public class UIManager : SharedComponent<UIManager>
 	{
 		#region INSEPCTOR
 		[SerializeField] private Camera m_Camera;
+		[SerializeField] private EventSystem m_EventSystem;
 		#endregion
 
 		/// <summary>
@@ -24,6 +29,11 @@ namespace MillenniumOfCultivation.UI
 		/// 트랜지션 윈도우. (별도 관리)
 		/// </summary>
 		private UIWindow m_TransitionWindow;
+
+		/// <summary>
+		/// 시작 컨트롤러.
+		/// </summary>
+		private UIController m_StartController;
 
 		/// <summary>
 		/// 트랜지션 컨트롤러.
@@ -46,6 +56,11 @@ namespace MillenniumOfCultivation.UI
 		public TransitionController TransitionController;
 
 		/// <summary>
+		/// 시작 컨트롤러 프로퍼티.
+		/// </summary>
+		public UIController StartController => m_StartController;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		protected override void Awake()
@@ -59,6 +74,13 @@ namespace MillenniumOfCultivation.UI
 			if (m_Camera == null)
 			{
 				m_Camera = TransformHelper.GetOrAddComponent<Camera>(transform, "Camera");
+			}
+
+			// 이벤트 시스템 설정.
+			if (m_EventSystem == null)
+			{
+				m_EventSystem = TransformHelper.GetOrAddComponent<EventSystem>(transform, "EventSystem");
+				m_EventSystem.AddComponent<InputSystemUIInputModule>();
 			}
 
 			// 카메라 바인딩.
@@ -78,6 +100,8 @@ namespace MillenniumOfCultivation.UI
 			m_TransitionWindow.SetResolution(new Vector2Int(1280, 800));
 			m_TransitionController = new TransitionController(m_TransitionWindow);
 			m_TransitionController.LoadView();
+
+			m_EventSystem.transform.SetAsLastSibling();
 		}
 
 		/// <summary>
@@ -110,9 +134,16 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public void Run(UIController controller)
 		{
-			if (controller.Window == null)
-				controller.Window = FrontWindow;
-			controller.LoadView();
+			if (m_StartController != null)
+			{
+				Disposables.Dispose(m_StartController);
+			}
+
+			m_StartController = controller;
+
+			if (m_StartController.Window == null)
+				m_StartController.Window = FrontWindow;
+			m_StartController.LoadView();
 
 			//var battle = new BattleController();
 			//battle.LoadView(); // battle.View
