@@ -1,4 +1,5 @@
 using Crockhead.Core;
+using UniqueID = System.UInt64;
 
 
 namespace MillenniumOfCultivation
@@ -13,7 +14,7 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 인스턴스 고유 식별자.
 		/// </summary>
-		public ulong InstanceId { get; }
+		public UniqueID InstanceId { get; }
 
 		/// <summary>
 		/// 생성됨.
@@ -26,7 +27,7 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Identifiable(ulong instanceId) : base()
+		public Identifiable(UniqueID instanceId) : base()
 		{
 			InstanceId = instanceId;
 		}

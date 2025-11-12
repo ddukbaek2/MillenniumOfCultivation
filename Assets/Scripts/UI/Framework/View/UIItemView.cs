@@ -1,3 +1,6 @@
+using UnityEngine;
+
+
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
@@ -18,11 +21,7 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
-			//// 크기 설정.
-			//RectTransform.anchoredPosition3D = Vector3.zero;
-			//RectTransform.sizeDelta = Vector2.zero;
-			//RectTransform.anchorMin = Vector2.zero;
-			//RectTransform.anchorMax = Vector2.one;
+			BackgroundColor = Color.clear;
 		}
 
 		/// <summary>
@@ -31,6 +30,12 @@ namespace MillenniumOfCultivation.UI
 		protected override void Start()
 		{
 			base.Start();
+
+			//// 크기 설정.
+			//RectTransform.anchoredPosition3D = Vector3.zero;
+			//RectTransform.sizeDelta = Vector2.zero;
+			//RectTransform.anchorMin = Vector2.zero;
+			//RectTransform.anchorMax = Vector2.one;
 		}
 
 		/// <summary>
@@ -39,6 +44,20 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// 큐에 들어감.
+		/// </summary>
+		protected virtual void OnEnqueued()
+		{
+		}
+
+		/// <summary>
+		/// 큐에서 나옴.
+		/// </summary>
+		protected virtual void OnDequeued()
+		{
 		}
 	}
 }

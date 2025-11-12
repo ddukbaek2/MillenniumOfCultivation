@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: fe5908300ccfdc34ab43bdfbda269211
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2449309100386145127
+    second: Crcokhead Studio_0
+  - first:
+      213: 5207489002922324710
+    second: Crcokhead Studio_1
+  - first:
+      213: -1593962201870302362
+    second: Crcokhead Studio_2
+  - first:
+      213: -7613871576802671148
+    second: Crcokhead Studio_3
+  - first:
+      213: 1982888367087220370
+    second: Crcokhead Studio_4
+  - first:
+      213: -7595903705704634523
+    second: Crcokhead Studio_5
+  - first:
+      213: 5339283120466784769
+    second: Crcokhead Studio_6
+  - first:
+      213: 238155767744989893
+    second: Crcokhead Studio_7
+  - first:
+      213: 6996581798578970753
+    second: Crcokhead Studio_8
+  - first:
+      213: 7992469504370091967
+    second: Crcokhead Studio_9
+  - first:
+      213: -1603492046284429505
+    second: Crcokhead Studio_10
+  - first:
+      213: 313141379390483190
+    second: Crcokhead Studio_11
+  - first:
+      213: 2782845001656771853
+    second: Crcokhead Studio_12
+  - first:
+      213: -2725299355365720966
+    second: Crcokhead Studio_13
+  - first:
+      213: 3859887317431106956
+    second: Crcokhead Studio_14
+  - first:
+      213: -5991050561924684558
+    second: Crcokhead Studio_15
+  - first:
+      213: -483074724477036880
+    second: Crcokhead Studio_16
+  - first:
+      213: 9020906791047873308
+    second: Crcokhead Studio_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 10
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Crcokhead Studio_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 183
+        width: 201
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c2a56a95e420ed0800000000000000
+      internalID: -2449309100386145127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_1
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 328
+        width: 783
+        height: 691
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e230fe58a7b44840800000000000000
+      internalID: 5207489002922324710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_2
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 255
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6630f1492db11e9e0800000000000000
+      internalID: -1593962201870302362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_3
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 183
+        width: 78
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5cb331428165690800000000000000
+      internalID: -7613871576802671148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_4
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 183
+        width: 87
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296fc7dc672a48b10800000000000000
+      internalID: 1982888367087220370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_5
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 253
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 567e66113dde59690800000000000000
+      internalID: -7595903705704634523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_6
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 183
+        width: 81
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10279a695b1f81a40800000000000000
+      internalID: 5339283120466784769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_7
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 183
+        width: 85
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca86a1b8691e4300800000000000000
+      internalID: 238155767744989893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_8
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 183
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 180634a831ad81160800000000000000
+      internalID: 6996581798578970753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_9
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 183
+        width: 71
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb72f161ba4faee60800000000000000
+      internalID: 7992469504370091967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_10
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 183
+        width: 90
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f376d05ca704fb9e0800000000000000
+      internalID: -1603492046284429505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_11
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 48
+        width: 96
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6faab0bec60885400800000000000000
+      internalID: 313141379390483190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_12
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 88
+        width: 78
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0529bce8c6ae9620800000000000000
+      internalID: 2782845001656771853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_13
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 95
+        width: 58
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c33d0fcaacd2ad0800000000000000
+      internalID: -2725299355365720966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_14
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 93
+        width: 58
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d348c8013119530800000000000000
+      internalID: 3859887317431106956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_15
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 95
+        width: 58
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f4231181438bdca0800000000000000
+      internalID: -5991050561924684558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_16
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 95
+        width: 22
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b69397f816cb49f0800000000000000
+      internalID: -483074724477036880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crcokhead Studio_17
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 95
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1341508ee2b03d70800000000000000
+      internalID: 9020906791047873308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Crcokhead Studio_0: -2449309100386145127
+      Crcokhead Studio_1: 5207489002922324710
+      Crcokhead Studio_10: -1603492046284429505
+      Crcokhead Studio_11: 313141379390483190
+      Crcokhead Studio_12: 2782845001656771853
+      Crcokhead Studio_13: -2725299355365720966
+      Crcokhead Studio_14: 3859887317431106956
+      Crcokhead Studio_15: -5991050561924684558
+      Crcokhead Studio_16: -483074724477036880
+      Crcokhead Studio_17: 9020906791047873308
+      Crcokhead Studio_2: -1593962201870302362
+      Crcokhead Studio_3: -7613871576802671148
+      Crcokhead Studio_4: 1982888367087220370
+      Crcokhead Studio_5: -7595903705704634523
+      Crcokhead Studio_6: 5339283120466784769
+      Crcokhead Studio_7: 238155767744989893
+      Crcokhead Studio_8: 6996581798578970753
+      Crcokhead Studio_9: 7992469504370091967
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

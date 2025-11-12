@@ -9,7 +9,7 @@ namespace MillenniumOfCultivation.UI
 	/// 화면 최상위 영역 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UITransitionView), "Assets/Resources/UI/UITransitionView.prefab", AssetPathType.Resources)]
-	public class TransitionController : UIController
+	public class TransitionController : UIController<UITransitionView>
 	{
 		public enum TransitionType
 		{
@@ -58,7 +58,7 @@ namespace MillenniumOfCultivation.UI
 				yield break;
 			}
 
-			await Tasks.StartForeground(Process((UITransitionView)View, type));
+			await Tasks.StartForeground(Process(View, type));
 		}
 	}
 }

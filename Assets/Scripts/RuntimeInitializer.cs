@@ -1,7 +1,11 @@
 using Crockhead.Core;
+using Crockhead.Unity;
 using MillenniumOfCultivation.Battle;
 using MillenniumOfCultivation.UI;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using BattleProcess = MillenniumOfCultivation.Battle.Process;
 
@@ -36,8 +40,10 @@ namespace MillenniumOfCultivation
 			UIManager.Create();
 
 			// 시작.
-			var battleController = new BattleController(UIManager.SharedInstance.FrontWindow);
-			UIManager.SharedInstance.Run(battleController);		
+			//var battleController = new BattleController(UIManager.SharedInstance.FrontWindow);
+			//UIManager.SharedInstance.Run(battleController);		
+			var introController = new IntroController(UIManager.SharedInstance.FrontWindow);
+			UIManager.SharedInstance.Run(introController);
 		}
 
 		/// <summary>

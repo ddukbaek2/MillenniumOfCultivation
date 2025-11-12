@@ -8,7 +8,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 아이템 테이블 식별자.
 		/// </summary>
-		public int ItemTableId { set; get; }
+		public int ItemTableId { get; }
 
 		/// <summary>
 		/// 생성됨.

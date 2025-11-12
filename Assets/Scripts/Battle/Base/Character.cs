@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-
-
 namespace MillenniumOfCultivation.Battle
 {
 	/// <summary>

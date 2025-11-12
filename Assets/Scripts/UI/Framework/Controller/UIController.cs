@@ -1,6 +1,6 @@
 using Crockhead.Core;
 using Crockhead.Unity;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
 
 
@@ -77,6 +77,8 @@ namespace MillenniumOfCultivation.UI
 				GameObject.Destroy(m_View);
 				m_View = null;
 			}
+
+			Debug.Log("[UIController] OnDispose()");
 
 			//base.OnDispose(explicitDisposing);
 		}

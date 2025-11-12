@@ -9,7 +9,7 @@ namespace MillenniumOfCultivation
 	/// 카드 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UICardView), "Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
-	public class CardController : UIController
+	public class CardController : UIController<UICardView>
 	{
 		/// <summary>
 		/// 카드 뷰 상태.
@@ -22,14 +22,34 @@ namespace MillenniumOfCultivation
 			None = 0,
 
 			/// <summary>
-			/// 대기.
+			/// 카드 뽑기. (카드패에서 손패로 넘어오는 상태. = Spawn)
+			/// </summary>
+			Draw,
+
+			/// <summary>
+			/// 대기. (손패에서 대기)
 			/// </summary>
 			Idle,
 
 			/// <summary>
-			/// 카드 선택.
+			/// 카드 선택. (손패에서 포커스 되며, 사용하거나 취소하는 수밖에 없음)
 			/// </summary>
 			Select,
+
+			/// <summary>
+			/// 사용.
+			/// </summary>
+			Use,
+
+			/// <summary>
+			/// 대상 지정 사용.
+			/// </summary>
+			UseToTarget,
+
+			/// <summary>
+			/// 사용 취소.
+			/// </summary>
+			Cancel,
 		}
 
 		/// <summary>
@@ -93,7 +113,7 @@ namespace MillenniumOfCultivation
 			{
 				case ViewState.Idle:
 					{
-						UITweenAnimation.StartFlootCardAnimation(View.RectTransform, 32f, 2f);
+						m_Animation = UITweenAnimation.StartFlootCardAnimation(View.RectTransform, 32f, 2f);
 						break;
 					}
 

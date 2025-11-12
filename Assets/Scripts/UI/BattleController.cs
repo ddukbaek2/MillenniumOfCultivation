@@ -9,7 +9,7 @@ namespace MillenniumOfCultivation.UI
 	/// 전투 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UIBattleView), "Assets/Resources/UI/UIBattleView.prefab", AssetPathType.Resources)]
-	public class BattleController : UIController
+	public class BattleController : UIController<UIBattleView>
 	{
 		/// <summary>
 		/// 카드 목록.
@@ -39,8 +39,6 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			var battleView = GetView<UIBattleView>();
-
 			// 카드 생성.
 			for (var i = 0; i < 10; ++i)
 			{
@@ -48,7 +46,7 @@ namespace MillenniumOfCultivation.UI
 				m_Cards.Add(card);
 
 				card.LoadView(); // card.View
-				card.View.RectTransform.SetParent(battleView.Content, true);
+				card.View.transform.SetParent(View.Content, true);
 				//card.View.RectTransform.localPosition = Vector3.zero;
 				//card.View.RectTransform.localScale = Vector3.one;
 				//card.View.RectTransform.localRotation = Quaternion.identity;

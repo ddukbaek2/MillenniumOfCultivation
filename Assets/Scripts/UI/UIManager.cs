@@ -12,7 +12,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// UI 매니저.
 	/// </summary>
-	[AssetPath("Assets/Resources/UI/UIManager.prefab", AssetPathType.Resources)]
+	[AssetPath("Assets/Resources/Base/UIManager.prefab", AssetPathType.Resources)]
 	public class UIManager : SharedComponent<UIManager>
 	{
 		#region INSEPCTOR
@@ -73,7 +73,7 @@ namespace MillenniumOfCultivation.UI
 			// 카메라 설정.
 			if (m_Camera == null)
 			{
-				m_Camera = TransformHelper.GetOrAddComponent<Camera>(transform, "Camera");
+				m_Camera = TransformHelper.GetOrAddComponent<Camera>(transform, "UICamera");
 			}
 
 			// 이벤트 시스템 설정.
@@ -112,9 +112,21 @@ namespace MillenniumOfCultivation.UI
 			if (m_Camera == null)
 				return;
 
-			if (Camera.main != null)
+			Debug.Log("[UIManager] BindingUICamera()");
+
+			var mainCamera = Camera.main;
+			if (Application.isPlaying)
 			{
-				var mainCameraData = Camera.main.GetUniversalAdditionalCameraData();
+			}
+			else
+			{
+				mainCamera = null;
+				Debug.Log("[UIManager] UIEnvironment Mode.");
+			}
+
+			if (mainCamera != null)
+			{
+				var mainCameraData = mainCamera.GetUniversalAdditionalCameraData();
 				mainCameraData.renderType = CameraRenderType.Base;
 
 				var uiCameraData = m_Camera.GetUniversalAdditionalCameraData();

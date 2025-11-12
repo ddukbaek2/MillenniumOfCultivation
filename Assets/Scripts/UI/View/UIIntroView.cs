@@ -1,3 +1,9 @@
+using Crockhead.Unity;
+using DG.Tweening;
+using DG.Tweening.Plugins.Options;
+using System;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +16,8 @@ namespace MillenniumOfCultivation.UI
 	public class UIIntroView : UIPanelView
 	{
 		#region INSPECTOR
-		[SerializeField] private Image m_LogoImage;
+		[SerializeField] private Image m_OverlayImage;
+		[SerializeField] private RawImage m_LogoImage;
 		#endregion
 
 		/// <summary>
@@ -22,6 +29,8 @@ namespace MillenniumOfCultivation.UI
 
 			if (IsDestroyed())
 				return;
+
+			BackgroundColor = new Color32(255, 178, 0, 255);
 		}
 
 		/// <summary>
@@ -38,6 +47,22 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// 애니메이션 시작.
+		/// </summary>
+		public async Task StartAnimation(Action completion)
+		{
+			static IEnumerator Process(Image overlayImage, Action completion)
+			{
+				overlayImage.color = Color.black;
+				var tween = overlayImage.DOColor(Color.clear, 2f);
+				yield return tween.WaitForCompletion();
+				completion?.Invoke();
+			}
+
+			await Tasks.StartForeground(Process(m_OverlayImage, completion));
 		}
 	}
 }

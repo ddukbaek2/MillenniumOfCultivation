@@ -43,6 +43,8 @@ namespace MillenniumOfCultivation.UI
 			Sequence.Kill();
 			RectTransform.DOKill();
 			//DOTween.Kill(RectTransform);
+
+			Debug.Log("[UITweenAnimation] OnDispose()");
 		}
 
 		/// <summary>

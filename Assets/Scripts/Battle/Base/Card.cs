@@ -8,7 +8,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 카드 테이블 식별자.
 		/// </summary>
-		public int CardTableId { set; get; }
+		public int CardTableId { get; }
 
 		/// <summary>
 		/// 생성됨.
