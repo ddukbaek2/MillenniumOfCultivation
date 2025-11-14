@@ -44,7 +44,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnFinishAnimation()
 		{
-			//UIManager.SharedInstance.TransitionController.StartTransition(TransitionController.TransitionType.FadeIn);
+			//UIManager.Instance.TransitionController.StartTransition(TransitionController.TransitionType.FadeIn);
 			var battleController = new BattleController(Window);
 			battleController.LoadView();
 

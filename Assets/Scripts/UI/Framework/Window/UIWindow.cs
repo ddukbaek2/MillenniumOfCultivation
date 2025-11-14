@@ -45,7 +45,7 @@ namespace MillenniumOfCultivation.UI
 					return;
 
 				Canvas.sortingOrder = value;
-				UIManager.SharedInstance.WindowManagement.ForcedUpdateAllWindows();
+				UIManager.Instance.WindowManagement.ForcedUpdateAllWindows();
 			}
 			get
 			{

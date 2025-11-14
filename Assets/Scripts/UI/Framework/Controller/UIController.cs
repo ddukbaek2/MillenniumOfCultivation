@@ -92,7 +92,7 @@ namespace MillenniumOfCultivation.UI
 				return;
 
 			if (m_Window == null)
-				m_Window = UIManager.SharedInstance.FrontWindow;
+				m_Window = UIManager.Instance.FrontWindow;
 
 			var controllerType = GetType();
 			var viewType = typeof(UIView);
@@ -129,7 +129,7 @@ namespace MillenniumOfCultivation.UI
 		//		await TaskFactory.CompletedTask;
 
 		//	//if (m_Window == null)
-		//	//	m_Window = UIManager.SharedInstance.FrontWindow;
+		//	//	m_Window = UIManager.Instance.FrontWindow;
 
 		//	//var controllerType = GetType();
 		//	//var viewType = typeof(UIView);

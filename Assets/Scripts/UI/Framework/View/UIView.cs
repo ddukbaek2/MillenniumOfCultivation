@@ -123,7 +123,7 @@ namespace MillenniumOfCultivation.UI
 				if (viewType == null)
 					viewType = typeof(UIView);
 				if (parentRectTransform == null)
-					parentRectTransform = UIManager.SharedInstance.FrontWindow.RectTransform;
+					parentRectTransform = UIManager.Instance.FrontWindow.RectTransform;
 
 				var view = (UIView)UINode.CreateNode(viewType, (Transform)parentRectTransform);
 				return view;
@@ -144,7 +144,7 @@ namespace MillenniumOfCultivation.UI
 				if (viewType == null)
 					viewType = typeof(UIView);
 				if (parentRectTransform == null)
-					parentRectTransform = UIManager.SharedInstance.FrontWindow.RectTransform;
+					parentRectTransform = UIManager.Instance.FrontWindow.RectTransform;
 
 				var view = (UIView)UINode.CreateNodeFromAsset(viewType, assetPath, assetPathType, (Transform)parentRectTransform);
 				return view;

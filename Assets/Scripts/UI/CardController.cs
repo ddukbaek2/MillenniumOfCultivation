@@ -71,7 +71,7 @@ namespace MillenniumOfCultivation
 			m_Animation = null;
 
 			//// 카드 뷰 생성.
-			//var cardView = UIManager.SharedInstance.CreateViewFromAsset<UIView>("Assets/Resources/UI/UICardView.prefab");
+			//var cardView = UIManager.Instance.CreateViewFromAsset<UIView>("Assets/Resources/UI/UICardView.prefab");
 			//cardView.RectTransform.anchoredPosition = Vector2.zero;
 
 			//// 애니메이션 생성.

@@ -41,10 +41,10 @@ namespace MillenniumOfCultivation
 			SoundManager.Create();
 
 			// 시작.
-			//var battleController = new BattleController(UIManager.SharedInstance.FrontWindow);
-			//UIManager.SharedInstance.Run(battleController);		
-			var introController = new IntroController(UIManager.SharedInstance.FrontWindow);
-			UIManager.SharedInstance.Run(introController);
+			//var battleController = new BattleController(UIManager.Instance.FrontWindow);
+			//UIManager.Instance.Run(battleController);		
+			var introController = new IntroController(UIManager.Instance.FrontWindow);
+			UIManager.Instance.Run(introController);
 		}
 
 		/// <summary>
