@@ -129,6 +129,10 @@ public static class TableEditor
 		{
 			Debug.LogException(exception);
 		}
+		finally
+		{
+			EditorUtility.ClearProgressBar();
+		}
 	}
 
 	/// <summary>
@@ -145,6 +149,10 @@ public static class TableEditor
 		catch (Exception exception)
 		{
 			Debug.LogException(exception);
+		}
+		finally
+		{
+			EditorUtility.ClearProgressBar();
 		}
 	}
 }
