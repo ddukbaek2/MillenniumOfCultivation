@@ -1,5 +1,6 @@
 using MillenniumOfCultivation;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 namespace Crockhead.Unity
@@ -8,20 +9,23 @@ namespace Crockhead.Unity
 	/// 사운드.
 	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
-	public class Sound : CrockheadBehaviour
+	public class Sound : MonoBehaviour
 	{
 		#region INSPECTOR
 		[SerializeField] private AudioSource m_AudioSource;
 		#endregion
 
-		public bool IsPlaying;
+		/// <summary>
+		/// 재생 중인지 여부 프로퍼티.
+		/// </summary>
+		public bool IsPlaying => m_AudioSource.isPlaying;
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected virtual void Awake()
 		{
-			base.Awake();
+			//base.Awake();
 
 			m_AudioSource = TransformHelper.GetOrAddComponent<AudioSource>(transform);
 		}
@@ -29,34 +33,28 @@ namespace Crockhead.Unity
 		/// <summary>
 		/// 해제됨.
 		/// </summary>
-		protected override void OnDestroy()
+		protected virtual void OnDestroy()
 		{
-			base.OnDestroy();
-		}
-
-		/// <summary>
-		/// 오디오 클립 로드.
-		/// </summary>
-		public virtual void LoadAudioClip()
-		{
-		}
-
-		/// <summary>
-		/// 오디오 클립 로드됨.
-		/// </summary>
-		protected virtual void OnAudioClipDidLoad()
-		{
+			//base.OnDestroy();
 		}
 
 		/// <summary>
 		/// 재생.
 		/// </summary>
-		public void Play()
+		public void Play(AudioMixerGroup audioMixerGroup, AudioClip audioClip)
 		{
+			m_AudioSource.outputAudioMixerGroup = audioMixerGroup;
+			m_AudioSource.clip = audioClip;
+			m_AudioSource.Play();
 		}
 
+		/// <summary>
+		/// 정지.
+		/// </summary>
 		public void Stop()
 		{
+			m_AudioSource.Stop();
+			m_AudioSource.clip = null;
 		}
 	}
 }

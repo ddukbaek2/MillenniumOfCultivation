@@ -1,0 +1,38 @@
+﻿[
+	{
+		"Id": 10000001,
+		"Name": "Sound_Background_Normal",
+		"Type": "Background",
+		"AssetPath": "Assets/Resources/Sound/Background/Normal.ogg"
+	},
+	{
+		"Id": 10000002,
+		"Name": "Sound_UI_Click",
+		"Type": "UI",
+		"AssetPath": "Assets/Resources/Sound/UI/Click.ogg"
+	},
+	{
+		"Id": 10000003
+	},
+	{
+		"Id": 10000004
+	},
+	{
+		"Id": 10000005
+	},
+	{
+		"Id": 10000006
+	},
+	{
+		"Id": 10000007
+	},
+	{
+		"Id": 10000008
+	},
+	{
+		"Id": 10000009
+	},
+	{
+		"Id": 10000010
+	}
+]

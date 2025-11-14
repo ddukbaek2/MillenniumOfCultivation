@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Crockhead.Table;
 using Crockhead.Unity.Editor;
+using System;
 //using Crockhead.Unity;
 //using Crockhead.Unity.Editor;
 //using Crockhead.Unity.Table.Editor;
@@ -113,8 +114,15 @@ public static class TableEditor
 	[MenuItem("Project/Table/Generate CS All")]
 	public static void GenerateCSFileAll()
 	{
-		var title = "CSharp Script File Generate";
-		TableEditor.GenerateAllExcelFiles(title, true, false);
+		try
+		{
+			var title = "CSharp Script File Generate";
+			TableEditor.GenerateAllExcelFiles(title, true, false);
+		}
+		catch (Exception exception)
+		{
+			Debug.LogException(exception);
+		}
 	}
 
 	/// <summary>
@@ -123,7 +131,14 @@ public static class TableEditor
 	[MenuItem("Project/Table/Generate JSON All")]
 	public static void GenerateJSONFileAll()
 	{
-		var title = "JSON Text File Generate";
-		TableEditor.GenerateAllExcelFiles(title, false, true);
+		try
+		{
+			var title = "JSON Text File Generate";
+			TableEditor.GenerateAllExcelFiles(title, false, true);
+		}
+		catch (Exception exception)
+		{
+			Debug.LogException(exception);
+		}
 	}
 }

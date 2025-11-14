@@ -38,6 +38,7 @@ namespace MillenniumOfCultivation
 
 			// 매니저 생성.
 			UIManager.Create();
+			SoundManager.Create();
 
 			// 시작.
 			//var battleController = new BattleController(UIManager.SharedInstance.FrontWindow);

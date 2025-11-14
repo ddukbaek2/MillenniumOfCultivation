@@ -1,0 +1,93 @@
+﻿[
+	{
+		"Id": 10000001,
+		"Name": "정권",
+		"CardType": "None",
+		"Grade": "Common",
+		"ActionType": "Attack",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000001,
+		"CostAP": 1,
+		"Description": "공격+1"
+	},
+	{
+		"Id": 10000002,
+		"Name": "호체공",
+		"CardType": "None",
+		"Grade": "Common",
+		"ActionType": "Skill",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000002,
+		"CostAP": 1,
+		"Description": "방어+1"
+	},
+	{
+		"Id": 10000003,
+		"CardType": "None",
+		"Grade": "Common",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000003,
+		"CostAP": 1
+	},
+	{
+		"Id": 10000004,
+		"CardType": "None",
+		"Grade": "Common",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000004,
+		"CostAP": 1
+	},
+	{
+		"Id": 10000005,
+		"CardType": "None",
+		"Grade": "Common",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000005,
+		"CostAP": 1
+	},
+	{
+		"Id": 10000006,
+		"CardType": "None",
+		"Grade": "Uncommon",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000006
+	},
+	{
+		"Id": 10000007,
+		"Name": "풍신퇴",
+		"CardType": "None",
+		"Grade": "Rare",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000007,
+		"CostAP": 2
+	},
+	{
+		"Id": 10000008,
+		"CardType": "None",
+		"Grade": "Epic",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000008
+	},
+	{
+		"Id": 10000009,
+		"CardType": "None",
+		"Grade": "Legendary",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000009
+	},
+	{
+		"Id": 10000010,
+		"CardType": "None",
+		"Grade": "Mythic",
+		"ActionType": "None",
+		"ActionTarget": "None",
+		"ActionSkillTableId": 10000010
+	}
+]

@@ -10,6 +10,19 @@ namespace Crockhead.Unity
 	public static class TransformHelper
 	{
 		/// <summary>
+		/// 대상 트랜스폼에 대한 값 초기화.
+		/// </summary>
+		public static void ResetTransform(Transform transform)
+		{
+			if (transform == null)
+				throw new ArgumentNullException(nameof(transform));
+
+			transform.localPosition = Vector3.zero;
+			transform.localScale = Vector3.one;
+			transform.localRotation = Quaternion.identity;
+		}
+
+		/// <summary>
 		/// 대상 트랜스폼에 대한 컴포넌트 반환 혹은 생성 후 반환.
 		/// </summary>
 		public static TComponent GetOrAddComponent<TComponent>(Transform transform, string transformPath = "") where TComponent : Component

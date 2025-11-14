@@ -123,10 +123,10 @@ namespace MillenniumOfCultivation.UI
 		///// <summary>
 		///// 뷰 로드. (비동기)
 		///// </summary>
-		//public async Task LoadViewAsync()
+		//public async TaskFactory LoadViewAsync()
 		//{
 		//	if (ViewIfLoaded)
-		//		await Task.CompletedTask;
+		//		await TaskFactory.CompletedTask;
 
 		//	//if (m_Window == null)
 		//	//	m_Window = UIManager.SharedInstance.FrontWindow;

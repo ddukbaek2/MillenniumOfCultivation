@@ -97,9 +97,7 @@ namespace MillenniumOfCultivation.UI
 			var obj = new GameObject(nodeType.Name);
 			var node = (UINode)obj.AddComponent(nodeType);
 			node.transform.SetParent(parentTransform, true);
-			node.RectTransform.localPosition = Vector3.zero;
-			node.RectTransform.localScale = Vector3.one;
-			node.RectTransform.localRotation = Quaternion.identity;
+			TransformHelper.ResetTransform(node.transform);
 			return node;
 		}
 
@@ -128,9 +126,7 @@ namespace MillenniumOfCultivation.UI
 					obj.name = nodeType.Name;
 					var node = (UINode)obj.GetOrAddComponent(nodeType);
 					node.transform.SetParent(parentTransform, true);
-					node.transform.localPosition = Vector3.zero;
-					node.transform.localScale = Vector3.one;
-					node.transform.localRotation = Quaternion.identity;
+					TransformHelper.ResetTransform(node.transform);
 					return node;
 				}
 				else
