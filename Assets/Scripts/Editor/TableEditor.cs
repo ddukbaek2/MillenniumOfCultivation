@@ -5,6 +5,8 @@ using UnityEngine;
 using Crockhead.Table;
 using Crockhead.Unity.Editor;
 using System;
+using NUnit.Framework;
+using System.Collections.Generic;
 //using Crockhead.Unity;
 //using Crockhead.Unity.Editor;
 //using Crockhead.Unity.Table.Editor;
@@ -57,6 +59,10 @@ public static class TableEditor
 	{
 		EditorUtility.ClearProgressBar();
 
+		var namespaces = new List<string>();
+		namespaces.Add("MillenniumOfCultivation");
+		namespaces.Add("MillenniumOfCultivation.Battle");
+
 		using var writter = new DataTableWritter(null);
 		var excelFilePaths = Directory.GetFiles(Projects.ExcelDirectory, "*.xlsx", SearchOption.TopDirectoryOnly);
 		excelFilePaths = excelFilePaths.Where(CheckValidateFilePath).Select(ReplaceFilePath).ToArray();
@@ -91,7 +97,7 @@ public static class TableEditor
 					var csFilePath = Path.Combine(Projects.ScriptsDirectory, "Table", "Record", $"{tableName}Record.cs");
 					csFilePath = ReplaceFilePath(csFilePath);
 					Debug.Log($"[TableEditor] CS File: \"{csFilePath}\"");
-					writter.CreateCSToFile(csFilePath, dataTable);
+					writter.CreateCSToFile(csFilePath, dataTable, namespaces);
 				}
 
 				if (writeJSON)

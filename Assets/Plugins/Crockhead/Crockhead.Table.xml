@@ -643,6 +643,11 @@
             로드.
             </summary>
         </member>
+        <member name="M:Crockhead.Table.SharedTable`3.Contains(System.Int32)">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
         <member name="M:Crockhead.Table.SharedTable`3.Find(System.Int32)">
             <summary>
             조건에 맞는 레코드 반환.
@@ -798,6 +803,16 @@
             타입 목록.
             </summary>
         </member>
+        <member name="P:Crockhead.Table.DataTable.Comments">
+            <summary>
+            주석 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Options">
+            <summary>
+            옵션 목록.
+            </summary>
+        </member>
         <member name="P:Crockhead.Table.DataTable.Records">
             <summary>
             레코드 목록.
@@ -867,6 +882,11 @@
             </summary>
         </member>
         <member name="M:Crockhead.Table.DataTableWritter.CreateCSToFile(System.String,Crockhead.Table.DataTable)">
+            <summary>
+            CS 파일 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateCSToFile(System.String,Crockhead.Table.DataTable,System.Collections.Generic.List{System.String})">
             <summary>
             CS 파일 생성.
             </summary>
