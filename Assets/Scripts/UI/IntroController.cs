@@ -49,6 +49,8 @@ namespace MillenniumOfCultivation.UI
 			battleController.LoadView();
 
 			Debug.Log("[IntroController] OnFinishAnimation()");
+
+			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00103.wav", AssetPathType.Resources, SoundType.UI);
 		}
 	}
 }
