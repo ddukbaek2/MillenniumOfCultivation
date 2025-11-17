@@ -89,8 +89,8 @@ namespace MillenniumOfCultivation
 			m_Client = new MqttClient("ddukbaek2.com", 1883, false, null);
 			m_Client.ConnectionClosed += OnDisconnected;
 			m_Client.MqttMsgPublishReceived += OnReceived;
-			m_Client.MqttMsgSubscribed += OnSubscribed;
-			m_Client.MqttMsgUnsubscribed += OnUnsubscribed;
+			//m_Client.MqttMsgSubscribed += OnSubscribed;
+			//m_Client.MqttMsgUnsubscribed += OnUnsubscribed;
 			m_Client.MqttMsgPublished += OnSended;
 
 			m_ClientId = string.Empty;
@@ -120,20 +120,21 @@ namespace MillenniumOfCultivation
 			//Reconnect();
 		}
 
-		/// <summary>
-		/// 채널 구독됨.
-		/// </summary>
-		private void OnSubscribed(object sender, MqttMsgSubscribedEventArgs eventArgs)
-		{
-			Debug.Log($"[MessageManager] OnSubscribed()");
-		}
+		///// <summary>
+		///// 채널 구독됨.
+		///// </summary>
+		//private void OnSubscribed(object sender, MqttMsgSubscribedEventArgs eventArgs)
+		//{
+		//	Debug.Log($"[MessageManager] OnSubscribed()");
+		//}
 
-		/// <summary>
-		/// 채널 구독 해제됨.
-		/// </summary>
-		private void OnUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs eventArgs)
-		{
-		}
+		///// <summary>
+		///// 채널 구독 해제됨.
+		///// </summary>
+		//private void OnUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs eventArgs)
+		//{
+		//	Debug.Log($"[MessageManager] OnUnsubscribed()");
+		//}
 
 		/// <summary>
 		/// 메시지 수신됨.
@@ -146,6 +147,8 @@ namespace MillenniumOfCultivation
 			try
 			{
 				var message = JsonConvert.DeserializeObject<Message>(json);
+				if (message == null)
+					return;
 
 				lock (m_ReceviedMessages)
 				{
@@ -155,7 +158,7 @@ namespace MillenniumOfCultivation
 			catch (Exception exception)
 			{
 				Debug.LogException(exception);
-				throw;
+				//throw;
 			}
 		}
 
