@@ -39,7 +39,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 고유 식별자 생성기.
 		/// </summary>
-		private NumberIdentifiers m_NumberIdentifiers;
+		private NumberIdentifiers<ulong> m_NumberIdentifiers;
 
 		/// <summary>
 		/// 진행 중 여부 프로퍼티.
@@ -71,7 +71,7 @@ namespace MillenniumOfCultivation.Battle
 			m_Stack = new Stack<Event>();
 			m_Context = null;
 			m_Turn = 0;
-			m_NumberIdentifiers = new NumberIdentifiers();
+			m_NumberIdentifiers = new NumberIdentifiers<ulong>();
 		}
 
 		/// <summary>

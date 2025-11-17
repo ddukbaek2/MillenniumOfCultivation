@@ -152,6 +152,16 @@
             <para>해제 후 null값을 대입.</para>
             </summary>
         </member>
+        <member name="T:Crockhead.Core.ICloneable`1">
+            <summary>
+            제너릭 복제 인터페이스.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ICloneable`1.Clone(System.Boolean)">
+            <summary>
+            복제.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.IDisposable">
             <summary>
             해제 할 수 있는 객체 인터페이스.
@@ -928,6 +938,36 @@
             키와 값 쌍을 배열로 스냅샷.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.Deprecated.NumberIdentifiers">
+            <summary>
+            ulong 타입의 고유 식별자 생성기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Deprecated.NumberIdentifiers.m_RandomNumberGenerator">
+            <summary>
+            랜덤 생성기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Deprecated.NumberIdentifiers.m_ByteBuffer">
+            <summary>
+            바이트 배열 버퍼.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Deprecated.NumberIdentifiers.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Deprecated.NumberIdentifiers.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Deprecated.NumberIdentifiers.OnCreateIdentifier">
+            <summary>
+            식별자 생성.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.EventDispatcher">
             <summary>
             이벤트 전달자.
@@ -1193,25 +1233,77 @@
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.GuidIdentifiers.CreateIdentifier">
+        <member name="M:Crockhead.Core.GuidIdentifiers.OnCreateIdentifier">
             <summary>
             식별자 생성.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.Identifiable">
+            <summary>
+            식별 될 수 있는 객체.
+            <para>IIdentifiable 인터페이스 구현체.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Identifiable.DefaultNumberIdentifiers">
+            <summary>
+            기본 고유 식별자 생성기 프로퍼티.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Identifiable.m_NumberIdentifiers">
+            <summary>
+            고유 식별자 생성기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.Identifiable.m_Identifier">
+            <summary>
+            고유 식별자.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Identifiable.Identifier">
+            <summary>
+            고유 식별자 프로퍼티.
+            <para>IIdentifiable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiable.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiable.#ctor(System.UInt64)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiable.#ctor(Crockhead.Core.NumberIdentifiers{System.UInt64})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiable.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.Identifiers`1">
             <summary>
-            제네릭 고유 식별자 생성기 + 컬렉션.
+            기본 제네릭 고유 식별자 생성기. (컬렉션)
             - IEnumerable(TResult) 인터페이스 구현체.
             </summary>
         </member>
-        <member name="F:Crockhead.Core.Identifiers`1.m_Identifiers">
+        <member name="F:Crockhead.Core.Identifiers`1.m_Values">
             <summary>
             할당된 고유 식별자 목록.
             </summary>
         </member>
         <member name="P:Crockhead.Core.Identifiers`1.Count">
             <summary>
-            할당된 고유식별자 갯수.
+            할당된 고유식별자 갯수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.Identifiers`1.Values">
+            <summary>
+            할당된 고유 식별자 목록 프로퍼티.
             </summary>
         </member>
         <member name="M:Crockhead.Core.Identifiers`1.#ctor">
@@ -1224,12 +1316,12 @@
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.Identifiers`1.CreateIdentifier">
+        <member name="M:Crockhead.Core.Identifiers`1.OnCreateIdentifier">
             <summary>
             식별자 생성.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.Identifiers`1.Generate">
+        <member name="M:Crockhead.Core.Identifiers`1.CreateIdentifier">
             <summary>
             고유 식별자 생성.
             - IUniqueIdentifierGenerator(TResult) 인터페이스 구현.
@@ -1240,28 +1332,52 @@
             비우기.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.Identifiers`1.Synchronize(Crockhead.Core.Identifiers{`0})">
+        <member name="M:Crockhead.Core.Identifiers`1.Add(`0)">
             <summary>
-            other를 기준으로 현재 식별자 할당 상태를 최신화.
-            - IUniqueIdentifierGenerator(TResult) 인터페이스 구현.
+            추가.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.Identifiers`1.Release(`0)">
+        <member name="M:Crockhead.Core.Identifiers`1.Add(Crockhead.Core.Identifiers{`0})">
             <summary>
-            고유 식별자 사용 종료.
-            - IUniqueIdentifierGenerator(TResult) 인터페이스 구현.
+            추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiers`1.Remove(`0)">
+            <summary>
+            제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiers`1.SynchronizeIdentifier(`0)">
+            <summary>
+            other를 기준으로 현재 식별자 할당 상태를 최신화. (덮어쓰기)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiers`1.SynchronizeIdentifiers(Crockhead.Core.Identifiers{`0})">
+            <summary>
+            other를 기준으로 현재 식별자 할당 상태를 최신화. (덮어쓰기)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiers`1.DestroyIdentifier(`0)">
+            <summary>
+            고유 식별자 파괴. (사용 종료)
             </summary>
         </member>
         <member name="M:Crockhead.Core.Identifiers`1.System#Collections#Generic#IEnumerable{TIdentifier}#GetEnumerator">
             <summary>
             반복자 반환.
-            - IEnumerable(ulong) 인터페이스 구현.
+            <para>IEnumerable(ulong) 인터페이스 구현.</para>
             </summary>
         </member>
         <member name="M:Crockhead.Core.Identifiers`1.System#Collections#IEnumerable#GetEnumerator">
             <summary>
             반복자 반환.
-            - IEnumerable 인터페이스 구현.
+            <para>IEnumerable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Identifiers`1.System#ICloneable#Clone">
+            <summary>
+            복제.
+            <para>ICloneable 인터페이스 구현.</para>
             </summary>
         </member>
         <member name="T:Crockhead.Core.IIdentifiable`1">
@@ -1271,37 +1387,57 @@
         </member>
         <member name="P:Crockhead.Core.IIdentifiable`1.Identifier">
             <summary>
-            객체 생성시 자동으로 생성 되어 객체의 유일성을 증명하는 고유 식별자.
+            객체 생성시 자동으로 생성 되어 객체의 유일성을 증명하는 고유 식별자 프로퍼티.
             </summary>
         </member>
-        <member name="T:Crockhead.Core.NumberIdentifiers">
+        <member name="T:Crockhead.Core.NumberIdentifiers`1">
             <summary>
-            ulong 타입의 고유 식별자 생성기.
+            제네릭 정수 타입의 고유 식별자 생성기.
             </summary>
         </member>
-        <member name="F:Crockhead.Core.NumberIdentifiers.m_RandomNumberGenerator">
+        <member name="F:Crockhead.Core.NumberIdentifiers`1.NumberTypes">
+            <summary>
+            정수 타입 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.NumberIdentifiers`1.NumberTypeSizes">
+            <summary>
+            정수 타입의 크기 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.NumberIdentifiers`1.NumberTypeConverters">
+            <summary>
+            정수 타입의 변환 콜백 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.NumberIdentifiers`1.m_RandomNumberGenerator">
             <summary>
             랜덤 생성기.
             </summary>
         </member>
-        <member name="F:Crockhead.Core.NumberIdentifiers.m_ByteBuffer">
+        <member name="F:Crockhead.Core.NumberIdentifiers`1.m_ByteBuffer">
             <summary>
             바이트 배열 버퍼.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.NumberIdentifiers.#ctor">
+        <member name="M:Crockhead.Core.NumberIdentifiers`1.#ctor">
             <summary>
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.NumberIdentifiers.OnDispose(System.Boolean)">
+        <member name="M:Crockhead.Core.NumberIdentifiers`1.OnDispose(System.Boolean)">
             <summary>
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.NumberIdentifiers.CreateIdentifier">
+        <member name="M:Crockhead.Core.NumberIdentifiers`1.OnCreateIdentifier">
             <summary>
             식별자 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.NumberIdentifiers`1.Clone">
+            <summary>
+            복제.
             </summary>
         </member>
         <member name="T:Crockhead.Core.StringIdentifiers">
@@ -1349,7 +1485,7 @@
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.StringIdentifiers.CreateIdentifier">
+        <member name="M:Crockhead.Core.StringIdentifiers.OnCreateIdentifier">
             <summary>
             식별자 생성.
             </summary>
@@ -2167,16 +2303,6 @@
         <member name="P:Crockhead.Core.SharedClass`1.Instance">
             <summary>
             공유 클래스 프로퍼티.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.SharedClass`1.IsExplicitCreated">
-            <summary>
-            현재 인스턴스가 명시적인 생성인지 여부. (직접 Create() 호출)
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.SharedClass`1.Arguments">
-            <summary>
-            생성시 입력한 아규먼트.
             </summary>
         </member>
         <member name="M:Crockhead.Core.SharedClass`1.#ctor">
