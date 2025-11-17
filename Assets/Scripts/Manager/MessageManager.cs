@@ -35,6 +35,12 @@ namespace MillenniumOfCultivation
 			public string ClientId { set; get; }
 
 			/// <summary>
+			/// 송신 시간 프로퍼티.
+			/// </summary>
+			[JsonProperty]
+			public DateTime DateTime { set; get; }
+
+			/// <summary>
 			/// 텍스트 프로퍼티.
 			/// </summary>
 			[JsonProperty]
@@ -81,11 +87,11 @@ namespace MillenniumOfCultivation
 				return;
 
 			m_Client = new MqttClient("ddukbaek2.com", 1883, false, null);
-			m_Client.ConnectionClosed += OnConnectionClosed;
-			m_Client.MqttMsgPublishReceived += OnReceivedMessage;
+			m_Client.ConnectionClosed += OnDisconnected;
+			m_Client.MqttMsgPublishReceived += OnReceived;
 			m_Client.MqttMsgSubscribed += OnSubscribed;
 			m_Client.MqttMsgUnsubscribed += OnUnsubscribed;
-			m_Client.MqttMsgPublished += OnSendedMessage;
+			m_Client.MqttMsgPublished += OnSended;
 
 			m_ClientId = string.Empty;
 			m_JoinedChannelIds = new HashSet<string>();
@@ -94,7 +100,7 @@ namespace MillenniumOfCultivation
 
 		protected override void OnDispose(bool explicitDisposing)
 		{
-			if (m_Client.IsConnected)
+			if (IsConnected)
 			{
 				m_Client.Disconnect();
 			}
@@ -105,11 +111,12 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 접속 해제됨.
 		/// </summary>
-		private void OnConnectionClosed(object sender, EventArgs eventArgs)
+		private void OnDisconnected(object sender, EventArgs eventArgs)
 		{
 			if (IsDisposed)
 				return;
 
+			Debug.Log($"[MessageManager] OnDisconnected()");
 			//Reconnect();
 		}
 
@@ -118,6 +125,7 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		private void OnSubscribed(object sender, MqttMsgSubscribedEventArgs eventArgs)
 		{
+			Debug.Log($"[MessageManager] OnSubscribed()");
 		}
 
 		/// <summary>
@@ -130,23 +138,31 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 메시지 수신됨.
 		/// </summary>
-		private void OnReceivedMessage(object sender, MqttMsgPublishEventArgs eventArgs)
+		private void OnReceived(object sender, MqttMsgPublishEventArgs eventArgs)
 		{
 			var json = Encoding.UTF8.GetString(eventArgs.Message);
-			Debug.Log($"[MessageManager] OnReceivedMessage(): Message: {json}");
+			Debug.Log($"[MessageManager] OnReceived(): Message: {json}");
 
-			var message = JsonConvert.DeserializeObject<Message>(json);
-
-			lock (m_ReceviedMessages)
+			try
 			{
-				m_ReceviedMessages.Add(message);
+				var message = JsonConvert.DeserializeObject<Message>(json);
+
+				lock (m_ReceviedMessages)
+				{
+					m_ReceviedMessages.Add(message);
+				}
+			}
+			catch (Exception exception)
+			{
+				Debug.LogException(exception);
+				throw;
 			}
 		}
 
 		/// <summary>
 		/// 메시지 송신됨.
 		/// </summary>
-		private void OnSendedMessage(object sender, MqttMsgPublishedEventArgs eventArgs)
+		private void OnSended(object sender, MqttMsgPublishedEventArgs eventArgs)
 		{
 			// 성공.
 			if (eventArgs.IsPublished)
@@ -188,26 +204,37 @@ namespace MillenniumOfCultivation
 			}
 		}
 
-		///// <summary>
-		///// 서버 재접속.
-		///// </summary>
-		//public void Reconnect()
-		//{
-		//	if (string.IsNullOrWhiteSpace(m_ClientId))
-		//		throw new Exception("Required Try Connect.");
+		/// <summary>
+		/// 서버 재접속.
+		/// </summary>
+		public void Reconnect()
+		{
+			try
+			{
+				if (string.IsNullOrWhiteSpace(m_ClientId))
+					throw new Exception("Required Try Connect.");
 
-		//	if (IsConnected)
-		//	{
-		//		m_Client.Disconnect();
-		//	}
+				if (IsConnected)
+				{
+					m_Client.Disconnect();
+				}
 
-		//	Connect(m_ClientId);
+				Connect(m_ClientId);
 
-		//	foreach (var channelId in m_JoinedChannelIds)
-		//	{
-		//		JoinChannel(channelId);
-		//	}
-		//}
+				if (IsConnected)
+				{
+					foreach (var channelId in m_JoinedChannelIds)
+					{
+						JoinChannel(channelId);
+					}
+				}
+			}
+			catch (Exception exception)
+			{
+				Debug.LogException(exception);
+				throw;
+			}
+		}
 
 		/// <summary>
 		/// 채널 진입.
@@ -267,6 +294,7 @@ namespace MillenniumOfCultivation
 				{
 					ChannelId = channelId,
 					ClientId = m_ClientId,
+					DateTime = DateTime.UtcNow,
 					Text = text
 				});
 
