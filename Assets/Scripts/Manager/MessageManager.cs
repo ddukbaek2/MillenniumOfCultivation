@@ -1,10 +1,11 @@
 using Crockhead.Core;
-using System.Text;
-using uPLibrary.Networking.M2Mqtt;
-using uPLibrary.Networking.M2Mqtt.Messages;
-using UnityEngine;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 
 
@@ -18,22 +19,26 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 메시지 정보.
 		/// </summary>
+		[JsonObject(MemberSerialization.OptIn)]
 		public class Message
 		{
 			/// <summary>
-			/// 채널 식별자.
+			/// 채널 식별자 프로퍼티.
 			/// </summary>
-			public string ChannelId;
+			[JsonProperty]
+			public string ChannelId { set; get; }
 
 			/// <summary>
-			/// 클라이언트 식별자.
+			/// 클라이언트 식별자 프로퍼티.
 			/// </summary>
-			public string ClientId;
+			[JsonProperty]
+			public string ClientId { set; get; }
 
 			/// <summary>
-			/// 값 식별자.
+			/// 텍스트 프로퍼티.
 			/// </summary>
-			public string Text;
+			[JsonProperty]
+			public string Text { set; get; }
 		}
 
 
@@ -53,9 +58,9 @@ namespace MillenniumOfCultivation
 		private HashSet<string> m_JoinedChannelIds;
 
 		/// <summary>
-		/// 메시지 큐.
+		/// 수신 된 메시지 목록.
 		/// </summary>
-		private Queue<string> m_MessageQueue;
+		private List<Message> m_ReceviedMessages;
 
 		/// <summary>
 		/// 연결 되었는지 여부 프로퍼티.
@@ -68,11 +73,6 @@ namespace MillenniumOfCultivation
 		public IEnumerable<string> JoinedChannelIds => m_JoinedChannelIds;
 
 		/// <summary>
-		/// 메시지 큐 프로퍼티.
-		/// </summary>
-		public Queue<string> MessageQueue => m_MessageQueue;
-
-		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		public MessageManager() : base()
@@ -80,7 +80,7 @@ namespace MillenniumOfCultivation
 			if (Instance != this)
 				return;
 
-			m_Client = new MqttClient("https://ddukbaek2.com", 1883, false, null);
+			m_Client = new MqttClient("ddukbaek2.com", 1883, false, null);
 			m_Client.ConnectionClosed += OnConnectionClosed;
 			m_Client.MqttMsgPublishReceived += OnReceivedMessage;
 			m_Client.MqttMsgSubscribed += OnSubscribed;
@@ -89,7 +89,7 @@ namespace MillenniumOfCultivation
 
 			m_ClientId = string.Empty;
 			m_JoinedChannelIds = new HashSet<string>();
-			m_MessageQueue = new Queue<string>();
+			m_ReceviedMessages = new List<Message>();
 		}
 
 		protected override void OnDispose(bool explicitDisposing)
@@ -132,11 +132,15 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		private void OnReceivedMessage(object sender, MqttMsgPublishEventArgs eventArgs)
 		{
-			var text = Encoding.UTF8.GetString(eventArgs.Message);
-			m_MessageQueue.Enqueue(text);
-			Debug.Log($"[MessageManager] OnReceivedMessage(): Message: {text}");
+			var json = Encoding.UTF8.GetString(eventArgs.Message);
+			Debug.Log($"[MessageManager] OnReceivedMessage(): Message: {json}");
 
-			//eventArgs.Topic
+			var message = JsonConvert.DeserializeObject<Message>(json);
+
+			lock (m_ReceviedMessages)
+			{
+				m_ReceviedMessages.Add(message);
+			}
 		}
 
 		/// <summary>
@@ -259,9 +263,15 @@ namespace MillenniumOfCultivation
 
 			try
 			{
-				var message = Encoding.UTF8.GetBytes(text);
+				var json = JsonConvert.SerializeObject(new Message
+				{
+					ChannelId = channelId,
+					ClientId = m_ClientId,
+					Text = text
+				});
+
+				var message = Encoding.UTF8.GetBytes(json);
 				var messageId = m_Client.Publish(channelId, message, MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, false);
-				//m_MessageQueue.Enqueue(text);
 			}
 			catch (Exception exception)
 			{
@@ -271,18 +281,26 @@ namespace MillenniumOfCultivation
 		}
 
 		/// <summary>
-		/// 메시지 전체 꺼내기.
+		/// 지정 채널의 모든 메시지 꺼내기.
 		/// </summary>
-		public string[] DequeueAllMessages()
+		public List<Message> DispatchAllMessages(string channelId)
 		{
-			var snapshot = default(string[]);
-			lock (m_MessageQueue)
+			var messages = new List<Message>();
+			lock (m_ReceviedMessages)
 			{
-				snapshot = m_MessageQueue.ToArray();
-				m_MessageQueue.Clear();
+				for (var i = 0; i < m_ReceviedMessages.Count; ++i)
+				{
+					var message = m_ReceviedMessages[i];
+					if (message.ChannelId != channelId)
+						continue;
+
+					messages.Add(message);
+					m_ReceviedMessages.RemoveAt(i);
+					--i;
+				}
 			}
 
-			return snapshot;
+			return messages;
 		}
 
 		/// <summary>
