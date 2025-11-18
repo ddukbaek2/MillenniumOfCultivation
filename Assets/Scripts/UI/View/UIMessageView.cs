@@ -1,4 +1,6 @@
 using Crockhead.Unity.UI;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -11,7 +13,10 @@ namespace MillenniumOfCultivation.UI
 	{
 		#region INSPECTOR
 		[SerializeField] private RectTransform m_ContentRectTransform;
+		[SerializeField] private TMP_InputField m_InputField;
 		#endregion
+
+		private Dictionary<string, List<Message>> m_CachedMessages;
 
 		/// <summary>
 		/// 콘텐트 렉트 트랜스폼 프로퍼티.
@@ -34,6 +39,11 @@ namespace MillenniumOfCultivation.UI
 			{
 				m_ContentRectTransform = GetOrAddComponent<RectTransform>("ScrollView/Viewport/Content");
 			}
+
+			if (m_InputField == null)
+			{
+				m_InputField = GetOrAddComponent<TMP_InputField>("InputField");
+			}
 		}
 
 		/// <summary>
@@ -53,17 +63,37 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
-		/// 모든 메시지 제거.
+		/// 갱신됨.
 		/// </summary>
-		public void RemoveAllMessages()
+		protected virtual void Update()
 		{
+			PullingAllMessages();
 		}
 
 		/// <summary>
-		/// 메시지 추가.
+		/// 모든 메시지를 꺼내온다.
 		/// </summary>
-		public void AddMessage()
+		public void PullingAllMessages()
 		{
+			if (!MessageManager.Instance.IsConnected)
+				return;
+			if (MessageManager.Instance.JoinedChannelCount == 0)
+				return;
+
+			foreach (var channelId in MessageManager.Instance.JoinedChannelIds)
+			{
+				var messages = MessageManager.Instance.DispatchAllMessages(channelId);
+				if (messages.Count == 0)
+					continue;
+
+				if (!m_CachedMessages.TryGetValue(channelId, out var cachedMessages))
+				{
+					cachedMessages = new List<Message>();
+					m_CachedMessages.Add(channelId, cachedMessages);
+				}
+
+				cachedMessages.AddRange(messages);
+			}
 		}
 	}
 }

@@ -36,6 +36,7 @@ namespace MillenniumOfCultivation.UI
 			// 비동기 실행.
 			DispatchQueue.Instance.RunAsync(async () =>
 			{
+				SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
 				await View.StartAnimation(OnFinishAnimation);
 			});
 		}
@@ -45,13 +46,16 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnFinishAnimation()
 		{
-			//UIManager.Instance.TransitionController.StartTransition(TransitionController.TransitionType.FadeIn);
-			var battleController = new BattleController(Window);
-			battleController.LoadView();
-
 			Debug.Log("[IntroController] OnFinishAnimation()");
 
-			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00103.wav", AssetPathType.Resources, SoundType.UI);
+
+			//UIManager.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
+
+			//var battleController = new BattleController(Window);
+			//battleController.LoadView();
+
+			var messageController = new MessageController(Window);
+			messageController.LoadView();
 		}
 	}
 }

@@ -48,7 +48,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 메시지 설정.
 		/// </summary>
-		public void SetMessage(MessageManager.Message message)
+		public void SetMessage(Message message)
 		{
 			var timestamp = message.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
 			m_Label.text = $"[{timestamp}] {message.Text}";

@@ -17,38 +17,6 @@ namespace MillenniumOfCultivation
 	public class MessageManager : SharedClass<MessageManager>
 	{
 		/// <summary>
-		/// 메시지 정보.
-		/// </summary>
-		[JsonObject(MemberSerialization.OptIn)]
-		public class Message
-		{
-			/// <summary>
-			/// 채널 식별자 프로퍼티.
-			/// </summary>
-			[JsonProperty]
-			public string ChannelId { set; get; }
-
-			/// <summary>
-			/// 클라이언트 식별자 프로퍼티.
-			/// </summary>
-			[JsonProperty]
-			public string ClientId { set; get; }
-
-			/// <summary>
-			/// 송신 시간 프로퍼티.
-			/// </summary>
-			[JsonProperty]
-			public DateTime DateTime { set; get; }
-
-			/// <summary>
-			/// 텍스트 프로퍼티.
-			/// </summary>
-			[JsonProperty]
-			public string Text { set; get; }
-		}
-
-
-		/// <summary>
 		/// MQTT 프로토콜 클라이언트.
 		/// </summary>
 		private MqttClient m_Client;
@@ -59,7 +27,7 @@ namespace MillenniumOfCultivation
 		private string m_ClientId;
 
 		/// <summary>
-		/// 구독 중인 채널 목록.
+		/// 진입 된 채널 식별자 목록.
 		/// </summary>
 		private HashSet<string> m_JoinedChannelIds;
 
@@ -74,7 +42,12 @@ namespace MillenniumOfCultivation
 		public bool IsConnected => m_Client?.IsConnected ?? false;
 
 		/// <summary>
-		/// 진입된 채널 식별자 목록.
+		/// 진입 된 채널 갯수 프로퍼티.
+		/// </summary>
+		public int JoinedChannelCount => m_JoinedChannelIds.Count;
+
+		/// <summary>
+		/// 진입 된 채널 식별자 목록 프로퍼티.
 		/// </summary>
 		public IEnumerable<string> JoinedChannelIds => m_JoinedChannelIds;
 

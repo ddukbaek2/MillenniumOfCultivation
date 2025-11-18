@@ -34,10 +34,8 @@ namespace Crockhead.Unity
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void OnCreate(params object[] arguments)
+		public DispatchQueue() : base()
 		{
-			base.OnCreate(arguments);
-
 			m_Queue = new Queue<DispatchItem>();
 			m_IsProcessing = false;
 		}

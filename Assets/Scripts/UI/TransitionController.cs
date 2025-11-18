@@ -1,5 +1,6 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using System;
 using System.Collections;
 using System.Threading.Tasks;
 
@@ -47,7 +48,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 트랜지션 시작.
 		/// </summary>
-		public async Task StartTransition(TransitionType type)
+		public async Task DoTransitionAsync(TransitionType type)
 		{
 			static IEnumerator Process(UITransitionView view, TransitionType type)
 			{
@@ -60,6 +61,15 @@ namespace MillenniumOfCultivation.UI
 			}
 
 			await TaskHelper.StartForeground(Process(View, type));
+		}
+
+		/// <summary>
+		/// 트랜지션 시작.
+		/// </summary>
+		public void DoTransition(TransitionType type, Action completion)
+		{
+			var task = DoTransitionAsync(type);
+			task.ContinueWith((task) => completion?.Invoke());
 		}
 	}
 }
