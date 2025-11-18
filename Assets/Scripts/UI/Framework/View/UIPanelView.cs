@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 패널 화면.

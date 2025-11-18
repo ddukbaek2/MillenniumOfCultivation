@@ -1,14 +1,14 @@
-using UnityEditor;
+using MillenniumOfCultivation.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 화면 영역 단위 구분 객체.
 	/// </summary>
-	public class UIWindow : UINode
+	public class UIWindow : UINode, IUIView
 	{
 		#region INSPECTOR
 		[SerializeField] private Canvas m_Canvas;

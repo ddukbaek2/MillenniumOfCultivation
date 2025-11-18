@@ -96,18 +96,18 @@ namespace MillenniumOfCultivation.Battle
 			if (!current.IsStarted)
 			{
 				current.Start(m_Context);
-				Coroutines.WaitForNextFrame(Processing);
+				CoroutineHelper.WaitForNextFrame(Processing);
 			}
 			else if (!current.IsProcessed)
 			{
 				current.Process(m_Context);
-				Coroutines.WaitForNextFrame(Processing);
+				CoroutineHelper.WaitForNextFrame(Processing);
 			}
 			else if (!current.IsCompleted)
 			{
 				current.Complete(m_Context);
 				m_Stack.Pop();
-				Coroutines.WaitForNextFrame(Processing);
+				CoroutineHelper.WaitForNextFrame(Processing);
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace MillenniumOfCultivation.Battle
 
 			// 전투 시작 이벤트.
 			m_Context.Next<BattleEvent>();
-			Coroutines.WaitForNextFrame(Processing);
+			CoroutineHelper.WaitForNextFrame(Processing);
 		}
 
 		/// <summary>

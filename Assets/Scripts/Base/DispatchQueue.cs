@@ -117,7 +117,7 @@ namespace Crockhead.Unity
 
 			if (!m_IsProcessing)
 			{
-				Coroutines.StartCoroutine(ProcessQueue());
+				CoroutineHelper.StartCoroutine(ProcessQueue());
 			}
 			return work.TaskCompletionSource.Task;
 		}

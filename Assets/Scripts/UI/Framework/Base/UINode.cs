@@ -1,11 +1,10 @@
 using Crockhead.Core;
-using Crockhead.Unity;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// UI 계층의 기본 객체.

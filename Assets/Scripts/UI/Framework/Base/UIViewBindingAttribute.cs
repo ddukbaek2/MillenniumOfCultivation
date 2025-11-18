@@ -2,7 +2,7 @@ using Crockhead.Unity;
 using System;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 뷰 바인딩 어트리뷰트.

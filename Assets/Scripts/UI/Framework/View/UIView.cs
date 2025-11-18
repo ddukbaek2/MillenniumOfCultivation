@@ -1,15 +1,15 @@
-using Crockhead.Unity;
+using MillenniumOfCultivation.UI;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 화면.
 	/// </summary>
-	public class UIView : UINode
+	public class UIView : UINode, IUIView
 	{
 		#region INSPECTOR
 		//[SerializeField] private CanvasRenderer m_CanvasRenderer;

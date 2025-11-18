@@ -1,4 +1,5 @@
 using Crockhead.Unity;
+using Crockhead.Unity.UI;
 using System.Collections;
 using System.Threading.Tasks;
 
@@ -58,7 +59,7 @@ namespace MillenniumOfCultivation.UI
 				yield break;
 			}
 
-			await Tasks.StartForeground(Process(View, type));
+			await TaskHelper.StartForeground(Process(View, type));
 		}
 	}
 }

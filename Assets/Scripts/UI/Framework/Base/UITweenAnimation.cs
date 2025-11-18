@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 트윈 애니메이션.

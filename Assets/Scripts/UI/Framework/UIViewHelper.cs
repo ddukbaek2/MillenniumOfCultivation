@@ -1,4 +1,4 @@
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 뷰 유틸리티.

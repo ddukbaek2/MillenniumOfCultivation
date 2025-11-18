@@ -1,3 +1,4 @@
+using Crockhead.Unity.UI;
 using UnityEngine;
 
 
@@ -9,9 +10,13 @@ namespace MillenniumOfCultivation.UI
 	public class UIMessageView : UIPanelView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_OverlayImage;
-		//[SerializeField] private RawImage m_LogoImage;
+		[SerializeField] private RectTransform m_ContentRectTransform;
 		#endregion
+
+		/// <summary>
+		/// 콘텐트 렉트 트랜스폼 프로퍼티.
+		/// </summary>
+		public RectTransform ContentRectTransform => m_ContentRectTransform;
 
 		/// <summary>
 		/// 생성됨.
@@ -23,7 +28,12 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
-			BackgroundColor = new Color32(255, 178, 0, 255);
+			BackgroundColor = Color.black;
+
+			if (m_ContentRectTransform == null)
+			{
+				m_ContentRectTransform = GetOrAddComponent<RectTransform>("ScrollView/Viewport/Content");
+			}
 		}
 
 		/// <summary>

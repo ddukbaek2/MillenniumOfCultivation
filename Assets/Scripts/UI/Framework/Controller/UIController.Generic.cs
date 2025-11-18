@@ -3,7 +3,7 @@ using Crockhead.Unity;
 using UnityEngine;
 
 
-namespace MillenniumOfCultivation.UI
+namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 뷰 컨트롤러.
