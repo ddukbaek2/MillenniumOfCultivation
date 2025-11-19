@@ -25,7 +25,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 윈도우 목록 관리.
 		/// </summary>
-		private UIWindowManagement m_WindowManagement;
+		private UIWindowManager m_WindowManager;
 
 		/// <summary>
 		/// 트랜지션 윈도우. (별도 관리)
@@ -45,12 +45,12 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 윈도우 관리 프로퍼티.
 		/// </summary>
-		public UIWindowManagement WindowManagement => m_WindowManagement;
+		public UIWindowManager WindowManager => m_WindowManager;
 
 		/// <summary>
 		/// 메인 윈도우 프로퍼티.
 		/// </summary>
-		public UIWindow FrontWindow => m_WindowManagement.FrontWindow;
+		public UIWindow FrontWindow => m_WindowManager.FrontWindow;
 
 		/// <summary>
 		/// 트랜지션 컨트롤러 프로퍼티.
@@ -89,11 +89,11 @@ namespace MillenniumOfCultivation.UI
 			BindingUICamera();
 
 			// 윈도우 찾아보고 없으면 생성해서 등록.
-			m_WindowManagement = new UIWindowManagement();
+			m_WindowManager = new UIWindowManager();
 			var window = TransformHelper.GetOrAddComponent<UIWindow>(transform, "Window");
 			window.SetCamera(m_Camera);
 			window.SetResolution(new Vector2Int(1280, 800));
-			m_WindowManagement.Register(window);
+			m_WindowManager.Register(window);
 
 			// 트랜지션용 오버레이 윈도우. (등록하지 않음)
 			m_TransitionWindow = TransformHelper.GetOrAddComponent<UIWindow>(transform, "TransitionWindow");

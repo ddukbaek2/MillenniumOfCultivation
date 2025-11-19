@@ -6,12 +6,11 @@ namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 레이블 뷰.
-	/// <para>UIKit: class UILabelView</para>
 	/// </summary>
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	[RequireComponent(typeof(CanvasRenderer))]
-	public sealed class UILabelView : TextMeshProUGUI, IUIView, IUIFrameable
+	public sealed class UILabelView : TextMeshProUGUI, IUIWidget, IUIFrameable
 	{
 		#region INSPECTOR
 		[SerializeField] private string m_LocalizeKey;

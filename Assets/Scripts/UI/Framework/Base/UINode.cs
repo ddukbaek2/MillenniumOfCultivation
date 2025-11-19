@@ -141,6 +141,30 @@ namespace Crockhead.Unity.UI
 		}
 
 		/// <summary>
+		/// 애셋을 로드하여 노드 생성. (특성이 설정 된 경우)
+		/// </summary>
+		public static UINode CreateNodeFromAsset(Type nodeType, Transform parentTransform)
+		{
+			try
+			{
+				if (nodeType == null)
+					throw new ArgumentNullException(nameof(nodeType));
+				if (parentTransform == null)
+					throw new ArgumentNullException(nameof(parentTransform));
+				if (!Reflections.TryGetAttribute<AssetPathAttribute>(nodeType, out var assetPathAttribute))
+					throw new InvalidOperationException(nameof(nodeType));
+
+				var assetPathValue = assetPathAttribute.Value;
+				var assetPathType = assetPathAttribute.Type;
+				return UINode.CreateNodeFromAsset(nodeType, assetPathValue, assetPathType, parentTransform);
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		/// <summary>
 		/// 노드 생성.
 		/// </summary>
 		public static TUINode CreateNode<TUINode>(Transform parentTransform) where TUINode : UINode
@@ -166,6 +190,23 @@ namespace Crockhead.Unity.UI
 			{
 				var nodeType = typeof(TUINode);
 				var node = (TUINode)UINode.CreateNodeFromAsset(nodeType, assetPath, assetPathType, parentTransform);
+				return node;
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// 애셋을 로드하여 노드 생성. (특성이 설정 된 경우)
+		/// </summary>
+		public static TUINode CreateNodeFromAsset<TUINode>(Transform parentTransform) where TUINode : UINode
+		{
+			try
+			{
+				var nodeType = typeof(TUINode);
+				var node = (TUINode)UINode.CreateNodeFromAsset(nodeType, parentTransform);
 				return node;
 			}
 			catch

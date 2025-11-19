@@ -45,7 +45,7 @@ namespace Crockhead.Unity.UI
 					return;
 
 				Canvas.sortingOrder = value;
-				UIManager.Instance.WindowManagement.ForcedUpdateAllWindows();
+				UIManager.Instance.WindowManager.ForcedUpdateAllWindows();
 			}
 			get
 			{

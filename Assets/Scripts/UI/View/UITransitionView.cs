@@ -1,3 +1,4 @@
+using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using DG.Tweening;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 트랜지션 뷰.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UITransitionView.prefab", AssetPathType.Resources)]
 	public class UITransitionView : UIPanelView
 	{
 		#region INSPECTOR

@@ -1,6 +1,5 @@
 using Crockhead.Core;
-using Crockhead.Unity;
-using UnityEngine;
+using System;
 
 
 namespace Crockhead.Unity.UI
@@ -35,6 +34,17 @@ namespace Crockhead.Unity.UI
 		protected override void OnDispose(bool explicitDisposing)
 		{
 			base.OnDispose(explicitDisposing);
+		}
+
+		/// <summary>
+		/// 뷰 로드 직전 호출됨.
+		/// </summary>
+		protected override (Type ViewType, string AssetPath, AssetPathType AssetPathType) OnViewWillLoad(Type viewType)
+		{
+			// 인자로 넘어오는 기본 뷰를 무시하고, 제네릭으로 설정된 지정 뷰의 타입을 적용.
+			viewType = typeof(TUIView);
+			var viewConfiguration = base.OnViewWillLoad(viewType);				
+			return viewConfiguration;
 		}
 
 		/// <summary>

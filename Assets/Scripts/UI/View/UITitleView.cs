@@ -1,11 +1,6 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
-using DG.Tweening;
-using System;
-using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 namespace MillenniumOfCultivation.UI
@@ -13,6 +8,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 타이틀 뷰.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UITitleView.prefab", AssetPathType.Resources)]
 	public class UITitleView : UIPanelView
 	{
 		#region INSPECTOR

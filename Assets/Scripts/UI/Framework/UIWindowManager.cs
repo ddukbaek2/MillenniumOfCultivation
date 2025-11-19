@@ -8,7 +8,7 @@ namespace Crockhead.Unity.UI
 	/// <summary>
 	/// 윈도우 관리.
 	/// </summary>
-	public class UIWindowManagement : Disposable
+	public class UIWindowManager : Disposable
 	{
 		/// <summary>
 		/// 윈도우 목록.
@@ -33,7 +33,7 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public UIWindowManagement() : base()
+		public UIWindowManager() : base()
 		{
 			m_Windows = new List<UIWindow>();
 		}

@@ -89,36 +89,39 @@ namespace Crockhead.Unity.UI
 		/// </summary>
 		public void LoadView()
 		{
-			if (ViewIfLoaded)
-				return;
-
-			if (m_Window == null)
-				m_Window = UIManager.Instance.FrontWindow;
-
-			var controllerType = GetType();
-			var viewType = typeof(UIView);
-			if (Reflections.TryGetAttribute<AssetPathAttribute>(controllerType, out var assetPathAttribute))
+			try
 			{
-				var assetPath = assetPathAttribute.Value;
+				if (ViewIfLoaded)
+					return;
 
-				// 바인딩일 경우.
-				// 리소스에 존재하는 애셋을 불러와 기본 뷰 생성.
-				// 대상 뷰 클래스가 이미 애셋에 부착되어 있을 경우 해당 뷰 클래스를 사용. 
-				var viewBindingAttribute = assetPathAttribute as UIViewBindingAttribute;
-				if (viewBindingAttribute != null)
+				// 현재 윈도우가 없을 경우.
+				if (m_Window == null)
+					m_Window = UIManager.Instance.FrontWindow;
+
+				// 뷰 로드 직전 정보를 수집하고, 정보에 따른 뷰를 생성.
+				var viewConfiguration = OnViewWillLoad(typeof(UIView));
+				var viewType = viewConfiguration.ViewType;
+				var assetPath = viewConfiguration.AssetPath;
+				var assetPathType = viewConfiguration.AssetPathType;
+
+				// 경로가 없다면 생성.
+				if (string.IsNullOrWhiteSpace(assetPath))
 				{
-					viewType = viewBindingAttribute.ViewType;
+					m_View = UIView.CreateView(viewType, m_Window.RectTransform);
+				}
+				// 경로가 있다면 로드.
+				else
+				{
+					m_View = UIView.CreateViewFromAsset(viewType, assetPath, assetPathType, m_Window.RectTransform);
 				}
 
-				m_View = UIView.CreateViewFromAsset(viewType, assetPath, AssetPathType.Resources, m_Window.RectTransform);
+				OnViewDidLoad();
 			}
-			else
+			catch (Exception exception)
 			{
-				// 기본 뷰 생성.
-				m_View = UIView.CreateView(viewType, m_Window.RectTransform);
+				Debug.LogException(exception);
+				throw;
 			}
-
-			OnViewDidLoad();
 		}
 
 		///// <summary>
@@ -157,6 +160,45 @@ namespace Crockhead.Unity.UI
 
 		//	OnViewDidLoad();
 		//}
+
+		/// <summary>
+		/// 뷰 로드 직전 호출됨.
+		/// <para>이를 상속 받아서 뷰 설정을 각 상속 뷰 별로 커스텀하면 특성 없이 각 뷰 마다 연결될 애셋을 개별 지정 가능.</para>
+		/// </summary>
+		protected virtual (Type ViewType, string AssetPath, AssetPathType AssetPathType) OnViewWillLoad(Type viewType)
+		{
+			if (viewType == null)
+				throw new ArgumentNullException(nameof(viewType));
+
+			var controllerType = GetType();
+			var assetPathValue = string.Empty;
+			var assetPathType = AssetPathType.Resources;
+
+			// 컨트롤러에 부착된 애셋 경로 특성 사용.
+			// AssetPathAttribute 혹은 ViewBindingAttribute 가 부착 되어있다는 전제. (강제사항은 아님)
+			if (Reflections.TryGetAttribute<AssetPathAttribute>(controllerType, out var assetPathAttribute))
+			{
+				assetPathValue = assetPathAttribute.Value;
+				assetPathType = assetPathAttribute.Type;
+
+				// 뷰 바인딩 특성 사용.
+				var viewBindingAttribute = assetPathAttribute as UIViewBindingAttribute;
+				if (viewBindingAttribute != null)
+				{
+					// 지정 뷰 설정.
+					viewType = viewBindingAttribute.ViewType;
+				}
+			}
+			// 뷰에 부착된 애셋 경로 특성 사용.
+			// 뷰에서 ViewBindingAttribute를 사용하는 것은 모순.
+			else if (Reflections.TryGetAttribute<AssetPathAttribute>(viewType, out assetPathAttribute))
+			{
+				assetPathValue = assetPathAttribute.Value;
+				assetPathType = assetPathAttribute.Type;
+			}
+
+			return (viewType, assetPathValue, assetPathType);
+		}
 
 		/// <summary>
 		/// 뷰 로드됨.

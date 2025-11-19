@@ -10,7 +10,7 @@ namespace Crockhead.Unity.UI
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	[RequireComponent(typeof(CanvasRenderer))]
-	public sealed class UITextureView : RawImage, IUIView
+	public sealed class UITextureView : RawImage, IUIWidget
 	{
 		/// <summary>
 		/// 렉트 트랜스폼 프로퍼티.

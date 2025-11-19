@@ -10,7 +10,7 @@ namespace Crockhead.Unity.UI
 	/// </summary>
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
-	public sealed partial class UIButtonView : Button, IUIView, IUIFrameable
+	public sealed partial class UIButtonView : Button, IUIWidget, IUIFrameable
 	{
 		#region INSPECTOR
 		[SerializeField] private RectTransform m_RectTransform;
@@ -29,20 +29,12 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 렉트 트랜스폼 프로퍼티.
 		/// </summary>
-		public RectTransform RectTransform
-		{
-			get
-			{
-				if (m_RectTransform == null)
-					m_RectTransform = GetComponent<RectTransform>();
-				return m_RectTransform;
-			}
-		}
+		public RectTransform RectTransform => m_RectTransform;
 
-		/// <summary>
-		/// 포커스 표시 객체.
-		/// </summary>
-		private Outline m_Outline;
+		///// <summary>
+		///// 포커스 표시 객체.
+		///// </summary>
+		//private Outline m_Outline;
 
 		/// <summary>
 		/// 생성됨.
@@ -52,7 +44,9 @@ namespace Crockhead.Unity.UI
 			base.Awake();
 
 			if (m_RectTransform == null)
+			{
 				m_RectTransform = GetComponent<RectTransform>();
+			}
 
 			m_Frame = new UIFrame();
 
@@ -86,7 +80,7 @@ namespace Crockhead.Unity.UI
 			if (Application.isPlaying)
 			{
 				Debug.Log($"[UIButtonView] OnSelect(): {name}");
-				m_Outline.enabled = true;
+				//m_Outline.enabled = true;
 			}
 		}
 
@@ -101,7 +95,7 @@ namespace Crockhead.Unity.UI
 			if (Application.isPlaying)
 			{
 				Debug.Log($"[UIButtonView] OnDeselect(): {name}");
-				m_Outline.enabled = false;
+				//m_Outline.enabled = false;
 			}
 		}
 
@@ -120,7 +114,6 @@ namespace Crockhead.Unity.UI
 
 		///// <summary>
 		///// 버튼 설정.
-		///// <para>UIKit: func setTitle()</para>
 		///// </summary>
 		//public void SetTitle(string title)
 		//{
@@ -128,7 +121,6 @@ namespace Crockhead.Unity.UI
 
 		///// <summary>
 		///// 액션 추가.
-		///// <para>UIKit: func addAction()</para>
 		///// </summary>
 		//public void AddAction(UIAction action)
 		//{

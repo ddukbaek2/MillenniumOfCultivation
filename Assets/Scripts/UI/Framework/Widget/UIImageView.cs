@@ -6,12 +6,11 @@ namespace Crockhead.Unity.UI
 {
 	/// <summary>
 	/// 이미지 뷰.
-	/// <para>UIKit: UIImageView</para>
 	/// </summary>
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	[RequireComponent(typeof(CanvasRenderer))]
-	public sealed class UIImageView : Image, IUIView
+	public sealed class UIImageView : Image, IUIWidget
 	{
 		/// <summary>
 		/// 렉트 트랜스폼 프로퍼티.

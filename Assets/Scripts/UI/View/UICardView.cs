@@ -1,5 +1,5 @@
+using Crockhead.Unity;
 using Crockhead.Unity.UI;
-using DG.Tweening;
 using UnityEngine;
 
 
@@ -8,6 +8,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 카드 항목.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
 	public class UICardView : UIItemView
 	{
 		#region INSPECTOR

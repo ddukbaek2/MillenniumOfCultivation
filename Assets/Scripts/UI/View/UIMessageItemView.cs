@@ -1,3 +1,4 @@
+using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 메시지 항목 뷰.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UIMessageItemView.prefab", AssetPathType.Resources)]
 	public class UIMessageItemView : UIItemView
 	{
 		#region INSPECTOR
@@ -35,6 +37,9 @@ namespace MillenniumOfCultivation.UI
 		protected override void Start()
 		{
 			base.Start();
+
+			var parentRectTransform = RectTransform.parent as RectTransform;
+			RectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, 24f);
 		}
 
 		/// <summary>

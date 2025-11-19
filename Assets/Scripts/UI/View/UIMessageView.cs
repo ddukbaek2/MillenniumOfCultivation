@@ -1,6 +1,7 @@
+using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 
@@ -9,11 +10,12 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 메시지 뷰.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UIMessageView.prefab", AssetPathType.Resources)]
 	public class UIMessageView : UIPanelView
 	{
 		#region INSPECTOR
 		[SerializeField] private RectTransform m_ContentRectTransform;
-		[SerializeField] private TMP_InputField m_InputField;
+		[SerializeField] private UIInputView m_InputField;
 		#endregion
 
 		private Dictionary<string, List<Message>> m_CachedMessages;
@@ -35,6 +37,7 @@ namespace MillenniumOfCultivation.UI
 
 			BackgroundColor = Color.black;
 
+			m_CachedMessages = new Dictionary<string, List<Message>>();
 			if (m_ContentRectTransform == null)
 			{
 				m_ContentRectTransform = GetOrAddComponent<RectTransform>("ScrollView/Viewport/Content");
@@ -42,8 +45,22 @@ namespace MillenniumOfCultivation.UI
 
 			if (m_InputField == null)
 			{
-				m_InputField = GetOrAddComponent<TMP_InputField>("InputField");
+				m_InputField = GetOrAddComponent<UIInputView>("InputField");
 			}
+
+			m_InputField.onSelect.AddListener(OnSelect);
+			m_InputField.onDeselect.AddListener(OnDeselect);
+			//m_InputField.onEndEdit
+			//m_InputField.onEndTextSelection
+			//m_InputField.onFocusSelectAll
+			//m_InputField.onTextSelection
+			//m_InputField.onTouchScreenKeyboardStatusChanged
+			//m_InputField.onValidateInput
+			//m_InputField.onValueChanged
+			m_InputField.onSubmit.AddListener(OnSubmit);
+			
+			MessageManager.Instance.Connect("ddukbaek2");
+			MessageManager.Instance.JoinChannel("@ddukbaek2");
 		}
 
 		/// <summary>
@@ -52,6 +69,10 @@ namespace MillenniumOfCultivation.UI
 		protected override void Start()
 		{
 			base.Start();
+
+			// 선택.
+			CreateMessageItemView("Initialize Chatting...");
+			m_InputField.Select();
 		}
 
 		/// <summary>
@@ -60,6 +81,33 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// 입력 뷰 선택됨.
+		/// </summary>
+		protected virtual void OnSelect(string text)
+		{
+			Debug.Log("[UIMessageView] OnSelect()");
+		}
+
+		/// <summary>
+		/// 입력 뷰 선택 해제됨.
+		/// </summary>
+		protected virtual void OnDeselect(string text)
+		{
+			Debug.Log("[UIMessageView] OnDeselect()");
+		}
+
+		/// <summary>
+		/// 입력 뷰의 내용 송신.
+		/// </summary>
+		protected virtual void OnSubmit(string text)
+		{
+			Debug.Log("[UIMessageView] OnSubmit()");
+
+			MessageManager.Instance.SendMessage("@ddukbaek2", text);
+			m_InputField.text = string.Empty;
 		}
 
 		/// <summary>
@@ -93,7 +141,38 @@ namespace MillenniumOfCultivation.UI
 				}
 
 				cachedMessages.AddRange(messages);
+
+				// 메시지 아이템 생성.
+				foreach (var message in messages)
+				{
+					CreateMessageItemView(message);
+				}
 			}
+		}
+
+		/// <summary>
+		/// 아이템 생성.
+		/// </summary>
+		private void CreateMessageItemView(Message message)
+		{
+			var item = UIView.CreateNodeFromAsset<UIMessageItemView>(m_ContentRectTransform);
+			item.SetMessage(message);
+		}
+
+		/// <summary>
+		/// 아이템 생성.
+		/// </summary>
+		private void CreateMessageItemView(string text)
+		{
+			var message = new Message
+			{
+				DateTime = DateTime.UtcNow,
+				ChannelId = "@ddukbaek2",
+				ClientId = "ddukbaek2",
+				Text = text,
+			};
+
+			CreateMessageItemView(message);
 		}
 	}
 }

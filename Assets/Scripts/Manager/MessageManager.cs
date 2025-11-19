@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Exceptions;
 using uPLibrary.Networking.M2Mqtt.Messages;
 
 
@@ -59,7 +60,9 @@ namespace MillenniumOfCultivation
 			if (Instance != this)
 				return;
 
-			m_Client = new MqttClient("ddukbaek2.com", 1883, false, null);
+			// ddukbaek2.com
+			// "192.168.0.12"
+			m_Client = new MqttClient("ddukbaek2.com", 32772, false, null);
 			m_Client.ConnectionClosed += OnDisconnected;
 			m_Client.MqttMsgPublishReceived += OnReceived;
 			//m_Client.MqttMsgSubscribed += OnSubscribed;
@@ -172,6 +175,11 @@ namespace MillenniumOfCultivation
 					case 4: throw new Exception("Id/Password Incorrect.");
 					case 5: throw new Exception("Authorize Failure.");
 				}
+			}
+			catch (MqttCommunicationException exception)
+			{
+				Debug.LogException(exception);
+				throw;
 			}
 			catch (Exception exception)
 			{

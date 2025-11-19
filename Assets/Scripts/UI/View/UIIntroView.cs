@@ -13,6 +13,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 인트로 뷰.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UIIntroView.prefab", AssetPathType.Resources)]
 	public class UIIntroView : UIPanelView
 	{
 		#region INSPECTOR

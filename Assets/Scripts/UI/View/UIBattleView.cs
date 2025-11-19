@@ -1,3 +1,4 @@
+using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 전투 화면.
 	/// </summary>
+	[AssetPath("Assets/Resources/UI/UIBattleView.prefab", AssetPathType.Resources)]
 	public class UIBattleView : UIPanelView
 	{
 		#region INSPECTOR
