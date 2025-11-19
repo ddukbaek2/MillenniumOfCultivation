@@ -3,6 +3,7 @@ using Crockhead.Unity.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace MillenniumOfCultivation.UI
@@ -48,6 +49,9 @@ namespace MillenniumOfCultivation.UI
 				m_InputField = GetOrAddComponent<UIInputView>("InputField");
 			}
 
+			if (!Application.isPlaying)
+				return;
+
 			m_InputField.onSelect.AddListener(OnSelect);
 			m_InputField.onDeselect.AddListener(OnDeselect);
 			//m_InputField.onEndEdit
@@ -69,6 +73,9 @@ namespace MillenniumOfCultivation.UI
 		protected override void Start()
 		{
 			base.Start();
+
+			if (!Application.isPlaying)
+				return;
 
 			// 선택.
 			CreateMessageItemView("Initialize Chatting...");
@@ -157,6 +164,12 @@ namespace MillenniumOfCultivation.UI
 		{
 			var item = UIView.CreateNodeFromAsset<UIMessageItemView>(m_ContentRectTransform);
 			item.SetMessage(message);
+
+			CoroutineHelper.WaitForNextFrame(() =>
+			{
+				var scrollview = GetOrAddComponent<ScrollRect>("ScrollView");
+				scrollview.verticalNormalizedPosition = 0f;
+			});
 		}
 
 		/// <summary>
@@ -164,6 +177,9 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void CreateMessageItemView(string text)
 		{
+			if (string.IsNullOrWhiteSpace(text))
+				return;
+
 			var message = new Message
 			{
 				DateTime = DateTime.UtcNow,
