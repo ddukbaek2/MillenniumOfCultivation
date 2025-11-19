@@ -177,9 +177,6 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void CreateMessageItemView(string text)
 		{
-			if (string.IsNullOrWhiteSpace(text))
-				return;
-
 			var message = new Message
 			{
 				DateTime = DateTime.UtcNow,
