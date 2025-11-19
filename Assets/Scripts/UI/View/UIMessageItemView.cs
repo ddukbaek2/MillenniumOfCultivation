@@ -55,8 +55,9 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public void SetMessage(Message message)
 		{
-			var timestamp = message.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-			m_Label.text = $"[{timestamp}] {message.Text}";
+			//var timestamp = message.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+			var timestamp = message.DateTime.ToString("HH:mm");
+			m_Label.text = $"[{message.ClientId} ({timestamp})] {message.Text}";
 		}
 	}
 }

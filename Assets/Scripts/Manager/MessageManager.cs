@@ -48,6 +48,11 @@ namespace MillenniumOfCultivation
 		public int JoinedChannelCount => m_JoinedChannelIds.Count;
 
 		/// <summary>
+		/// 클라이언트 식별자 프로퍼티.
+		/// </summary>
+		public string ClientId => m_ClientId;
+
+		/// <summary>
 		/// 진입 된 채널 식별자 목록 프로퍼티.
 		/// </summary>
 		public IEnumerable<string> JoinedChannelIds => m_JoinedChannelIds;
@@ -60,8 +65,7 @@ namespace MillenniumOfCultivation
 			if (Instance != this)
 				return;
 
-			// ddukbaek2.com
-			// "192.168.0.12"
+			// "ddukbaek2.com" or "192.168.0.12"
 			m_Client = new MqttClient("ddukbaek2.com", 32772, false, null);
 			m_Client.ConnectionClosed += OnDisconnected;
 			m_Client.MqttMsgPublishReceived += OnReceived;

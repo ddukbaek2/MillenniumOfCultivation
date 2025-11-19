@@ -62,8 +62,9 @@ namespace MillenniumOfCultivation.UI
 			//m_InputField.onValidateInput
 			//m_InputField.onValueChanged
 			m_InputField.onSubmit.AddListener(OnSubmit);
-			
-			MessageManager.Instance.Connect("ddukbaek2");
+
+			var clientId = Guid.NewGuid().ToString().Replace("-", string.Empty);
+			MessageManager.Instance.Connect(clientId);
 			MessageManager.Instance.JoinChannel("@ddukbaek2");
 		}
 
@@ -122,6 +123,9 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		protected virtual void Update()
 		{
+			if (!Application.isPlaying)
+				return;
+
 			PullingAllMessages();
 		}
 
@@ -137,6 +141,7 @@ namespace MillenniumOfCultivation.UI
 
 			foreach (var channelId in MessageManager.Instance.JoinedChannelIds)
 			{
+				// 백그라운드 데이터를 꺼내옴.
 				var messages = MessageManager.Instance.DispatchAllMessages(channelId);
 				if (messages.Count == 0)
 					continue;
@@ -181,7 +186,7 @@ namespace MillenniumOfCultivation.UI
 			{
 				DateTime = DateTime.UtcNow,
 				ChannelId = "@ddukbaek2",
-				ClientId = "ddukbaek2",
+				ClientId = MessageManager.Instance.ClientId,
 				Text = text,
 			};
 
