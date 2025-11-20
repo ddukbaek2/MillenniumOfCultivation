@@ -130,7 +130,7 @@ namespace Crockhead.Unity
 
 			return RunAsync(() =>
 			{
-				action();
+				action.Invoke();
 				return Task.CompletedTask;
 			});
 		}

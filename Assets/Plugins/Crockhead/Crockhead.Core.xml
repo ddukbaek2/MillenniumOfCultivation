@@ -2431,6 +2431,36 @@
             값 존재 유무.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.ThreadDispatcher">
+            <summary>
+            현재 클래스를 생성한 쓰레드의 메시지루프에서 함수를 실행하도록 동기화하는 처리기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.ThreadDispatcher.m_SynchronizationContext">
+            <summary>
+            동기화 컨텍스트.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.ThreadDispatcher.SynchronizationContext">
+            <summary>
+            동기화 컨텍스트 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadDispatcher.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadDispatcher.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadDispatcher.Post(System.Action)">
+            <summary>
+            호출 요청.
+            </summary>
+        </member>
         <member name="T:Crockhead.Unity.Iteratable`1">
             <summary>
             반복체.
