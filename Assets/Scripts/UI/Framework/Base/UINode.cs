@@ -1,5 +1,6 @@
 using Crockhead.Core;
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -116,23 +117,15 @@ namespace Crockhead.Unity.UI
 				if (!Reflections.IsBaseClass(nodeType, typeof(UINode)))
 					throw new ArgumentException(nameof(nodeType));
 				
-				using var assetReader = new AssetReader<GameObject>(assetPath, assetPathType);
-				var operation = assetReader.Read();
-				if (operation.IsSucceeded)
-				{
-					var asset = operation.Result;
-					var obj = GameObject.Instantiate<GameObject>(asset);
-					obj.name = nodeType.Name;
-					var node = (UINode)obj.GetOrAddComponent(nodeType);
-					node.transform.SetParent(parentTransform, true);
-					TransformHelper.ResetTransform(node.transform);
-					return node;
-				}
-				else
-				{
-					Debug.LogException(operation.Exception);
-					throw operation.Exception;
-				}
+				using var assetLoader = new AssetLoader<GameObject>(assetPath, assetPathType);
+				assetLoader.Load();
+				var asset = assetLoader.Asset;
+				var obj = GameObject.Instantiate<GameObject>(asset);
+				obj.name = nodeType.Name;
+				var node = (UINode)obj.GetOrAddComponent(nodeType);
+				node.transform.SetParent(parentTransform, true);
+				TransformHelper.ResetTransform(node.transform);
+				return node;
 			}
 			catch
 			{

@@ -2295,11 +2295,6 @@
             공유 클래스.
             </summary>
         </member>
-        <member name="P:Crockhead.Core.SharedClass`1.IsCreated">
-            <summary>
-            생성 되었는지 여부 프로퍼티.
-            </summary>
-        </member>
         <member name="P:Crockhead.Core.SharedClass`1.Instance">
             <summary>
             공유 클래스 프로퍼티.
@@ -2310,22 +2305,27 @@
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.SharedClass`1.OnCreate(System.Object[])">
-            <summary>
-            생성됨.
-            </summary>
-        </member>
         <member name="M:Crockhead.Core.SharedClass`1.OnDispose(System.Boolean)">
             <summary>
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.SharedClass`1.Create(System.Object[])">
+        <member name="M:Crockhead.Core.SharedClass`1.IsShared">
+            <summary>
+            현재 인스턴스가 공유 인스턴스인지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SharedClass`1.Create">
             <summary>
             생성.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.SharedClass`1.IsSharedInstance(`0)">
+        <member name="M:Crockhead.Core.SharedClass`1.IsCreated">
+            <summary>
+            공유 인스턴스가 생성 되었는지 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SharedClass`1.IsShared(`0)">
             <summary>
             대상 인스턴스가 공유 인스턴스인지 여부.
             </summary>

@@ -181,23 +181,15 @@ namespace Crockhead.Unity
 				if (!Reflections.IsBaseClass(componentType, typeof(UnityBehaviour)))
 					throw new ArgumentException(nameof(componentType));
 
-				using var assetReader = new AssetReader<GameObject>(assetPath, assetPathType);
-				var operation = assetReader.Read();
-				if (operation.IsSucceeded)
-				{
-					var asset = operation.Result;
-					var obj = GameObject.Instantiate<GameObject>(asset);
-					obj.name = componentType.Name;
-					var node = (UnityBehaviour)obj.GetOrAddComponent(componentType);
-					node.transform.SetParent(parentTransform, true);
-					TransformHelper.ResetTransform(node.transform);
-					return node;
-				}
-				else
-				{
-					Debug.LogException(operation.Exception);
-					throw operation.Exception;
-				}
+				using var assetLoader = new AssetLoader<GameObject>(assetPath, assetPathType);
+				assetLoader.Load();
+				var asset = assetLoader.Asset;
+				var obj = GameObject.Instantiate<GameObject>(asset);
+				obj.name = componentType.Name;
+				var node = (UnityBehaviour)obj.GetOrAddComponent(componentType);
+				node.transform.SetParent(parentTransform, true);
+				TransformHelper.ResetTransform(node.transform);
+				return node;
 			}
 			catch
 			{
