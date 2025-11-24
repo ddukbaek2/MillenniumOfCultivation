@@ -1,4 +1,5 @@
 using Crockhead.Unity;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation
@@ -8,6 +9,23 @@ namespace MillenniumOfCultivation
 	/// </summary>
 	public class SoundManager : SoundManager<SoundManager>
 	{
+		/// <summary>
+		/// 애플리케이션 일시정지/재개됨.
+		/// </summary>
+		protected virtual void OnApplicationPause(bool pause)
+		{
+			
+		}
+
+		/// <summary>
+		/// 애플리케이션 포커스획득/상실됨.
+		/// </summary>
+		protected virtual void OnApplicationFocus(bool focus)
+		{
+			var type = GetType();
+			Debug.Log($"[{type.Name}] OnApplicationFocus(focus: {focus})");
+		}
+
 		/// <summary>
 		/// 재생.
 		/// </summary>

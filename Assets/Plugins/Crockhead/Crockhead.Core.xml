@@ -258,6 +258,21 @@
             빈 값.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.BitHelper">
+            <summary>
+            비트 유틸리티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.BitHelper.HIWORD(System.Int32)">
+            <summary>
+            int의 상위 16비트를 short로 변환하여 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.BitHelper.LOWORD(System.Int32)">
+            <summary>
+            int의 하위 16비트를 short로 변환하여 반환.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.ILockedCollection`1">
             <summary>
             쓰레드 안전한 컬렉션 인터페이스.
@@ -2200,6 +2215,152 @@
             이어서 명령 처리.
             </summary>
         </member>
+        <member name="T:Crockhead.Core.AdvancedFSM`1">
+            <summary>
+            좀 더 고도화된 유한 상태 기계. (FiniteStateMachine)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.AdvancedFSM`1.OnEnterEvent">
+            <summary>
+            외부 진입 이벤트 연결 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.AdvancedFSM`1.OnUpdateEvent">
+            <summary>
+            외부 갱신 이벤트 연결 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.AdvancedFSM`1.OnExitEvent">
+            <summary>
+            외부 탈출 이벤트 연결 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.#ctor(`0)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnTransition(`0,`0)">
+            <summary>
+            상태 전환됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnState(`0)">
+            <summary>
+            상태 실행됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnDecide(`0)">
+            <summary>
+            다음 상태를 결정함.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnEnter(`0,`0)">
+            <summary>
+            현재 상태 시작됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnUpdate(`0)">
+            <summary>
+            현재 상태 갱신됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.OnExit(`0,`0)">
+            <summary>
+            현재 상태 탈출됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.Update">
+            <summary>
+            상태 머신 갱신. (외부에서 호출 필수)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.DoState">
+            <summary>
+            상태 재실행.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.AdvancedFSM`1.SetState(`0,System.Boolean)">
+            <summary>
+            상태 설정.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.FSM`1">
+            <summary>
+            단순한 유한 상태 기계. (FiniteStateMachine)
+            <para>상태 전환시 OnTransition() ==> OnState() 호출됨.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.FSM`1.m_State">
+            <summary>
+            상태.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.FSM`1.OnTransitionEvent">
+            <summary>
+            외부 전환 이벤트 연결 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.FSM`1.OnStateEvent">
+            <summary>
+            외부 실행 이벤트 연결 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.FSM`1.State">
+            <summary>
+            상태 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.#ctor(`0)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.OnTransition(`0,`0)">
+            <summary>
+            상태 전환됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.OnState(`0)">
+            <summary>
+            상태 실행됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.SetState(`0,System.Boolean)">
+            <summary>
+            상태 설정.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.DoState">
+            <summary>
+            상태 재실행.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.FSM`1.Equals(`0,`0)">
+            <summary>
+            두 상태가 동일한지 비교.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.IRegistry`1">
             <summary>
             등록 주체 인터페이스.
@@ -2459,6 +2620,96 @@
         <member name="M:Crockhead.Core.ThreadDispatcher.Post(System.Action)">
             <summary>
             호출 요청.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Core.SemanticVersion">
+            <summary>
+            시멘틱 버전.
+            <para>Major.Minor.Patch-Qualifier</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.SemanticVersion.Dot">
+            <summary>
+            버전 숫자 구분자.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.SemanticVersion.Hyphen">
+            <summary>
+            버전 한정자 구분자.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SemanticVersion.Major">
+            <summary>
+            주 버전 프로퍼티.
+            <para>기존 버전과 호환되지 않는 대규모 변경이나 새로운 기능 추가.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SemanticVersion.Minor">
+            <summary>
+            부 버전 프로퍼티.
+            <para>기존 버전과 호환되면서 새로운 기능이 추가되거나 개선.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SemanticVersion.Patch">
+            <summary>
+            수 버전 프로퍼티.
+            <para>기존 버전과 호환되면서 버그 수정이나 사소한 오류 수정 등 작은 변경.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SemanticVersion.Qualifier">
+            <summary>
+            버전 한정자 프로퍼티.
+            <para>버전 뒤에 붙여 해당 버전의 특정 상태를 식별하는 분류 태그.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.SemanticVersion.VersionString">
+            <summary>
+            버전 문자열 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.#ctor(Crockhead.Core.SemanticVersion)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.Parse(System.String)">
+            <summary>
+            문자열 버전 데이터를 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.TryParse(System.String)">
+            <summary>
+            문자열 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.SemanticVersion.ToString">
+            <summary>
+            문자열 반환.
             </summary>
         </member>
         <member name="T:Crockhead.Unity.Iteratable`1">

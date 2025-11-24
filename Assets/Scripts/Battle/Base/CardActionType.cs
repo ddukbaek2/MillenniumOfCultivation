@@ -24,5 +24,10 @@ namespace MillenniumOfCultivation.Battle
 		/// 파워 카드.
 		/// </summary>
 		Power,
+
+		/// <summary>
+		/// 상태 이상 카드.
+		/// </summary>
+		Abnormal,
 	}
 }

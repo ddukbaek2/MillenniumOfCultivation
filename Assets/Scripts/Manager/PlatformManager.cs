@@ -1,5 +1,6 @@
 using Crockhead.Core;
 
+
 namespace MillenniumOfCultivation
 {
 	/// <summary>
@@ -47,6 +48,9 @@ namespace MillenniumOfCultivation
 		{
 		}
 
+		/// <summary>
+		/// 해제됨.
+		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)
 		{
 			base.OnDispose(explicitDisposing);

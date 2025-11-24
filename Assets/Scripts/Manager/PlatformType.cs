@@ -6,8 +6,23 @@ namespace MillenniumOfCultivation
 	public enum PlatformType
 	{
 		None = 0,
-		Steam,
+
+		// Mobile.
 		Android,
 		iOS,
+
+		// Desktop.
+		Windows,
+		Linux,
+		MacOS,
+
+		// Web.
+		WebGL,
+
+		// Console.
+		PlayStation5,
+		XBOX,
+		Switch,
+		SteamDeck,
 	}
 }
