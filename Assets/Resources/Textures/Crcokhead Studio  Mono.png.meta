@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8eece8f4962244e45b500974c75e1822
+guid: 1e329f099af1fe74b82805f30cd98f1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4491360799653068827
-    second: Crcokhead Studio _0
+      213: 6091924874034875178
+    second: Crcokhead Studio  Mono_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +54,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 1
+  alphaUsage: 2
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 3
     textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crcokhead Studio _0
+      name: Crcokhead Studio  Mono_0
       rect:
         serializedVersion: 2
         x: 0
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ef7092262b7ba1c0800000000000000
-      internalID: -4491360799653068827
+      spriteID: a2b0733856dda8450800000000000000
+      internalID: 6091924874034875178
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Crcokhead Studio _0: -4491360799653068827
+      Crcokhead Studio  Mono_0: 6091924874034875178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

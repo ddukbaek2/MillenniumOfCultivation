@@ -14,7 +14,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// UI 매니저.
 	/// </summary>
-	[AssetPath("Assets/Resources/Base/UIManager.prefab", AssetPathType.Resources)]
+	[AssetPath("Assets/Resources/Base/UIModelKeeper.prefab", AssetPathType.Resources)]
 	public class UIManager : SharedComponent<UIManager>
 	{
 		#region INSEPCTOR
@@ -114,7 +114,7 @@ namespace MillenniumOfCultivation.UI
 			if (m_Camera == null)
 				return;
 
-			Debug.Log("[UIManager] BindingUICamera()");
+			Debug.Log("[UIModelKeeper] BindingUICamera()");
 
 			var mainCamera = Camera.main;
 			if (Application.isPlaying)
@@ -123,7 +123,7 @@ namespace MillenniumOfCultivation.UI
 			else
 			{
 				mainCamera = null;
-				Debug.Log("[UIManager] UIEnvironment Mode.");
+				Debug.Log("[UIModelKeeper] UIEnvironment Mode.");
 			}
 
 			if (mainCamera != null)
@@ -160,7 +160,7 @@ namespace MillenniumOfCultivation.UI
 			m_StartController.LoadView();
 
 			//var battle = new BattleController();
-			//battle.LoadView(); // battle.View
+			//battle.LoadRootView(); // battle.RootView
 		}
 	}
 }

@@ -129,11 +129,11 @@ namespace Crockhead.Unity.UI
 		///// </summary>
 		//public async TaskFactory LoadViewAsync()
 		//{
-		//	if (ViewIfLoaded)
+		//	if (RootViewIfLoaded)
 		//		await TaskFactory.CompletedTask;
 
 		//	//if (m_Window == null)
-		//	//	m_Window = UIManager.Instance.FrontWindow;
+		//	//	m_Window = UIModelKeeper.Instance.FrontWindow;
 
 		//	//var controllerType = GetType();
 		//	//var viewType = typeof(UIView);
@@ -150,15 +150,15 @@ namespace Crockhead.Unity.UI
 		//	//		viewType = viewBindingAttribute.ViewType;
 		//	//	}
 
-		//	//	m_View = UIView.CreateViewFromAsset(viewType, assetPath, AssetPathType.Resources, m_Window.RectTransform);
+		//	//	m_RootView = UIView.CreateFromAsset(viewType, assetPath, AssetPathType.Resources, m_Window.RectTransform);
 		//	//}
 		//	//else
 		//	//{
 		//	//	// 기본 뷰 생성.
-		//	//	m_View = UIView.CreateView(viewType, m_Window.RectTransform);
+		//	//	m_RootView = UIView.CreateFromAsset(viewType, m_Window.RectTransform);
 		//	//}
 
-		//	OnViewDidLoad();
+		//	OnRootViewDidLoad();
 		//}
 
 		/// <summary>

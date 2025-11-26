@@ -17,8 +17,8 @@ namespace MillenniumOfCultivation.UI
 	public class UIIntroView : UIPanelView
 	{
 		#region INSPECTOR
-		[SerializeField] private Image m_OverlayImage;
-		[SerializeField] private RawImage m_LogoImage;
+		[SerializeField] private UITextureView m_LogoImage;
+		[SerializeField] private UIImageView m_OverlayImage;
 		#endregion
 
 		/// <summary>
@@ -32,6 +32,19 @@ namespace MillenniumOfCultivation.UI
 				return;
 
 			BackgroundColor = new Color32(255, 178, 0, 255);
+
+			if (m_LogoImage == null)
+			{
+				m_LogoImage = GetOrAddComponent<UITextureView>("Logo");
+			}
+
+			if (m_OverlayImage == null)
+			{
+				m_OverlayImage = GetOrAddComponent<UIImageView>("Overlay");
+			}
+
+			m_OverlayImage.color = Color.black;
+			m_OverlayImage.gameObject.SetActive(true);
 		}
 
 		/// <summary>

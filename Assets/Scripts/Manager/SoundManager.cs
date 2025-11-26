@@ -12,16 +12,18 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 애플리케이션 일시정지/재개됨.
 		/// </summary>
-		protected virtual void OnApplicationPause(bool pause)
+		protected override void OnApplicationPause(bool pause)
 		{
-			
+			base.OnApplicationPause(pause);
 		}
 
 		/// <summary>
 		/// 애플리케이션 포커스획득/상실됨.
 		/// </summary>
-		protected virtual void OnApplicationFocus(bool focus)
+		protected override void OnApplicationFocus(bool focus)
 		{
+			base.OnApplicationFocus(focus);
+
 			var type = GetType();
 			Debug.Log($"[{type.Name}] OnApplicationFocus(focus: {focus})");
 		}

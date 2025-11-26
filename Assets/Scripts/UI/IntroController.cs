@@ -48,10 +48,10 @@ namespace MillenniumOfCultivation.UI
 			Debug.Log("[IntroController] OnFinishAnimation()");
 
 			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
-			//UIManager.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
+			//UIModelKeeper.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
 
 			//var battleController = new BattleController(Window);
-			//battleController.LoadView();
+			//battleController.LoadRootView();
 
 			var messageController = new MessageController(Window);
 			messageController.LoadView();

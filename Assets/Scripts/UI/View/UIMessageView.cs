@@ -79,7 +79,7 @@ namespace MillenniumOfCultivation.UI
 				return;
 
 			// 선택.
-			CreateMessageItemView("Initialize Chatting...");
+			CreateMessageItemView("OnCreate Chatting...");
 			m_InputField.Select();
 		}
 

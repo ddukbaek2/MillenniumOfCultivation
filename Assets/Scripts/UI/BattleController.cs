@@ -45,11 +45,11 @@ namespace MillenniumOfCultivation.UI
 				var card = new CardController(Window);
 				m_Cards.Add(card);
 
-				card.LoadView(); // card.View
+				card.LoadView(); // card.RootView
 				card.View.transform.SetParent(View.Content, true);
-				//card.View.RectTransform.localPosition = Vector3.zero;
-				//card.View.RectTransform.localScale = Vector3.one;
-				//card.View.RectTransform.localRotation = Quaternion.identity;
+				//card.RootView.RectTransform.localPosition = Vector3.zero;
+				//card.RootView.RectTransform.localScale = Vector3.one;
+				//card.RootView.RectTransform.localRotation = Quaternion.identity;
 				card.SetViewState(CardController.ViewState.Idle);
 			}
 		}

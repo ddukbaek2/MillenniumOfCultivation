@@ -42,7 +42,7 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			//View.RectTransform.anchoredPosition = Vector2.zero;
+			//RootView.RectTransform.anchoredPosition = Vector2.zero;
 		}
 
 		/// <summary>

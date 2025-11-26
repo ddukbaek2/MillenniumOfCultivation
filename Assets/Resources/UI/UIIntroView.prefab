@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369810243052607307}
   - component: {fileID: 2490401469436122322}
-  - component: {fileID: 2184281456395560231}
+  - component: {fileID: 5066633852276117016}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223635245872084845}
   m_CullTransparentMesh: 1
---- !u!114 &2184281456395560231
+--- !u!114 &5066633852276117016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223635245872084845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 733d5e6e0462a414590a143c91b4722b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -82,14 +82,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8672832988082082076}
   - component: {fileID: 634454353424869882}
-  - component: {fileID: 7128952168228436361}
+  - component: {fileID: 7823913732006486824}
   m_Layer: 5
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8672832988082082076
 RectTransform:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6261855996423826150}
   m_CullTransparentMesh: 1
---- !u!114 &7128952168228436361
+--- !u!114 &7823913732006486824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6261855996423826150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: b12f6e8a10c804541ad7e39b5dd4d6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6988523, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.69803923, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -275,5 +275,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RectTransform: {fileID: 1861232032789032871}
   m_BackgroundImage: {fileID: 4253671533463307140}
-  m_OverlayImage: {fileID: 7128952168228436361}
-  m_LogoImage: {fileID: 2184281456395560231}
+  m_LogoImage: {fileID: 5066633852276117016}
+  m_OverlayImage: {fileID: 0}
