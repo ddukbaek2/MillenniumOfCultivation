@@ -31,6 +31,9 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			BackgroundColor = new Color32(255, 178, 0, 255);
 
 			if (m_LogoImage == null)

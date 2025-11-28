@@ -28,7 +28,7 @@ namespace Crockhead.Unity
 		protected virtual void Start()
 		{
 			var type = GetType();
-			Debug.Log($"[{type.Name}] Start()");
+			Debug.Log($"[{type.Name}] OnPrepare()");
 		}
 
 		/// <summary>

@@ -23,7 +23,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 시작됨.
 		/// </summary>
-		protected override void OnStart(Context context)
+		protected override void OnStart(BattleContext context)
 		{
 			base.OnStart(context);
 
@@ -34,7 +34,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 전환됨.
 		/// </summary>
-		protected override void OnTransition(Context context, Event previous, Event next)
+		protected override void OnTransition(BattleContext context, Event previous, Event next)
 		{
 			base.OnTransition(context, previous, next);
 		}
@@ -42,7 +42,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 완료됨.
 		/// </summary>
-		protected override void OnComplete(Context context)
+		protected override void OnComplete(BattleContext context)
 		{
 			base.OnComplete(context);
 		}

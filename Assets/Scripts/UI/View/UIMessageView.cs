@@ -36,6 +36,9 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			BackgroundColor = Color.black;
 
 			m_CachedMessages = new Dictionary<string, List<Message>>();
@@ -48,9 +51,6 @@ namespace MillenniumOfCultivation.UI
 			{
 				m_InputField = GetOrAddComponent<UIInputView>("InputField");
 			}
-
-			if (!Application.isPlaying)
-				return;
 
 			m_InputField.onSelect.AddListener(OnSelect);
 			m_InputField.onDeselect.AddListener(OnDeselect);

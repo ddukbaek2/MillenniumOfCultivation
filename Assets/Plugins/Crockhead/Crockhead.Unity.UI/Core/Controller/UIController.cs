@@ -280,6 +280,7 @@ namespace Crockhead.Unity.UI
 		{
 			m_PresentingController = controller;
 			controller.m_PresentedController = this;
+			controller.LoadView();
 		}
 
 		/// <summary>

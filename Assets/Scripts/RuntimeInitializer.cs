@@ -3,7 +3,7 @@ using MillenniumOfCultivation.Battle;
 using MillenniumOfCultivation.UI;
 using System.Collections.Generic;
 using UnityEngine;
-using BattleProcess = MillenniumOfCultivation.Battle.Process;
+using BattleProcess = MillenniumOfCultivation.Battle.BattleProcess;
 
 
 namespace MillenniumOfCultivation
@@ -45,9 +45,6 @@ namespace MillenniumOfCultivation
 			//UIManager.Instance.Present(battleController);		
 			var introController = new IntroController(UIManager.Instance.TopWindow);
 			UIManager.Instance.Present(introController);
-
-			//var battle = new BattleController();
-			//battle.LoadRootView(); // battle.RootView
 		}
 
 		/// <summary>

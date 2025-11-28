@@ -26,6 +26,9 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			BackgroundColor = new Color32(255, 178, 0, 255);
 		}
 
@@ -50,7 +53,7 @@ namespace MillenniumOfCultivation.UI
 		///// </summary>
 		//public async Task StartAnimation(Action completion)
 		//{
-		//	static IEnumerator Process(Image overlayImage, Action completion)
+		//	static IEnumerator BattleProcess(Image overlayImage, Action completion)
 		//	{
 		//		overlayImage.color = Color.black;
 		//		var tween = overlayImage.DOColor(Color.clear, 2f);
@@ -58,7 +61,7 @@ namespace MillenniumOfCultivation.UI
 		//		completion?.Invoke();
 		//	}
 
-		//	await TaskHelper.StartForeground(Process(m_OverlayImage, completion));
+		//	await TaskHelper.StartForeground(BattleProcess(m_OverlayImage, completion));
 		//}
 	}
 }

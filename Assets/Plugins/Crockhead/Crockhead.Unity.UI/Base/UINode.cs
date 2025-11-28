@@ -129,6 +129,7 @@ namespace Crockhead.Unity.UI
 			}
 			catch
 			{
+				Debug.LogError($"{assetPath}");
 				throw;
 			}
 		}

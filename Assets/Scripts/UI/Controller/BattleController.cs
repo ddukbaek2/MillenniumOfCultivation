@@ -1,6 +1,8 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using MillenniumOfCultivation.Battle;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation.UI
@@ -39,18 +41,44 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			// 카드 생성.
-			for (var i = 0; i < 10; ++i)
+			DispatchQueue.Instance.RunAsync(OnPrepare);
+		}
+
+		/// <summary>
+		/// 준비.
+		/// </summary>
+		private void OnPrepare()
+		{
+			var player = new PlayerController();
+			var enemy = new AIController();
+			var process = new BattleProcess();
+			process.Start(player, new List<AIController>() { enemy });
+
+			// 더미 카드 생성.
+			var cardCount = 5;
+			var spacing = 8f;
+			var cardSize = new Vector2(260f, 400f);
+			var totalWidth = cardCount * cardSize.x + (cardCount - 1) * spacing;
+			var startX = -totalWidth * 0.5f + cardSize.x * 0.5f;
+			for (var i = 0; i < cardCount; ++i)
 			{
 				var card = new CardController(Window);
 				m_Cards.Add(card);
 
+				var x = startX + i * (cardSize.x + spacing);
 				card.View.transform.SetParent(View.Content, true);
-				//card.RootView.RectTransform.localPosition = Vector3.zero;
-				//card.RootView.RectTransform.localScale = Vector3.one;
-				//card.RootView.RectTransform.localRotation = Quaternion.identity;
+				card.View.RectTransform.anchoredPosition = new Vector2(x, 0f);
 				card.SetViewState(CardController.ViewState.Idle);
 			}
+
+			OnStart();
+		}
+
+		/// <summary>
+		/// 시작.
+		/// </summary>
+		private void OnStart()
+		{
 		}
 	}
 }

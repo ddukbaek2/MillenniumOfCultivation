@@ -30,6 +30,9 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			if (m_Content == null)
 			{
 				m_Content = GetOrAddComponent<RectTransform>("Content");

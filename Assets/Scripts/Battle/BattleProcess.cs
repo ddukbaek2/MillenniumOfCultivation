@@ -9,7 +9,7 @@ namespace MillenniumOfCultivation.Battle
 	/// <summary>
 	/// 전투 처리 주체.
 	/// </summary>
-	public class Process : Disposable
+	public class BattleProcess : Disposable
 	{
 		/// <summary>
 		/// 진행 중 여부.
@@ -29,7 +29,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 컨텍스트.
 		/// </summary>
-		private Context m_Context;
+		private BattleContext m_Context;
 
 		/// <summary>
 		/// 턴 횟수.
@@ -54,7 +54,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 컨텍스트 프로퍼티.
 		/// </summary>
-		public Context Context => m_Context;
+		public BattleContext Context => m_Context;
 
 		/// <summary>
 		/// 턴 횟수 프로퍼티.
@@ -64,7 +64,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Process() : base()
+		public BattleProcess() : base()
 		{
 			m_IsStarted = false;
 			m_Controllers = new List<Controller>();
@@ -114,18 +114,27 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 시작.
 		/// </summary>
+		public void Start(PlayerController player, AIController enemy)
+		{
+			var enemies = new List<AIController>();
+			Start(player, new List<AIController>() { enemy });
+		}
+
+		/// <summary>
+		/// 시작.
+		/// </summary>
 		public void Start(PlayerController player, List<AIController> enemies)
 		{
 			if (m_IsStarted)
 				return;
 
-			Debug.Log("[Processing] Start()");
+			Debug.Log("[Processing] OnPrepare()");
 
 			m_IsStarted = true;
 
 			// 전투 컨텍스트 생성.
 			Disposables.Dispose(m_Context);
-			m_Context = new Context(this);
+			m_Context = new BattleContext(this);
 
 			// 컨트롤러 목록 생성.
 			m_Controllers.Clear();

@@ -60,7 +60,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 시작됨.
 		/// </summary>
-		protected virtual void OnStart(Context context)
+		protected virtual void OnStart(BattleContext context)
 		{
 			var type = GetType();
 			Debug.Log($"[{type.Name}] OnStart()");
@@ -69,7 +69,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 처리됨.
 		/// </summary>
-		protected virtual void OnProcess(Context context)
+		protected virtual void OnProcess(BattleContext context)
 		{
 			var type = GetType();
 			Debug.Log($"[{type.Name}] OnProcess()");
@@ -78,7 +78,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 전환됨.
 		/// </summary>
-		protected virtual void OnTransition(Context context, Event previous, Event next)
+		protected virtual void OnTransition(BattleContext context, Event previous, Event next)
 		{
 			var type = GetType();
 			Debug.Log($"[{type.Name}] OnTransition()");
@@ -87,7 +87,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 이벤트 완료됨.
 		/// </summary>
-		protected virtual void OnComplete(Context context)
+		protected virtual void OnComplete(BattleContext context)
 		{
 			var type = GetType();
 			Debug.Log($"[{type.Name}] OnTransitionCompleted()");
@@ -96,7 +96,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 시작.
 		/// </summary>
-		public void Start(Context context)
+		public void Start(BattleContext context)
 		{
 			if (m_IsStarted)
 				return;
@@ -108,7 +108,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 처리.
 		/// </summary>
-		public void Process(Context context)
+		public void Process(BattleContext context)
 		{
 			if (!m_IsStarted || m_IsProcessed)
 				return;
@@ -120,7 +120,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 전환.
 		/// </summary>
-		public void Transition(Context context, Event previous, Event next)
+		public void Transition(BattleContext context, Event previous, Event next)
 		{
 			if (previous == next || next == null)
 				return;
@@ -131,7 +131,7 @@ namespace MillenniumOfCultivation.Battle
 		/// <summary>
 		/// 완료.
 		/// </summary>
-		public void Complete(Context context)
+		public void Complete(BattleContext context)
 		{
 			if (!m_IsStarted || !m_IsProcessed || m_IsCompleted)
 				return;

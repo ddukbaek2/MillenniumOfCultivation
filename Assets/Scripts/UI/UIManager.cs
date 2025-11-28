@@ -42,7 +42,7 @@ namespace MillenniumOfCultivation.UI
 			m_TransitionWindow = TransformHelper.GetOrAddComponent<UIWindow>(transform, "TransitionWindow");
 			m_TransitionWindow.SetCamera(Camera);
 			m_TransitionWindow.SortingOrder = 1000;
-			m_TransitionWindow.SetResolution(new Vector2Int(1280, 800));
+			m_TransitionWindow.SetResolution(new Vector2Int(1728, 1080));
 			m_TransitionController = new TransitionController(m_TransitionWindow);
 			var view = m_TransitionController.View;
 		}

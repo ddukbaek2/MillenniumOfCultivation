@@ -67,14 +67,14 @@ namespace Crockhead.Unity.UI
 			}
 
 			// 카메라 바인딩.
-			Bind();
+			BindCamera();
 
 			// 윈도우 찾아보고 없으면 생성해서 등록.
 			m_Windows = new UIWindows();
 			var window = TransformHelper.GetOrAddComponent<UIWindow>(transform, "Window");
-			window.SetCamera(m_Camera);
-			window.SetResolution(new Vector2Int(1280, 800));
 			m_Windows.Register(window);
+			window.SetCamera(m_Camera);
+			window.SetResolution(new Vector2Int(1728, 1080)); //new Vector2Int(1280, 800));
 
 			// 이벤트 시스템 맨 아래 위치로 이동.
 			m_EventSystem.transform.SetAsLastSibling();
@@ -83,20 +83,20 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 카메라 바인딩.
 		/// </summary>
-		private void Bind()
+		private void BindCamera()
 		{
-			Bind(Camera.main);
+			BindCamera(Camera.main);
 		}
 
 		/// <summary>
 		/// 카메라 바인딩.
 		/// </summary>
-		private void Bind(Camera camera)
+		private void BindCamera(Camera camera)
 		{
 			if (m_Camera == null)
 				return;
 
-			Debug.Log("[UIManager] Bind()");
+			Debug.Log("[UIManager] BindCamera()");
 
 			if (Application.isPlaying)
 			{

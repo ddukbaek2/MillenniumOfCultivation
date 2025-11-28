@@ -60,7 +60,12 @@ namespace Crockhead.Unity.UI
 					return;
 
 				Canvas.sortingOrder = value;
-				Windows.ForcedUpdateAllWindows();
+
+				// 등록되지 않은 윈도우는 Windows가 null이다.
+				if (Windows != null)
+				{
+					Windows.ForcedUpdateAllWindows();
+				}
 			}
 			get
 			{
@@ -111,7 +116,10 @@ namespace Crockhead.Unity.UI
 
 			if (IsDestroyed())
 				return;
-			
+
+			if (!Application.isPlaying)
+				return;
+
 			if (m_Canvas == null)
 			{
 				m_Canvas = GetOrAddComponent<Canvas>();
@@ -165,6 +173,15 @@ namespace Crockhead.Unity.UI
 				m_Canvas.renderMode = RenderMode.ScreenSpaceCamera;
 				m_Canvas.worldCamera = camera;
 			}
+		}
+
+		/// <summary>
+		/// 해상도 설정.
+		/// </summary>
+		public void SetResolution(int width, int height, bool fixedWidth = true)
+		{
+			var referenceResolution = new Vector2Int(width, height);
+			SetResolution(referenceResolution, fixedWidth);
 		}
 
 		/// <summary>

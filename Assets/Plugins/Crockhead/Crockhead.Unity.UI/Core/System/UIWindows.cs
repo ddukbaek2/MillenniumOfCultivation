@@ -81,14 +81,14 @@ namespace Crockhead.Unity.UI
 			if (m_Windows.Contains(window))
 				return false;
 
-			var frontWindow = m_Windows.LastOrDefault();
-			if (frontWindow != null)
+			var topWindow = TopWindow;
+			if (topWindow != null)
 			{
-				window.SortingOrder = frontWindow.SortingOrder + 1;
+				window.Canvas.sortingOrder = topWindow.Canvas.sortingOrder + 1;
 			}
 			else
 			{
-				window.SortingOrder = 1;
+				window.Canvas.sortingOrder = 1;
 			}
 
 			m_Windows.Add(window);

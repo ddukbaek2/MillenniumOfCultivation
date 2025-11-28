@@ -84,9 +84,17 @@ namespace Crockhead.Unity.UI
 			//	m_CanvasRenderer = GetComponent<CanvasRenderer>();
 			//}
 
+			if (!Application.isPlaying)
+				return;
+
 			if (m_BackgroundImage == null)
 			{
 				m_BackgroundImage = GetOrAddComponent<UIImageView>("Background");
+				m_BackgroundImage.RectTransform.anchoredPosition = Vector2.zero;
+				m_BackgroundImage.RectTransform.sizeDelta = Vector2.zero;
+				m_BackgroundImage.RectTransform.anchorMin = Vector2.zero;
+				m_BackgroundImage.RectTransform.anchorMax = Vector2.one;
+
 				m_BackgroundImage.rectTransform.SetAsFirstSibling();
 			}
 
@@ -99,7 +107,9 @@ namespace Crockhead.Unity.UI
 		protected override void Start()
 		{
 			if (Window == null)
+			{
 				Window = GetComponentInParent<UIWindow>();
+			}
 
 			base.Start();
 		}

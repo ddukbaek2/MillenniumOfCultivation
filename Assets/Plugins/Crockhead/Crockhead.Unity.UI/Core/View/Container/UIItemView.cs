@@ -21,6 +21,9 @@ namespace Crockhead.Unity.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			BackgroundColor = Color.clear;
 		}
 

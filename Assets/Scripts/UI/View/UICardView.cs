@@ -25,12 +25,15 @@ namespace MillenniumOfCultivation.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
 			BackgroundColor = Color.white;
 
 			//RectTransform.anchoredPosition3D = Vector3.zero;
 			RectTransform.anchorMin = Vector2.one * 0.5f;
 			RectTransform.anchorMax = Vector2.one * 0.5f;
-			RectTransform.sizeDelta = new Vector2(320f, 480f);
+			RectTransform.sizeDelta = new Vector2(240f, 400f);
 		}
 
 		/// <summary>
