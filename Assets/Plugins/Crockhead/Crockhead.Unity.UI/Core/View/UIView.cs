@@ -79,13 +79,21 @@ namespace Crockhead.Unity.UI
 			if (IsDestroyed())
 				return;
 
+			if (!Application.isPlaying)
+				return;
+
+			OnCreate();
+		}
+
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		protected virtual void OnCreate()
+		{
 			//if (m_CanvasRenderer == null)
 			//{
 			//	m_CanvasRenderer = GetComponent<CanvasRenderer>();
 			//}
-
-			if (!Application.isPlaying)
-				return;
 
 			if (m_BackgroundImage == null)
 			{
