@@ -19,7 +19,7 @@ namespace MillenniumOfCultivation
 		[RuntimeInitializeOnLoadMethod]
 		public static void Run()
 		{
-			Debug.Log("[RuntimeInitializer] Run()");
+			Debug.Log("[RuntimeInitializer] Present()");
 			SharedInstances.Clear();
 
 			// 매니저 생성.
@@ -41,10 +41,13 @@ namespace MillenniumOfCultivation
 			Input.multiTouchEnabled = false;
 
 			// 시작.
-			//var battleController = new BattleController(UIModelKeeper.Instance.FrontWindow);
-			//UIModelKeeper.Instance.Run(battleController);		
-			var introController = new IntroController(UIManager.Instance.FrontWindow);
-			UIManager.Instance.Run(introController);
+			//var battleController = new BattleController(UIManager.Instance.TopWindow);
+			//UIManager.Instance.Present(battleController);		
+			var introController = new IntroController(UIManager.Instance.TopWindow);
+			UIManager.Instance.Present(introController);
+
+			//var battle = new BattleController();
+			//battle.LoadRootView(); // battle.RootView
 		}
 
 		/// <summary>
