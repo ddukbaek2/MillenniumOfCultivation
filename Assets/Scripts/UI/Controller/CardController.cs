@@ -95,6 +95,16 @@ namespace MillenniumOfCultivation
 			base.OnViewDidLoad();
 
 			View.RectTransform.anchoredPosition = Vector2.zero;
+			View.OnBeginDraggedEvent += OnBegin;
+			View.OnEndDraggedEvent += OnEnd;
+		}
+
+		protected virtual void OnBegin(UIDraggableItemView view)
+		{
+		}
+
+		protected virtual void OnEnd(UIDraggableItemView view)
+		{
 		}
 
 		/// <summary>
@@ -114,7 +124,7 @@ namespace MillenniumOfCultivation
 			{
 				case ViewState.Idle:
 					{
-						m_Animation = UITweenAnimation.StartFlootCardAnimation(View.RectTransform, 32f, 2f);
+						//m_Animation = UITweenAnimation.StartFlootCardAnimation(View.RectTransform, 32f, 2f);
 						break;
 					}
 

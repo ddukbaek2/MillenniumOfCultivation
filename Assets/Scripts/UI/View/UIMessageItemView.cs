@@ -21,15 +21,9 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
-
-			if (IsDestroyed())
-				return;
-
-			if (!Application.isPlaying)
-				return;
+			base.OnCreate();
 
 			BackgroundColor = Color.black;
 		}
@@ -37,20 +31,12 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 초기화됨.
 		/// </summary>
-		protected override void Start()
+		protected override void OnInitialize()
 		{
-			base.Start();
+			base.OnInitialize();
 
 			var parentRectTransform = RectTransform.parent as RectTransform;
 			RectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, 24f);
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
 		}
 
 		/// <summary>

@@ -19,33 +19,11 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
-
-			if (IsDestroyed())
-				return;
-
-			if (!Application.isPlaying)
-				return;
+			base.OnCreate();
 
 			BackgroundColor = new Color32(255, 178, 0, 255);
-		}
-
-		/// <summary>
-		/// 초기화됨.
-		/// </summary>
-		protected override void Start()
-		{
-			base.Start();
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
 		}
 
 		///// <summary>

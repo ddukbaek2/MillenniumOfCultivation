@@ -72,24 +72,22 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
+			base.OnCreate();
 
-			if (IsDestroyed())
-				return;
+			// 하나의 게임 오브젝트에는 동일한 뷰 클래스는 하나만 붙어 있어야 한다.
+			var existViews = GetComponents<UIView>();
+			foreach (var existView in existViews)
+			{
+				if (this == existView)
+					continue;
 
-			if (!Application.isPlaying)
-				return;
+				Debug.LogError($"[UIView] Exists Other UIView: {existView}");
+				//Debug.LogError($"[UIView] Removal Old UIView: {existView}");
+				//GameObject.Destroy(existView);
+			}
 
-			OnCreate();
-		}
-
-		/// <summary>
-		/// 생성됨.
-		/// </summary>
-		protected virtual void OnCreate()
-		{
 			//if (m_CanvasRenderer == null)
 			//{
 			//	m_CanvasRenderer = GetComponent<CanvasRenderer>();
@@ -112,22 +110,22 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 초기화됨.
 		/// </summary>
-		protected override void Start()
+		protected override void OnInitialize()
 		{
+			base.OnInitialize();
+			
 			if (Window == null)
 			{
 				Window = GetComponentInParent<UIWindow>();
 			}
-
-			base.Start();
 		}
 
 		/// <summary>
-		/// 파괴됨.
+		/// 해제됨.
 		/// </summary>
-		protected override void OnDestroy()
+		protected override void OnDispose()
 		{
-			base.OnDestroy();
+			base.OnDispose();
 		}
 
 		/// <summary>

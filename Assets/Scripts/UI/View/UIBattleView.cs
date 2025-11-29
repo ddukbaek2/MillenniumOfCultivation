@@ -23,15 +23,9 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
-
-			if (IsDestroyed())
-				return;
-
-			if (!Application.isPlaying)
-				return;
+			base.OnCreate();
 
 			if (m_Content == null)
 			{
@@ -39,22 +33,6 @@ namespace MillenniumOfCultivation.UI
 			}
 
 			BackgroundColor = Color.black;
-		}
-
-		/// <summary>
-		/// 초기화됨.
-		/// </summary>
-		protected override void Start()
-		{
-			base.Start();
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
 		}
 	}
 }

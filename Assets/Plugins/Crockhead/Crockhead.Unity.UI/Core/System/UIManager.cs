@@ -80,6 +80,10 @@ namespace Crockhead.Unity.UI
 			m_EventSystem.transform.SetAsLastSibling();
 		}
 
+		//protected override void OnCreate()
+		//{
+		//}
+
 		/// <summary>
 		/// 카메라 바인딩.
 		/// </summary>
@@ -96,16 +100,16 @@ namespace Crockhead.Unity.UI
 			if (m_Camera == null)
 				return;
 
-			Debug.Log("[UIManager] BindCamera()");
+			//Debug.Log("[UIManager] BindCamera()");
 
-			if (Application.isPlaying)
-			{
-			}
-			else
-			{
-				camera = null;
-				Debug.Log("[UIManager] UIEnvironment Mode.");
-			}
+			//if (Application.isPlaying)
+			//{
+			//}
+			//else
+			//{
+			//	camera = null;
+			//	Debug.Log("[UIManager] UIEnvironment Mode.");
+			//}
 
 			if (camera != null)
 			{

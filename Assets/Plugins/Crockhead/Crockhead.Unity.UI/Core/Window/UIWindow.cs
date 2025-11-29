@@ -110,15 +110,9 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
-
-			if (IsDestroyed())
-				return;
-
-			if (!Application.isPlaying)
-				return;
+			base.OnCreate();
 
 			if (m_Canvas == null)
 			{
@@ -135,7 +129,7 @@ namespace Crockhead.Unity.UI
 				m_GraphicRaycaster = GetOrAddComponent<GraphicRaycaster>();
 			}
 
-			m_Canvas.renderMode = RenderMode.ScreenSpaceOverlay; // RenderMode.ScreenSpaceCamera
+			//m_Canvas.renderMode = RenderMode.ScreenSpaceOverlay; // RenderMode.ScreenSpaceCamera
 			m_Canvas.planeDistance = 100;
 			m_Canvas.pixelPerfect = true;
 			m_Canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.None;
@@ -145,17 +139,9 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 초기화됨.
 		/// </summary>
-		protected override void Start()
+		protected override void OnInitialize()
 		{
-			base.Start();
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
+			base.OnInitialize();
 		}
 
 		/// <summary>
@@ -172,6 +158,7 @@ namespace Crockhead.Unity.UI
 			{
 				m_Canvas.renderMode = RenderMode.ScreenSpaceCamera;
 				m_Canvas.worldCamera = camera;
+				Debug.Log($"m_Canvas.renderMode: {m_Canvas.renderMode}");
 			}
 		}
 

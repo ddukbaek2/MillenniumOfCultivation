@@ -14,15 +14,9 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
-
-			if (IsDestroyed())
-				return;
-
-			if (!Application.isPlaying)
-				return;
+			base.OnCreate();
 
 			// 색상 설정.
 			BackgroundColor = Color.clear;
@@ -31,9 +25,9 @@ namespace Crockhead.Unity.UI
 		/// <summary>
 		/// 초기화됨.
 		/// </summary>
-		protected override void Start()
+		protected override void OnInitialize()
 		{
-			base.Start();
+			base.OnInitialize();
 
 			// 크기 설정.
 			RectTransform.anchoredPosition3D = Vector3.zero;
@@ -43,11 +37,11 @@ namespace Crockhead.Unity.UI
 		}
 
 		/// <summary>
-		/// 파괴됨.
+		/// 해제됨.
 		/// </summary>
-		protected override void OnDestroy()
+		protected override void OnDispose()
 		{
-			base.OnDestroy();
+			base.OnDispose();
 		}
 	}
 }

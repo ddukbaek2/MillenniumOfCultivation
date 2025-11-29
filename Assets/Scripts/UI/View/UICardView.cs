@@ -12,7 +12,7 @@ namespace MillenniumOfCultivation.UI
 	/// 카드 항목.
 	/// </summary>
 	[AssetPath("Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
-	public class UICardView : UIItemView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
+	public class UICardView : UIDraggableItemView
 	{
 		#region INSPECTOR
 		[SerializeField] private UILabelView m_NameLabel;
@@ -20,10 +20,13 @@ namespace MillenniumOfCultivation.UI
 		[SerializeField] private UILabelView m_TypeLabel;
 		[SerializeField] private UILabelView m_CostLabel;
 		[SerializeField] private UILabelView m_ExplanationLabel;
-		[SerializeField] private UIImageView m_FocusImage;
+		[SerializeField] private UIImageView m_SelectImage;
 		#endregion
 
-		private Action OnPressed { set; get; }
+		/// <summary>
+		/// 카드 데이터.
+		/// </summary>
+		private Card m_Card;
 
 		/// <summary>
 		/// 생성됨.
@@ -43,52 +46,58 @@ namespace MillenniumOfCultivation.UI
 			if (m_TypeLabel == null) m_TypeLabel = GetOrAddComponent<UILabelView>("Portrait/Type/Background/Label");
 			if (m_CostLabel == null) m_CostLabel = GetOrAddComponent<UILabelView>("Cost/Label");
 			if (m_ExplanationLabel == null) m_ExplanationLabel = GetOrAddComponent<UILabelView>("Explanation/Background/Label");
-			if (m_FocusImage == null) m_FocusImage = GetOrAddComponent<UIImageView>("Focus");
+			if (m_SelectImage == null) m_SelectImage = GetOrAddComponent<UIImageView>("Select");
+
+			m_Card = null;
 		}
 
 		/// <summary>
 		/// 초기화됨.
 		/// </summary>
-		protected override void Start()
+		protected override void OnInitialize()
 		{
-			base.Start();
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
+			base.OnInitialize();
 		}
 
 		/// <summary>
 		/// 카드 설정.
 		/// </summary>
-		public void SetCard(Card card)
+		public void SetData(Card card)
 		{
+			m_Card = card;
 		}
 
-		void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+		protected override void OnEntered()
 		{
+			base.OnEntered();
+
+			RectTransform.localScale = Vector3.one * 1.5f;
 		}
 
-		void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+		protected override void OnExited()
 		{
+			base.OnExited();
+
+			RectTransform.localScale = Vector3.one * 1f;
 		}
 
-		void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+		protected override void OnSelected()
 		{
-			m_FocusImage.gameObject.SetActive(true);
+			base.OnSelected();
+
+			SetFocus(true);
 		}
 
-		void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
+		protected override void OnDeselected()
 		{
-			m_FocusImage.gameObject.SetActive(false);
+			SetFocus(false);
+
+			base.OnDeselected();
 		}
 
-		void IPointerMoveHandler.OnPointerMove(PointerEventData eventData)
+		private void SetFocus(bool focused)
 		{
+			m_SelectImage.gameObject.SetActive(focused);
 		}
 	}
 }
