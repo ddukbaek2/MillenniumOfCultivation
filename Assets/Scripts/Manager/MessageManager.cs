@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+#if !UNITY_WEBGL
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Exceptions;
 using uPLibrary.Networking.M2Mqtt.Messages;
-
+#endif
 
 
 namespace MillenniumOfCultivation
@@ -20,8 +21,9 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// MQTT 프로토콜 클라이언트.
 		/// </summary>
+#if !UNITY_WEBGL
 		private MqttClient m_Client;
-
+#endif
 		/// <summary>
 		/// 클라이언트 식별자.
 		/// </summary>
@@ -40,8 +42,11 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 연결 되었는지 여부 프로퍼티.
 		/// </summary>
+#if UNITY_WEBGL
+		public bool IsConnected => false;
+#else
 		public bool IsConnected => m_Client?.IsConnected ?? false;
-
+#endif
 		/// <summary>
 		/// 진입 된 채널 갯수 프로퍼티.
 		/// </summary>
@@ -65,6 +70,7 @@ namespace MillenniumOfCultivation
 			if (Instance != this)
 				return;
 
+#if !UNITY_WEBGL
 			// "ddukbaek2.com" or "192.168.0.12"
 			m_Client = new MqttClient("ddukbaek2.com", 32772, false, null);
 			m_Client.ConnectionClosed += OnDisconnected;
@@ -72,6 +78,7 @@ namespace MillenniumOfCultivation
 			//m_Client.MqttMsgSubscribed += OnSubscribed;
 			//m_Client.MqttMsgUnsubscribed += OnUnsubscribed;
 			m_Client.MqttMsgPublished += OnSended;
+#endif
 
 			m_ClientId = string.Empty;
 			m_JoinedChannelIds = new HashSet<string>();
@@ -82,7 +89,9 @@ namespace MillenniumOfCultivation
 		{
 			if (IsConnected)
 			{
+#if !UNITY_WEBGL
 				m_Client.Disconnect();
+#endif
 			}
 
 			base.OnDispose(explicitDisposing);
@@ -108,14 +117,15 @@ namespace MillenniumOfCultivation
 		//	Debug.Log($"[MessageManager] OnSubscribed()");
 		//}
 
-		///// <summary>
-		///// 채널 구독 해제됨.
-		///// </summary>
-		//private void OnUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs eventArgs)
-		//{
-		//	Debug.Log($"[MessageManager] OnUnsubscribed()");
-		//}
+///// <summary>
+///// 채널 구독 해제됨.
+///// </summary>
+//private void OnUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs eventArgs)
+//{
+//	Debug.Log($"[MessageManager] OnUnsubscribed()");
+//}
 
+#if !UNITY_WEBGL
 		/// <summary>
 		/// 메시지 수신됨.
 		/// </summary>
@@ -141,7 +151,9 @@ namespace MillenniumOfCultivation
 				//throw;
 			}
 		}
+#endif
 
+#if !UNITY_WEBGL
 		/// <summary>
 		/// 메시지 송신됨.
 		/// </summary>
@@ -157,6 +169,7 @@ namespace MillenniumOfCultivation
 				Debug.Log("[MessageManager] SendMessage() Failure.");
 			}
 		}
+#endif
 
 		/// <summary>
 		/// 서버 접속.
@@ -170,6 +183,7 @@ namespace MillenniumOfCultivation
 
 			try
 			{
+#if !UNITY_WEBGL
 				var result = m_Client.Connect(m_ClientId);
 				switch (result)
 				{
@@ -179,12 +193,15 @@ namespace MillenniumOfCultivation
 					case 4: throw new Exception("Id/Password Incorrect.");
 					case 5: throw new Exception("Authorize Failure.");
 				}
+#endif
 			}
+#if !UNITY_WEBGL
 			catch (MqttCommunicationException exception)
 			{
 				Debug.LogException(exception);
 				throw;
 			}
+#endif
 			catch (Exception exception)
 			{
 				Debug.LogException(exception);
@@ -204,7 +221,9 @@ namespace MillenniumOfCultivation
 
 				if (IsConnected)
 				{
+#if !UNITY_WEBGL
 					m_Client.Disconnect();
+#endif
 				}
 
 				Connect(m_ClientId);
@@ -236,8 +255,10 @@ namespace MillenniumOfCultivation
 
 			try
 			{
+#if !UNITY_WEBGL
 				var messageId = m_Client.Subscribe(new string[] { channelId }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
 				m_JoinedChannelIds.Add(channelId);
+#endif
 			}
 			catch (Exception exception)
 			{
@@ -258,8 +279,10 @@ namespace MillenniumOfCultivation
 
 			try
 			{
+#if !UNITY_WEBGL
 				var messageId = m_Client.Unsubscribe(new string[] { channelId });
 				m_JoinedChannelIds.Remove(channelId);
+#endif
 			}
 			catch (Exception exception)
 			{
@@ -287,7 +310,9 @@ namespace MillenniumOfCultivation
 				});
 
 				var message = Encoding.UTF8.GetBytes(json);
+#if !UNITY_WEBGL
 				var messageId = m_Client.Publish(channelId, message, MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, false);
+#endif
 			}
 			catch (Exception exception)
 			{

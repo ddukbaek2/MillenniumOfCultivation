@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2a409f3be0f2bc3489b14c789c4fa449
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 284789
+  packageName: CardEase - Drag-Drop Card System
+  packageVersion: 0.1.0
+  assetPath: Assets/Maziminds/CardEase/Demo/V2/Scripts/Managers/V2CardZonManager.cs
+  uploadId: 683774

@@ -97,6 +97,7 @@ namespace MillenniumOfCultivation
 			View.RectTransform.anchoredPosition = Vector2.zero;
 			View.OnBeginDraggedEvent += OnBegin;
 			View.OnEndDraggedEvent += OnEnd;
+			//View.SetData();
 		}
 
 		protected virtual void OnBegin(UIDraggableItemView view)

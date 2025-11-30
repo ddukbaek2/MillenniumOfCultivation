@@ -99,8 +99,9 @@ namespace Crockhead.Unity.UI
 			}
 		}
 
+#if UNITY_EDITOR
 		/// <summary>
-		/// 컴포넌트 프로퍼티 정합성 검사.
+		/// 유효성 검사시 호출됨.
 		/// </summary>
 		protected override void OnValidate()
 		{
@@ -111,6 +112,7 @@ namespace Crockhead.Unity.UI
 			//	Debug.LogWarning($"[UIKitForUnity] Wrong Default Tag: {m_DefaultTag}");
 			//}
 		}
+#endif
 
 		///// <summary>
 		///// 버튼 설정.

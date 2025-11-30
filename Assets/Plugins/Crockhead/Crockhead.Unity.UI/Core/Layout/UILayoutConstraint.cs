@@ -109,6 +109,7 @@ namespace Crockhead.Unity.UI
 			base.OnTransformParentChanged();
 		}
 
+#if UNITY_EDITOR
 		/// <summary>
 		/// 유효성 검사시 호출됨.
 		/// </summary>
@@ -116,6 +117,7 @@ namespace Crockhead.Unity.UI
 		{
 			base.OnValidate();
 		}
+#endif
 
 		/// <summary>
 		/// 애니메이션 프로퍼티 적용됨.

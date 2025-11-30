@@ -3,6 +3,7 @@ using MillenniumOfCultivation.Battle;
 using MillenniumOfCultivation.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using BattleProcess = MillenniumOfCultivation.Battle.BattleProcess;
 
 
@@ -19,6 +20,10 @@ namespace MillenniumOfCultivation
 		[RuntimeInitializeOnLoadMethod]
 		public static void Run()
 		{
+			var activeScene = SceneManager.GetActiveScene();
+			if (activeScene.name != "MillenniumOfCultivation")
+				return;
+
 			Debug.Log("[RuntimeInitializer] Present()");
 			SharedInstances.Clear();
 

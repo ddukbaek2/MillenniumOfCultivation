@@ -1,7 +1,5 @@
 using Crockhead.Core;
 using System;
-using System.IO;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,6 +22,11 @@ namespace Crockhead.Unity.UI
 		/// 월드 좌표계 기준 사각형 위치.
 		/// </summary>
 		private static readonly Vector3[] s_FourCornersArray = new Vector3[] { Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+
+		/// <summary>
+		/// 해당 뷰의 소유 컨트롤러.
+		/// </summary>
+		private UIController m_Controller;
 
 		/// <summary>
 		/// 렉트 트랜스폼 프로퍼티.
@@ -101,6 +104,14 @@ namespace Crockhead.Unity.UI
 		/// </summary>
 		protected virtual void OnDispose()
 		{
+		}
+
+		/// <summary>
+		/// 컨트롤러 설정.
+		/// </summary>
+		internal void SetController(UIController controller)
+		{
+			m_Controller = controller;
 		}
 
 		/// <summary>

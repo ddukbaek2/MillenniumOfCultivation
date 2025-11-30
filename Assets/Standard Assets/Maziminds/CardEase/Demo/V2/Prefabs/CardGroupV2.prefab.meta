@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1747697c23b1f2f4d91d9dbdeafc1e2f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 284789
+  packageName: CardEase - Drag-Drop Card System
+  packageVersion: 0.1.0
+  assetPath: Assets/Maziminds/CardEase/Demo/V2/Prefabs/CardGroupV2.prefab
+  uploadId: 683774

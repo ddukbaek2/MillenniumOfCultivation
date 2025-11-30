@@ -153,6 +153,7 @@ namespace Crockhead.Unity.UI
 					m_View = UIView.CreateViewFromAsset(viewType, assetPath, assetPathType, m_Window.RectTransform);
 				}
 
+				m_View.SetController(this);
 				OnViewDidLoad();
 			}
 			catch (Exception exception)

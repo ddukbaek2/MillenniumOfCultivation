@@ -86,6 +86,7 @@ namespace MillenniumOfCultivation.UI
 			base.OnSelected();
 
 			SetFocus(true);
+			RectTransform.SetAsLastSibling();
 		}
 
 		protected override void OnDeselected()
