@@ -52,12 +52,6 @@ namespace MillenniumOfCultivation.UI
 
 			var title = new TitleController(Window);
 			Present(title);
-
-			//var battleController = new BattleController(Window);
-			//Present(battleController);
-
-			//var messageController = new MessageController(Window);
-			//var view = messageController.View;
 		}
 	}
 }

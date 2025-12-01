@@ -1,5 +1,6 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using System;
 using UnityEngine;
 
 
@@ -12,9 +13,28 @@ namespace MillenniumOfCultivation.UI
 	public class UITitleView : UIPanelView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_OverlayImage;
-		//[SerializeField] private RawImage m_LogoImage;
+		[SerializeField] private UILabelView m_VersionLabel;
 		#endregion
+
+		/// <summary>
+		/// 플레이 이벤트 프로퍼티.
+		/// </summary>
+		public Action OnPlayEvent { set; get; }
+
+		/// <summary>
+		/// 설정 이벤트 프로퍼티.
+		/// </summary>
+		public Action OnOptionEvent { set; get; }
+
+		/// <summary>
+		/// 크레디트 이벤트 프로퍼티.
+		/// </summary>
+		public Action OnCreditEvent { set; get; }
+
+		/// <summary>
+		/// 나가기 이벤트 프로퍼티.
+		/// </summary>
+		public Action OnExitEvent { set; get; }
 
 		/// <summary>
 		/// 생성됨.
@@ -24,13 +44,41 @@ namespace MillenniumOfCultivation.UI
 			base.OnCreate();
 
 			BackgroundColor = new Color32(255, 178, 0, 255);
+
+			GetOrAddComponent<UIButtonView>("Content/Play").onClick.AddListener(OnClickPlay);
+			GetOrAddComponent<UIButtonView>("Content/Option").onClick.AddListener(OnClickOption);
+			GetOrAddComponent<UIButtonView>("Content/Credit").onClick.AddListener(OnClickCredit);
+			GetOrAddComponent<UIButtonView>("Content/Exit").onClick.AddListener(OnClickExit);
 		}
 
+		/// <summary>
+		/// 초기화됨.
+		/// </summary>
 		protected override void OnInitialize()
 		{
 			base.OnInitialize();
 
 			SetAnchor(true);
+		}
+
+		private void OnClickPlay()
+		{
+			OnPlayEvent?.Invoke();
+		}
+
+		private void OnClickOption()
+		{
+			OnOptionEvent?.Invoke();
+		}
+
+		private void OnClickCredit()
+		{
+			OnCreditEvent?.Invoke();
+		}
+
+		private void OnClickExit()
+		{
+			OnExitEvent?.Invoke();
 		}
 
 		///// <summary>
