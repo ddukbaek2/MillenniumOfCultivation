@@ -27,6 +27,13 @@ namespace Crockhead.Unity.UI
 		}
 
 		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		public UIController(UIWindow window) : base(window)
+		{
+		}
+
+		/// <summary>
 		/// 해제됨.
 		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)

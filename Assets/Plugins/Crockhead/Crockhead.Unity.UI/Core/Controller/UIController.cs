@@ -88,6 +88,14 @@ namespace Crockhead.Unity.UI
 		}
 
 		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		public UIController(UIWindow window) : this()
+		{
+			SetWindow(window);
+		}
+
+		/// <summary>
 		/// 해제됨.
 		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)
@@ -124,9 +132,12 @@ namespace Crockhead.Unity.UI
 					return;
 
 				// 현재 윈도우가 없을 경우.
+				var parentRectTransform = m_Window?.RectTransform ?? null;
 				if (m_Window == null)
-					//m_Window = UIManager.Instance.TopWindow;
+				{
+					Debug.Log("[UIController] LoadView(): Not Binding Window");
 					throw new NullReferenceException(nameof(m_Window));
+				}
 
 				// 뷰 로드 직전 정보를 수집하고, 정보에 따른 뷰를 생성.
 				var viewConfiguration = OnViewWillLoad(typeof(UIView));
@@ -137,12 +148,12 @@ namespace Crockhead.Unity.UI
 				// 경로가 없다면 생성.
 				if (string.IsNullOrWhiteSpace(assetPath))
 				{
-					m_View = UIView.CreateView(viewType, m_Window.RectTransform);
+					m_View = UIView.CreateView(viewType, parentRectTransform);
 				}
 				// 경로가 있다면 로드.
 				else
 				{
-					m_View = UIView.CreateViewFromAsset(viewType, assetPath, assetPathType, m_Window.RectTransform);
+					m_View = UIView.CreateViewFromAsset(viewType, assetPath, assetPathType, parentRectTransform);
 				}
 
 				m_View.SetController(this);
@@ -273,6 +284,7 @@ namespace Crockhead.Unity.UI
 		{
 			m_PresentingController = controller;
 			controller.m_PresentedController = this;
+			controller.Window = m_Window;
 			controller.LoadView();
 		}
 

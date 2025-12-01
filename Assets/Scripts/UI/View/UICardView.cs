@@ -72,6 +72,7 @@ namespace MillenniumOfCultivation.UI
 			base.OnEntered();
 
 			RectTransform.localScale = Vector3.one * 1.5f;
+			RectTransform.SetAsLastSibling();
 		}
 
 		protected override void OnExited()
@@ -86,7 +87,6 @@ namespace MillenniumOfCultivation.UI
 			base.OnSelected();
 
 			SetFocus(true);
-			RectTransform.SetAsLastSibling();
 		}
 
 		protected override void OnDeselected()

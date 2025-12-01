@@ -62,7 +62,7 @@ namespace MillenniumOfCultivation.UI
 			var startX = -totalWidth * 0.5f + cardSize.x * 0.5f;
 			for (var i = 0; i < cardCount; ++i)
 			{
-				var card = new CardController();
+				var card = new CardController(Window);
 				m_Cards.Add(card);
 
 				var x = startX + i * (cardSize.x + spacing);
