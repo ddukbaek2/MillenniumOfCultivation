@@ -49,6 +49,8 @@ namespace MillenniumOfCultivation.UI
 			if (m_SelectImage == null) m_SelectImage = GetOrAddComponent<UIImageView>("Select");
 
 			m_Card = null;
+
+			SetFocus(false);
 		}
 
 		/// <summary>
@@ -71,30 +73,32 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnEntered();
 
-			RectTransform.localScale = Vector3.one * 1.5f;
+			//RectTransform.localScale = Vector3.one * 1.5f;
+			SetFocus(true);
 			RectTransform.SetAsLastSibling();
 		}
 
 		protected override void OnExited()
 		{
-			base.OnExited();
-
-			RectTransform.localScale = Vector3.one * 1f;
-		}
-
-		protected override void OnSelected()
-		{
-			base.OnSelected();
-
-			SetFocus(true);
-		}
-
-		protected override void OnDeselected()
-		{
 			SetFocus(false);
+			//RectTransform.localScale = Vector3.one * 1f;
 
-			base.OnDeselected();
+			base.OnExited();
 		}
+
+		//protected override void OnSelected()
+		//{
+		//	base.OnSelected();
+
+		//	SetFocus(true);
+		//}
+
+		//protected override void OnDeselected()
+		//{
+		//	SetFocus(false);
+
+		//	base.OnDeselected();
+		//}
 
 		private void SetFocus(bool focused)
 		{
