@@ -14,7 +14,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public IntroController(UIWindow window) : base(window)
+		public IntroController() : base()
 		{
 		}
 
@@ -50,7 +50,7 @@ namespace MillenniumOfCultivation.UI
 			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
 			//UIManager.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
 
-			var title = new TitleController(Window);
+			var title = new TitleController();
 			Present(title);
 		}
 	}

@@ -13,7 +13,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public MessageController(UIWindow window) : base(window)
+		public MessageController() : base()
 		{
 		}
 

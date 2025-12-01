@@ -88,14 +88,6 @@ namespace Crockhead.Unity.UI
 		}
 
 		/// <summary>
-		/// 생성됨.
-		/// </summary>
-		public UIController(UIWindow window) : this()
-		{
-			SetWindow(window);
-		}
-
-		/// <summary>
 		/// 해제됨.
 		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)
@@ -104,7 +96,7 @@ namespace Crockhead.Unity.UI
 
 			if (m_View != null)
 			{
-				GameObject.Destroy(m_View);
+				GameObject.Destroy(m_View.gameObject);
 				m_View = null;
 			}
 

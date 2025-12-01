@@ -21,7 +21,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleController(UIWindow window) : base(window)
+		public BattleController() : base()
 		{
 			m_Cards = new List<CardController>();
 		}
@@ -62,7 +62,7 @@ namespace MillenniumOfCultivation.UI
 			var startX = -totalWidth * 0.5f + cardSize.x * 0.5f;
 			for (var i = 0; i < cardCount; ++i)
 			{
-				var card = new CardController(Window);
+				var card = new CardController();
 				m_Cards.Add(card);
 
 				var x = startX + i * (cardSize.x + spacing);

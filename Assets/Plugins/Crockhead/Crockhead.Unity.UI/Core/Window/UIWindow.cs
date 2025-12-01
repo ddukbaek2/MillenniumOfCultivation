@@ -203,6 +203,7 @@ namespace Crockhead.Unity.UI
 				Disposables.Dispose(PresentingController);
 			}
 
+			controller.Window = this;
 			PresentingController = controller;
 			PresentingController.LoadView();
 		}

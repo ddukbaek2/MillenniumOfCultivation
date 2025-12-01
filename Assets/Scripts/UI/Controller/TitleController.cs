@@ -14,7 +14,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public TitleController(UIWindow window) : base(window)
+		public TitleController() : base()
 		{
 		}
 
@@ -57,7 +57,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnPlay()
 		{
-			var battle = new BattleController(Window);
+			var battle = new BattleController();
 			Present(battle);
 
 			//var messageController = new MessageController(Window);

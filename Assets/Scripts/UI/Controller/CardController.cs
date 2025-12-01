@@ -66,7 +66,7 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public CardController(UIWindow window) : base(window)
+		public CardController() : base()
 		{
 			m_State = ViewState.None;
 			m_Animation = null;

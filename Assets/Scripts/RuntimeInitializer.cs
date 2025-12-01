@@ -49,7 +49,7 @@ namespace MillenniumOfCultivation
 			// 시작.
 			//var battleController = new BattleController(UIManager.Instance.TopWindow);
 			//UIManager.Instance.Present(battleController);		
-			var intro = new IntroController(UIManager.Instance.TopWindow);
+			var intro = new IntroController();
 			UIManager.Instance.Present(intro);
 		}
 

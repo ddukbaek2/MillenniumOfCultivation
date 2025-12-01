@@ -13,6 +13,9 @@ namespace MillenniumOfCultivation.UI
 	[UIViewBinding(typeof(UITransitionView), "Assets/Resources/UI/UITransitionView.prefab", AssetPathType.Resources)]
 	public class TransitionController : UIController<UITransitionView>
 	{
+		/// <summary>
+		/// 트랜지션 종류.
+		/// </summary>
 		public enum TransitionType
 		{
 			FadeOut,
@@ -23,7 +26,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public TransitionController(UIWindow window) : base(window)
+		public TransitionController() : base()
 		{
 		}
 
