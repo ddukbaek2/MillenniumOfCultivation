@@ -50,8 +50,11 @@ namespace MillenniumOfCultivation.UI
 			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
 			//UIManager.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
 
-			var battleController = new BattleController(Window);
-			Present(battleController);
+			var title = new TitleController(Window);
+			Present(title);
+
+			//var battleController = new BattleController(Window);
+			//Present(battleController);
 
 			//var messageController = new MessageController(Window);
 			//var view = messageController.View;

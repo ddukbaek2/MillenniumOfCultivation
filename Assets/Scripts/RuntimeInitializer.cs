@@ -33,6 +33,7 @@ namespace MillenniumOfCultivation
 			SoundManager.Create();
 			UIManager.Create();
 			MessageManager.Create();
+			BattleManager.Create();
 
 			RunUI();
 			RunBattle();
@@ -48,8 +49,8 @@ namespace MillenniumOfCultivation
 			// 시작.
 			//var battleController = new BattleController(UIManager.Instance.TopWindow);
 			//UIManager.Instance.Present(battleController);		
-			var introController = new IntroController(UIManager.Instance.TopWindow);
-			UIManager.Instance.Present(introController);
+			var intro = new IntroController(UIManager.Instance.TopWindow);
+			UIManager.Instance.Present(intro);
 		}
 
 		/// <summary>

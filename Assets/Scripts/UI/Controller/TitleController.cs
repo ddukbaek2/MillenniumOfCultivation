@@ -32,12 +32,18 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeIn, () =>
-			{
-				var battleController = new BattleController(Window);
-				var view = battleController.View;
-				UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeOut, null);
-			});
+			//DispatchQueue.Instance.RunAsync(async () =>
+			//{
+			//	var battle = new BattleController(Window);
+			//	Present(battle);
+			//});
+
+			//UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeIn, () =>
+			//{
+			//	var battle = new BattleController(Window);
+			//	var view = battle.View;
+			//	UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeOut, null);
+			//});
 		}
 	}
 }

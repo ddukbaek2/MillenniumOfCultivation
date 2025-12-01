@@ -26,6 +26,13 @@ namespace MillenniumOfCultivation.UI
 			BackgroundColor = new Color32(255, 178, 0, 255);
 		}
 
+		protected override void OnInitialize()
+		{
+			base.OnInitialize();
+
+			SetAnchor(true);
+		}
+
 		///// <summary>
 		///// 애니메이션 시작.
 		///// </summary>
