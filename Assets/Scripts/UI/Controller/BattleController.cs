@@ -41,7 +41,32 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
+			View.BindButtonClickEvent("Left/Reset", OnReset);
+			View.BindButtonClickEvent("Left/Menu", OnMenu);
+
 			DispatchQueue.Instance.RunAsync(OnPrepare);
+		}
+
+		/// <summary>
+		/// 재시작.
+		/// </summary>
+		private void OnReset()
+		{
+			Debug.Log("[BattleController] OnReset()");
+			DispatchQueue.Instance.RunAsync(static () => {
+				RuntimeInitializer.Shutdown();
+				RuntimeInitializer.Initialize();
+			});
+		}
+
+		/// <summary>
+		/// 재시작.
+		/// </summary>
+		private void OnMenu()
+		{
+			Debug.Log("[BattleController] OnMenu()");
+
+			//Present();
 		}
 
 		/// <summary>

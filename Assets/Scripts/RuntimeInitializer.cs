@@ -18,7 +18,7 @@ namespace MillenniumOfCultivation
 		/// 시작.
 		/// </summary>
 		[RuntimeInitializeOnLoadMethod]
-		public static void Run()
+		public static void Initialize()
 		{
 			var activeScene = SceneManager.GetActiveScene();
 			if (activeScene.name != "MillenniumOfCultivation")
@@ -40,7 +40,16 @@ namespace MillenniumOfCultivation
 		}
 
 		/// <summary>
-		/// UI 생성 및 시작.
+		/// 종료.
+		/// </summary>
+		public static void Shutdown()
+		{
+			SharedInstances.Clear();
+			SceneManager.LoadScene("MillenniumOfCultivation", LoadSceneMode.Single);
+		}
+
+		/// <summary>
+		/// UI 생성.
 		/// </summary>
 		private static void RunUI()
 		{

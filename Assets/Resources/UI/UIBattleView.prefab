@@ -733,5 +733,5 @@ MonoBehaviour:
   m_RectTransform: {fileID: 1861232032789032871}
   m_BackgroundImage: {fileID: 0}
   m_Content: {fileID: 1625190352379668439}
-  m_ResetButton: {fileID: 0}
-  m_MenuButton: {fileID: 0}
+  m_ResetButton: {fileID: 1537435192789553317}
+  m_MenuButton: {fileID: 3715090206235920936}
