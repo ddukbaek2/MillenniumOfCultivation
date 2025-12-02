@@ -12,5 +12,10 @@ namespace Crockhead.Unity.UI
 		/// 렉트 트랜스폼 프로퍼티.
 		/// </summary>
 		RectTransform RectTransform { get; }
+
+		///// <summary>
+		///// 해당 뷰의 소유 컨트롤러 프로퍼티.
+		///// </summary>
+		//UIController Controller { get; }
 	}
 }

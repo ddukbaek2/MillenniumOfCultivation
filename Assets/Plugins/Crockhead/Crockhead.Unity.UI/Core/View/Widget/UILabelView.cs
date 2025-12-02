@@ -10,21 +10,11 @@ namespace Crockhead.Unity.UI
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	[RequireComponent(typeof(CanvasRenderer))]
-	public sealed class UILabelView : TextMeshProUGUI, IUIWidget, IUIFrameable
+	public sealed class UILabelView : TextMeshProUGUI, IUIView, IUIConstraintable
 	{
 		#region INSPECTOR
 		[SerializeField] private string m_LocalizeKey;
 		#endregion
-
-		/// <summary>
-		/// 프레임.
-		/// </summary>
-		private UIFrame m_Frame;
-
-		/// <summary>
-		/// 프레임 프로퍼티.
-		/// </summary>
-		public UIFrame Frame => m_Frame;
 
 		/// <summary>
 		/// 렉트 트랜스폼 프로퍼티.
@@ -37,8 +27,6 @@ namespace Crockhead.Unity.UI
 		protected override void Awake()
 		{
 			base.Awake();
-
-			m_Frame = new UIFrame();
 		}
 
 		/// <summary>
@@ -88,19 +76,5 @@ namespace Crockhead.Unity.UI
 			//}
 		}
 #endif
-
-		/// <summary>
-		/// 프레임 갱신.
-		/// </summary>
-		public void FrameUpdate()
-		{
-		}
-
-		/// <summary>
-		/// 레이아웃 갱신.
-		/// </summary>
-		public void LayoutUpdate()
-		{
-		}
 	}
 }

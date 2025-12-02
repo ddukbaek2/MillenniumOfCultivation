@@ -45,10 +45,10 @@ namespace MillenniumOfCultivation.UI
 
 			BackgroundColor = new Color32(255, 178, 0, 255);
 
-			GetOrAddComponent<UIButtonView>("Content/Play").onClick.AddListener(OnClickPlay);
-			GetOrAddComponent<UIButtonView>("Content/Option").onClick.AddListener(OnClickOption);
-			GetOrAddComponent<UIButtonView>("Content/Credit").onClick.AddListener(OnClickCredit);
-			GetOrAddComponent<UIButtonView>("Content/Exit").onClick.AddListener(OnClickExit);
+			BindButtonClickEvent("Content/Play", OnClickPlay);
+			BindButtonClickEvent("Content/Option", OnClickOption);
+			BindButtonClickEvent("Content/Credit", OnClickCredit);
+			BindButtonClickEvent("Content/Exit", OnClickExit);
 		}
 
 		/// <summary>

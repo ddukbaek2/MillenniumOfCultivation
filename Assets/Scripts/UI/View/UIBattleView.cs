@@ -12,7 +12,9 @@ namespace MillenniumOfCultivation.UI
 	public class UIBattleView : UIPanelView
 	{
 		#region INSPECTOR
-		[SerializeField] RectTransform m_Content;
+		[SerializeField] private RectTransform m_Content;
+		[SerializeField] private UIButtonView m_ResetButton;
+		[SerializeField] private UIButtonView m_MenuButton;
 		#endregion
 
 		/// <summary>
@@ -33,6 +35,14 @@ namespace MillenniumOfCultivation.UI
 			}
 
 			BackgroundColor = Color.black;
+		}
+
+		/// <summary>
+		/// 초기화됨.
+		/// </summary>
+		protected override void OnInitialize()
+		{
+			base.OnInitialize();
 		}
 	}
 }

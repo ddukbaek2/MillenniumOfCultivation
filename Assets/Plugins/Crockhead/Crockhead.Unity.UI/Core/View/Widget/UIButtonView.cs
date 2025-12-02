@@ -10,7 +10,7 @@ namespace Crockhead.Unity.UI
 	/// </summary>
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
-	public sealed partial class UIButtonView : Button, IUIWidget, IUIFrameable
+	public sealed partial class UIButtonView : Button, IUIView, IUIConstraintable
 	{
 		#region INSPECTOR
 		[SerializeField] private RectTransform m_RectTransform;

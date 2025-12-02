@@ -31,9 +31,9 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
+			base.OnCreate();
 
 			if (IsDestroyed())
 				return;

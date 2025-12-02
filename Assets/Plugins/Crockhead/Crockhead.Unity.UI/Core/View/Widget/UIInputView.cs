@@ -10,7 +10,7 @@ namespace Crockhead.Unity.UI
 	[ExecuteAlways]
 	[RequireComponent(typeof(RectTransform))]
 	[RequireComponent(typeof(CanvasRenderer))]
-	public sealed class UIInputView : TMP_InputField, IUIWidget, IUIFrameable
+	public sealed class UIInputView : TMP_InputField, IUIView, IUIConstraintable
 	{
 		#region INSPECTOR
 		//[SerializeField] private RectTransform m_RectTransform;

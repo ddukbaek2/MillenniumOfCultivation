@@ -18,19 +18,11 @@ namespace MillenniumOfCultivation.Tween
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected override void Awake()
+		protected override void OnCreate()
 		{
-			base.Awake();
+			base.OnCreate();
 
 			m_Tweeners = new List<Tweener>();
-		}
-
-		/// <summary>
-		/// 파괴됨.
-		/// </summary>
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
 		}
 
 		/// <summary>

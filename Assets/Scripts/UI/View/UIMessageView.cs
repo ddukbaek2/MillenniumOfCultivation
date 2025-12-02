@@ -150,7 +150,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void CreateMessageItemView(Message message)
 		{
-			var item = UIView.CreateNodeFromAsset<UIMessageItemView>(m_ContentRectTransform);
+			var item = UIView.CreateFromAsset<UIMessageItemView>(m_ContentRectTransform);
 			item.SetMessage(message);
 
 			CoroutineHelper.WaitForNextFrame(() =>
