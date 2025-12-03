@@ -34,7 +34,7 @@ namespace MillenniumOfCultivation.UI
 			base.OnViewDidLoad();
 
 			// 비동기 실행.
-			DispatchQueue.Instance.RunAsync(async () =>
+			DispatchQueue.Foreground.RunAsync(async () =>
 			{
 				await View.StartAnimation(OnFinishAnimation);
 			});

@@ -17,7 +17,7 @@ namespace MillenniumOfCultivation.UI
 	public class UIIntroView : UIPanelView
 	{
 		#region INSPECTOR
-		[SerializeField] private UITextureView m_LogoImage;
+		[SerializeField] private UIImageView m_LogoImage;
 		[SerializeField] private UIImageView m_OverlayImage;
 		#endregion
 
@@ -32,7 +32,7 @@ namespace MillenniumOfCultivation.UI
 
 			if (m_LogoImage == null)
 			{
-				m_LogoImage = GetOrAddComponent<UITextureView>("Logo");
+				m_LogoImage = GetOrAddComponent<UIImageView>("Logo");
 			}
 
 			if (m_OverlayImage == null)

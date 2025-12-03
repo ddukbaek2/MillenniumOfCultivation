@@ -23,9 +23,6 @@ namespace MillenniumOfCultivation
 		protected override void OnApplicationFocus(bool focus)
 		{
 			base.OnApplicationFocus(focus);
-
-			var type = GetType();
-			Debug.Log($"[{type.Name}] OnApplicationFocus(focus: {focus})");
 		}
 
 		/// <summary>

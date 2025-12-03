@@ -13,8 +13,8 @@ namespace MillenniumOfCultivation.UI
 	{
 		#region INSPECTOR
 		[SerializeField] private RectTransform m_Content;
-		[SerializeField] private UIButtonView m_ResetButton;
-		[SerializeField] private UIButtonView m_MenuButton;
+		//[SerializeField] private UIButtonView m_ResetButton;
+		//[SerializeField] private UIButtonView m_MenuButton;
 		#endregion
 
 		/// <summary>

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369810243052607307}
   - component: {fileID: 2490401469436122322}
-  - component: {fileID: 5066633852276117016}
+  - component: {fileID: 624047987674153879}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223635245872084845}
   m_CullTransparentMesh: 1
---- !u!114 &5066633852276117016
+--- !u!114 &624047987674153879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223635245872084845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733d5e6e0462a414590a143c91b4722b, type: 3}
+  m_Script: {fileID: 11500000, guid: 089e9a1315d21fc45afeb6ab10b443a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -65,13 +65,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 56f0c19a2d92191489382a826da7cc0c, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: 56f0c19a2d92191489382a826da7cc0c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6261855996423826150
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8672832988082082076}
   - component: {fileID: 634454353424869882}
-  - component: {fileID: 7823913732006486824}
+  - component: {fileID: 7388122402195452523}
   m_Layer: 5
   m_Name: Overlay
   m_TagString: Untagged
@@ -117,7 +120,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6261855996423826150}
   m_CullTransparentMesh: 1
---- !u!114 &7823913732006486824
+--- !u!114 &7388122402195452523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6261855996423826150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b12f6e8a10c804541ad7e39b5dd4d6a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 089e9a1315d21fc45afeb6ab10b443a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -199,5 +202,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RectTransform: {fileID: 1861232032789032871}
   m_BackgroundImage: {fileID: 0}
-  m_LogoImage: {fileID: 5066633852276117016}
-  m_OverlayImage: {fileID: 7823913732006486824}
+  m_LogoImage: {fileID: 624047987674153879}
+  m_OverlayImage: {fileID: 7388122402195452523}

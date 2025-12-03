@@ -44,7 +44,7 @@ namespace MillenniumOfCultivation.UI
 			View.BindButtonClickEvent("Left/Reset", OnReset);
 			View.BindButtonClickEvent("Left/Menu", OnMenu);
 
-			DispatchQueue.Instance.RunAsync(OnPrepare);
+			DispatchQueue.Foreground.RunAsync(OnPrepare);
 		}
 
 		/// <summary>
@@ -53,10 +53,11 @@ namespace MillenniumOfCultivation.UI
 		private void OnReset()
 		{
 			Debug.Log("[BattleController] OnReset()");
-			DispatchQueue.Instance.RunAsync(static () => {
-				RuntimeInitializer.Shutdown();
-				RuntimeInitializer.Initialize();
-			});
+			//DispatchQueue.Instance.RunAsync(static () => {
+
+			//});
+			RuntimeInitializer.Shutdown();
+			RuntimeInitializer.Initialize();
 		}
 
 		/// <summary>
