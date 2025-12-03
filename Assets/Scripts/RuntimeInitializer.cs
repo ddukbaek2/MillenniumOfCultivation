@@ -56,7 +56,6 @@ namespace MillenniumOfCultivation
 			BattleManager.Create();
 
 			RunUI();
-			//RunBattle();
 		}
 
 		/// <summary>

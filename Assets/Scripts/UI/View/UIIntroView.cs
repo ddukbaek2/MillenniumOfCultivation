@@ -71,7 +71,7 @@ namespace MillenniumOfCultivation.UI
 				var fadeInTween = view.m_OverlayImage.DOColor(Color.clear, 2f);
 
 				view.m_LogoImage.transform.localScale = Vector3.one * 1f;
-				var scaleUpTween = view.m_LogoImage.transform.DOScale(Vector3.one * 1.25f, 2f);
+				var scaleUpTween = view.m_LogoImage.transform.DOScale(Vector3.one * 1.15f, 2f);
 
 				var sequenceTween = DOTween.Sequence();
 				sequenceTween.Join(fadeInTween);

@@ -789,7 +789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6127295265395063755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1090,4 +1090,4 @@ MonoBehaviour:
   m_RectTransform: {fileID: 1861232032789032871}
   m_BackgroundImage: {fileID: 0}
   m_ContentRectTransform: {fileID: 3758326112324459100}
-  m_InputField: {fileID: 0}
+  m_InputField: {fileID: 7251225514410801799}
