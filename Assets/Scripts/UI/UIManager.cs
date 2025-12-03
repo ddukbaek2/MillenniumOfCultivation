@@ -1,6 +1,7 @@
 using Crockhead.Core;
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UIController = Crockhead.Unity.UI.UIController;
 
@@ -47,6 +48,7 @@ namespace MillenniumOfCultivation.UI
 			//m_TransitionController.Window = m_TransitionWindow;
 			//var view = m_TransitionController.View;
 			m_TransitionWindow.Present(m_TransitionController);
+			m_TransitionController.View.gameObject.SetActive(false);
 		}
 	}
 }

@@ -158,7 +158,7 @@ namespace Crockhead.Unity.UI
 			{
 				m_Canvas.renderMode = RenderMode.ScreenSpaceCamera;
 				m_Canvas.worldCamera = camera;
-				Debug.Log($"m_Canvas.renderMode: {m_Canvas.renderMode}");
+				//Debug.Log($"m_Canvas.renderMode: {m_Canvas.renderMode}");
 			}
 		}
 

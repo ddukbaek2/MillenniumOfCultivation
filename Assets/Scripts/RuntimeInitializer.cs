@@ -56,7 +56,7 @@ namespace MillenniumOfCultivation
 			BattleManager.Create();
 
 			RunUI();
-			RunBattle();
+			//RunBattle();
 		}
 
 		/// <summary>
@@ -87,18 +87,6 @@ namespace MillenniumOfCultivation
 			//UIManager.Instance.Present(battleController);		
 			var intro = new IntroController();
 			UIManager.Instance.Present(intro);
-		}
-
-		/// <summary>
-		/// 전투 시작.
-		/// </summary>
-		private static void RunBattle()
-		{
-			var player = new PlayerController();
-			var enemy = new AIController();
-
-			var process = new BattleProcess();
-			process.Start(player, new List<AIController>() { enemy });
 		}
 	}
 }

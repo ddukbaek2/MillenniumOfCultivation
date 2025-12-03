@@ -1,5 +1,7 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using MillenniumOfCultivation.Battle;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -53,33 +55,37 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
-		/// 
+		/// 시작 눌림.
 		/// </summary>
 		private void OnPlay()
 		{
+			var player = new PlayerController();
+			var enemy = new AIController();
+			var process = new BattleProcess();
+			process.Start(player, new List<AIController>() { enemy });
+
 			var battle = new BattleController();
 			Present(battle);
-
-			//var messageController = new MessageController(Window);
-			//var view = messageController.View;
 		}
 
 		/// <summary>
-		/// 
+		/// 설정 눌림.
 		/// </summary>
 		private void OnOption()
 		{
+			var message = new MessageController();
+			Present(message);
 		}
 
 		/// <summary>
-		/// 
+		/// 만든이 눌림.
 		/// </summary>
 		private void OnCredit()
 		{
 		}
 
 		/// <summary>
-		/// 
+		/// 나가기 눌림.
 		/// </summary>
 		private void OnExit()
 		{
