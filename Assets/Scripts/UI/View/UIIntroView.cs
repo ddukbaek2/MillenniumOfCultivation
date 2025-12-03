@@ -65,15 +65,23 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public async Task StartAnimation(Action completion)
 		{
-			static IEnumerator Process(Image overlayImage, Action completion)
+			static IEnumerator Process(UIIntroView view, Action completion)
 			{
-				overlayImage.color = Color.black;
-				var tween = overlayImage.DOColor(Color.clear, 2f);
-				yield return tween.WaitForCompletion();
+				view.m_OverlayImage.color = Color.black;
+				var fadeInTween = view.m_OverlayImage.DOColor(Color.clear, 2f);
+
+				view.m_LogoImage.transform.localScale = Vector3.one * 1f;
+				var scaleUpTween = view.m_LogoImage.transform.DOScale(Vector3.one * 1.25f, 2f);
+
+				var sequenceTween = DOTween.Sequence();
+				sequenceTween.Join(fadeInTween);
+				sequenceTween.Join(scaleUpTween);
+
+				yield return sequenceTween.WaitForCompletion();
 				completion?.Invoke();
 			}
 
-			await TaskHelper.StartForeground(Process(m_OverlayImage, completion));
+			await TaskHelper.StartForeground(Process(this, completion));
 		}
 	}
 }

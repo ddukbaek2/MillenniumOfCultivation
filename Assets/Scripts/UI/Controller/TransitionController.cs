@@ -55,8 +55,6 @@ namespace MillenniumOfCultivation.UI
 		{
 			static IEnumerator Process(UITransitionView view, TransitionType type)
 			{
-				//while (view.IsTransitioning)
-				//	yield return null;
 				view.DoTransition(type);
 				while (view.IsTransitioning)
 					yield return null;
