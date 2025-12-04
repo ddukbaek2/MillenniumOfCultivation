@@ -13,9 +13,7 @@ namespace MillenniumOfCultivation.UI
 	public class UIMessageItemView : UIItemView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_OverlayImage;
-		//[SerializeField] private RawImage m_LogoImage;
-		[SerializeField] private TextMeshProUGUI m_Label;
+		[SerializeField] private UILabelView m_Label;
 		#endregion
 
 		/// <summary>
@@ -26,6 +24,11 @@ namespace MillenniumOfCultivation.UI
 			base.OnCreate();
 
 			BackgroundColor = Color.black;
+
+			if (m_Label == null)
+			{
+				m_Label = GetOrAddComponent<UILabelView>("Label");
+			}
 		}
 
 		/// <summary>
@@ -44,6 +47,10 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public void SetMessage(Message message)
 		{
+			if (message == null)
+			{
+			}
+
 			//var timestampFormat = "yyyy-MM-dd HH:mm:ss";
 			var timestampFormat = "HH:mm";
 			var timestamp = message.DateTime.ToString(timestampFormat);
