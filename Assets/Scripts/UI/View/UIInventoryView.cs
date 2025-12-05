@@ -11,7 +11,7 @@ namespace MillenniumOfCultivation.UI
 	public class UIInventoryView : UIPopupView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_LogoImage;
+		//[SerializeField] private Image m_Label;
 		#endregion
 
 		/// <summary>

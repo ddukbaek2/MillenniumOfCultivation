@@ -9,12 +9,12 @@ namespace MillenniumOfCultivation.UI
 	/// 인트로 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UIIntroView), "Assets/Resources/UI/UIIntroView.prefab", AssetPathType.Resources)]
-	public class IntroController : UIController<UIIntroView>
+	public class UIIntroController : UIController<UIIntroView>
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public IntroController() : base()
+		public UIIntroController() : base()
 		{
 		}
 
@@ -45,12 +45,12 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnFinishAnimation()
 		{
-			Debug.Log("[IntroController] OnFinishAnimation()");
+			Debug.Log("[UIIntroController] OnFinishAnimation()");
 
 			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
-			//UIManager.Instance.TransitionController.DoTransitionAsync(TransitionController.TransitionType.FadeIn);
+			//UIManager.Instance.UITransitionController.DoTransitionAsync(UITransitionController.TransitionType.FadeIn);
 
-			var title = new TitleController();
+			var title = new UITitleController();
 			Present(title);
 		}
 	}

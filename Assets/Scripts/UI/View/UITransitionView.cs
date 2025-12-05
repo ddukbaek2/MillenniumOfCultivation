@@ -14,7 +14,7 @@ namespace MillenniumOfCultivation.UI
 	public class UITransitionView : UIPanelView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_LogoImage;
+		//[SerializeField] private Image m_Label;
 		#endregion
 
 		/// <summary>
@@ -71,7 +71,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 트랜지션 효과 시작.
 		/// </summary>
-		public void DoTransition(TransitionController.TransitionType type)
+		public void DoTransition(UITransitionController.TransitionType type)
 		{
 			if (m_IsTransitioning)
 				return;
@@ -81,7 +81,7 @@ namespace MillenniumOfCultivation.UI
 
 			switch (type)
 			{
-				case TransitionController.TransitionType.FadeOut:
+				case UITransitionController.TransitionType.FadeOut:
 					{
 						var target = GetOrAddComponent<Image>("FadeOut");
 						target.color = Color.clear;
@@ -90,7 +90,7 @@ namespace MillenniumOfCultivation.UI
 						break;
 					}
 
-				case TransitionController.TransitionType.FadeIn:
+				case UITransitionController.TransitionType.FadeIn:
 					{
 						var target = GetOrAddComponent<Image>("FadeIn");
 						target.color = Color.black;

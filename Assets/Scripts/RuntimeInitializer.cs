@@ -21,6 +21,10 @@ namespace MillenniumOfCultivation
 		[RuntimeInitializeOnLoadMethod]
 		private static void Run()
 		{
+			var activeScene = SceneManager.GetActiveScene();
+			if (activeScene.name != "MillenniumOfCultivation")
+				return;
+
 			Debug.Log("[RuntimeInitializer] Run()");
 
 			// 공유 인스턴스 캐시 비우기.
@@ -41,10 +45,6 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		public static void Initialize()
 		{
-			var activeScene = SceneManager.GetActiveScene();
-			if (activeScene.name != "MillenniumOfCultivation")
-				return;
-
 			Debug.Log("[RuntimeInitializer] Initialize()");
 
 			// 매니저 생성.
@@ -82,9 +82,9 @@ namespace MillenniumOfCultivation
 			Input.multiTouchEnabled = false;
 
 			// 시작.
-			//var battleController = new BattleController(UIManager.Instance.TopWindow);
+			//var battleController = new UIBattleController(UIManager.Instance.TopWindow);
 			//UIManager.Instance.Present(battleController);		
-			var intro = new IntroController();
+			var intro = new UIIntroController();
 			UIManager.Instance.Present(intro);
 		}
 	}

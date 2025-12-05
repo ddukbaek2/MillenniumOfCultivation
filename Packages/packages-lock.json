@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c68f7c3db1f536cb9c1bd93069fb660602f8fcb6"
+      "hash": "aa7dde3dc77e8406011ba01b0759aa20728e92af"
     },
     "com.cysharp.r3": {
       "version": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
@@ -22,6 +22,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "34432703a177c97631a4eb1d908f086037c67969"
+    },
+    "com.rlabrecque.steamworks.net": {
+      "version": "https://github.com/rlabrecque/Steamworks.NET.git?path=/com.rlabrecque.steamworks.net#2025.162.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "af710043b9097e8ffedf74d67503c3a7eb498260"
     },
     "com.unity.2d.animation": {
       "version": "10.2.1",

@@ -8,12 +8,12 @@ namespace MillenniumOfCultivation.UI
 	/// 메시지 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UIMessageView), "Assets/Resources/UI/UIMessageView.prefab", AssetPathType.Resources)]
-	public class MessageController : UIController<UIMessageView>
+	public class UIMessageController : UIController<UIMessageView>
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public MessageController() : base()
+		public UIMessageController() : base()
 		{
 		}
 

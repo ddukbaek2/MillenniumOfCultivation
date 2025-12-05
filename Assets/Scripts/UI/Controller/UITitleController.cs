@@ -11,12 +11,12 @@ namespace MillenniumOfCultivation.UI
 	/// 타이틀 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UITitleView), "Assets/Resources/UI/UITitleView.prefab", AssetPathType.Resources)]
-	public class TitleController : UIController<UITitleView>
+	public class UITitleController : UIController<UITitleView>
 	{
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public TitleController() : base()
+		public UITitleController() : base()
 		{
 		}
 
@@ -42,15 +42,15 @@ namespace MillenniumOfCultivation.UI
 
 			//DispatchQueue.Instance.RunAsync(async () =>
 			//{
-			//	var battle = new BattleController(Window);
+			//	var battle = new UIBattleController(Window);
 			//	Present(battle);
 			//});
 
-			//UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeIn, () =>
+			//UIManager.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeIn, () =>
 			//{
-			//	var battle = new BattleController(Window);
+			//	var battle = new UIBattleController(Window);
 			//	var view = battle.View;
-			//	UIManager.Instance.TransitionController.DoTransition(TransitionController.TransitionType.FadeOut, null);
+			//	UIManager.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeOut, null);
 			//});
 		}
 
@@ -64,7 +64,7 @@ namespace MillenniumOfCultivation.UI
 			var process = new BattleProcess();
 			process.Start(player, new List<AIController>() { enemy });
 
-			var battle = new BattleController();
+			var battle = new UIBattleController();
 			Present(battle);
 		}
 
@@ -73,7 +73,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnOption()
 		{
-			var message = new MessageController();
+			var message = new UIMessageController();
 			Present(message);
 		}
 

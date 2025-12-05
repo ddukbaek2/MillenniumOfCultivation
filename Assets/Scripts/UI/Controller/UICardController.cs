@@ -10,7 +10,7 @@ namespace MillenniumOfCultivation
 	/// 카드 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UICardView), "Assets/Resources/UI/UICardView.prefab", AssetPathType.Resources)]
-	public class CardController : UIController<UICardView>
+	public class UICardController : UIController<UICardView>
 	{
 		/// <summary>
 		/// 카드 뷰 상태.
@@ -66,7 +66,7 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public CardController(UIWindow window) : base(window)
+		public UICardController(UIWindow window) : base(window)
 		{
 			m_State = ViewState.None;
 			m_Animation = null;

@@ -11,7 +11,7 @@ namespace MillenniumOfCultivation.UI
 	/// 화면 최상위 영역 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UITransitionView), "Assets/Resources/UI/UITransitionView.prefab", AssetPathType.Resources)]
-	public class TransitionController : UIController<UITransitionView>
+	public class UITransitionController : UIController<UITransitionView>
 	{
 		/// <summary>
 		/// 트랜지션 종류.
@@ -26,7 +26,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public TransitionController() : base()
+		public UITransitionController() : base()
 		{
 		}
 

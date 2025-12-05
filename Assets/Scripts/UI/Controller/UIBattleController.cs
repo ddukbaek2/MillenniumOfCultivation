@@ -11,19 +11,24 @@ namespace MillenniumOfCultivation.UI
 	/// 전투 UI 컨트롤러.
 	/// </summary>
 	[UIViewBinding(typeof(UIBattleView), "Assets/Resources/UI/UIBattleView.prefab", AssetPathType.Resources)]
-	public class BattleController : UIController<UIBattleView>
+	public class UIBattleController : UIController<UIBattleView>
 	{
+		/// <summary>
+		/// 캐릭터 목록.
+		/// </summary>
+		private List<GameObject> m_Characters;
+
 		/// <summary>
 		/// 카드 목록.
 		/// </summary>
-		private List<CardController> m_Cards;
+		private List<UICardController> m_Cards;
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleController() : base()
+		public UIBattleController() : base()
 		{
-			m_Cards = new List<CardController>();
+			m_Cards = new List<UICardController>();
 		}
 
 		/// <summary>
@@ -52,7 +57,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnReset()
 		{
-			Debug.Log("[BattleController] OnReset()");
+			Debug.Log("[UIBattleController] OnReset()");
 			//DispatchQueue.Instance.RunAsync(static () => {
 
 			//});
@@ -65,7 +70,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnMenu()
 		{
-			Debug.Log("[BattleController] OnMenu()");
+			Debug.Log("[UIBattleController] OnMenu()");
 
 			//Present();
 		}
@@ -81,22 +86,16 @@ namespace MillenniumOfCultivation.UI
 			process.Start(player, new List<AIController>() { enemy });
 
 			// 더미 카드 생성.
-			var cardCount = 5;
-			var spacing = 8f;
-			var cardSize = new Vector2(260f, 400f);
-			var totalWidth = cardCount * cardSize.x + (cardCount - 1) * spacing;
-			var startX = -totalWidth * 0.5f + cardSize.x * 0.5f;
+			var cardCount = 10;
 			for (var i = 0; i < cardCount; ++i)
 			{
-				var card = new CardController(Window);
+				var card = new UICardController(Window);
 				m_Cards.Add(card);
-
-				var x = startX + i * (cardSize.x + spacing);
 				card.View.transform.SetParent(View.Content, true);
-				card.View.RectTransform.anchoredPosition = new Vector2(x, 0f);
-				card.SetViewState(CardController.ViewState.Idle);
+				card.SetViewState(UICardController.ViewState.Idle);
 			}
 
+			UpdateAllCardPositions();
 			OnStart();
 		}
 
@@ -105,6 +104,24 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnStart()
 		{
+		}
+
+		/// <summary>
+		/// 카드 위치 갱신.
+		/// </summary>
+		private void UpdateAllCardPositions()
+		{
+			var cardCount = m_Cards.Count;
+			var spacing = 8f;
+			var cardSize = new Vector2(260f, 400f);
+			var totalWidth = cardCount * cardSize.x + (cardCount - 1) * spacing;
+			var startX = -totalWidth * 0.5f + cardSize.x * 0.5f;
+			for (var i = 0; i < m_Cards.Count; ++i)
+			{
+				var card = m_Cards[i];
+				var x = startX + i * (cardSize.x + spacing);
+				card.View.RectTransform.anchoredPosition = new Vector2(x, 0f);
+			}
 		}
 	}
 }

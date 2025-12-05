@@ -22,12 +22,12 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 트랜지션 컨트롤러.
 		/// </summary>
-		private TransitionController m_TransitionController;
+		private UITransitionController m_TransitionController;
 
 		/// <summary>
 		/// 트랜지션 컨트롤러 프로퍼티.
 		/// </summary>
-		public TransitionController TransitionController;
+		public UITransitionController TransitionController;
 
 		/// <summary>
 		/// 생성됨.
@@ -44,11 +44,21 @@ namespace MillenniumOfCultivation.UI
 			m_TransitionWindow.SetCamera(Camera);
 			m_TransitionWindow.SortingOrder = 1000;
 			m_TransitionWindow.SetResolution(new Vector2Int(1728, 1080));
-			m_TransitionController = new TransitionController();
+			m_TransitionController = new UITransitionController();
 			//m_TransitionController.Window = m_TransitionWindow;
 			//var view = m_TransitionController.View;
 			m_TransitionWindow.Present(m_TransitionController);
 			m_TransitionController.View.gameObject.SetActive(false);
+
+			// 멀티터치 잠금.
+			Input.multiTouchEnabled = false;
+		}
+
+		/// <summary>
+		/// 명령 실행.
+		/// </summary>
+		public void ExecuteCommand(string command)
+		{
 		}
 	}
 }
