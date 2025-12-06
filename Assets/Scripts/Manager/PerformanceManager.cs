@@ -104,19 +104,20 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public PerformanceManager() : base()
+		protected override void OnCreate()
 		{
-			m_Profile = PerformanceManager.High;
+			base.OnCreate();
 
+			m_Profile = PerformanceManager.High;
 			m_DefaultFixedDeltaTime = Time.fixedDeltaTime;
 		}
 
 		/// <summary>
 		/// 해제됨.
 		/// </summary>
-		protected override void OnDispose(bool explicitDisposing)
+		protected override void OnDispose()
 		{
-			base.OnDispose(explicitDisposing);
+			base.OnDispose();
 		}
 
 		/// <summary>

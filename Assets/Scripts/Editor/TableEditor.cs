@@ -96,7 +96,7 @@ public static class TableEditor
 					var csFilePath = Path.Combine(Projects.ScriptsDirectory, "Table", "Record", $"{tableName}Record.cs");
 					csFilePath = ReplaceFilePath(csFilePath);
 					Debug.Log($"[TableEditor] CS File: \"{csFilePath}\"");
-					writter.CreateCSToFile(csFilePath, dataTable, "", namespaces);
+					writter.CreateCSToFile(csFilePath, dataTable, "MillenniumOfCultivation", namespaces);
 				}
 
 				if (writeJSON)

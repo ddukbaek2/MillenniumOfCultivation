@@ -44,16 +44,17 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public PlatformManager() : base()
+		protected override void OnCreate()
 		{
+			base.OnCreate();
 		}
 
 		/// <summary>
 		/// 해제됨.
 		/// </summary>
-		protected override void OnDispose(bool explicitDisposing)
+		protected override void OnDispose()
 		{
-			base.OnDispose(explicitDisposing);
+			base.OnDispose();
 		}
 	}
 }

@@ -20,17 +20,19 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BattleManager() : base()
+		protected override void OnCreate()
 		{
+			base.OnCreate();
+
 			m_Process = new BattleProcess();
 		}
 
 		/// <summary>
 		/// 해제됨.
 		/// </summary>
-		protected override void OnDispose(bool explicitDisposing)
+		protected override void OnDispose()
 		{
-			base.OnDispose(explicitDisposing);
+			base.OnDispose();
 		}
 
 		/// <summary>

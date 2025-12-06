@@ -65,8 +65,10 @@ namespace MillenniumOfCultivation
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public MessageManager() : base()
+		protected override void OnCreate()
 		{
+			base.OnCreate();
+
 			if (Instance != this)
 				return;
 
@@ -85,7 +87,7 @@ namespace MillenniumOfCultivation
 			m_ReceviedMessages = new List<Message>();
 		}
 
-		protected override void OnDispose(bool explicitDisposing)
+		protected override void OnDispose()
 		{
 			if (IsConnected)
 			{
@@ -94,7 +96,7 @@ namespace MillenniumOfCultivation
 #endif
 			}
 
-			base.OnDispose(explicitDisposing);
+			base.OnDispose();
 		}
 
 		/// <summary>
