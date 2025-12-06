@@ -94,6 +94,7 @@ namespace MillenniumOfCultivation.UI
 				card.View.transform.SetParent(View.Content, true);
 				card.View.RectTransform.anchorMin = Vector2.one * 0.5f;
 				card.View.RectTransform.anchorMax = Vector2.one * 0.5f;
+				card.View.RectTransform.pivot = Vector2.one * 0.5f;
 				card.View.RectTransform.sizeDelta = new Vector2(240f, 400f);
 				card.SetViewState(UICardController.ViewState.Idle);
 			}
