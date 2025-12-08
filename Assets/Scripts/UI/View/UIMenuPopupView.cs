@@ -2,7 +2,7 @@ using Crockhead.Unity.UI;
 using UnityEngine;
 
 
-namespace MillenniumOfCultivation
+namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
 	/// 메뉴 팝업 화면.

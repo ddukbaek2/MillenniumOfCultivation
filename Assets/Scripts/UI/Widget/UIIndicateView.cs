@@ -5,7 +5,7 @@ using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 
-namespace MillenniumOfCultivation
+namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
 	/// 인디케이터.

@@ -5,10 +5,9 @@
 		"CardType": "None",
 		"Grade": "Common",
 		"ActionType": "Attack",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000001,
 		"CostAP": 1,
-		"Description": "공격+1"
+		"Description": "지정한 대상에게 공격력+1의 피해"
 	},
 	{
 		"Id": 10000002,
@@ -16,26 +15,25 @@
 		"CardType": "None",
 		"Grade": "Common",
 		"ActionType": "Skill",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000002,
 		"CostAP": 1,
 		"Description": "방어+1"
 	},
 	{
 		"Id": 10000003,
+		"Name": "은신술",
 		"CardType": "None",
 		"Grade": "Common",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000003,
-		"CostAP": 1
+		"CostAP": 1,
+		"Description": "은신: 1턴간 대상 지정 회피"
 	},
 	{
 		"Id": 10000004,
 		"CardType": "None",
 		"Grade": "Common",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000004,
 		"CostAP": 1
 	},
@@ -44,7 +42,6 @@
 		"CardType": "None",
 		"Grade": "Common",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000005,
 		"CostAP": 1
 	},
@@ -53,7 +50,6 @@
 		"CardType": "None",
 		"Grade": "Uncommon",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000006
 	},
 	{
@@ -62,7 +58,6 @@
 		"CardType": "None",
 		"Grade": "Rare",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000007,
 		"CostAP": 2
 	},
@@ -71,7 +66,6 @@
 		"CardType": "None",
 		"Grade": "Epic",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000008
 	},
 	{
@@ -79,7 +73,6 @@
 		"CardType": "None",
 		"Grade": "Legendary",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000009
 	},
 	{
@@ -87,7 +80,178 @@
 		"CardType": "None",
 		"Grade": "Mythic",
 		"ActionType": "None",
-		"ActionTarget": "None",
 		"ActionSkillTableId": 10000010
+	},
+	{
+		"Id": 10000011,
+		"Name": "정혈 태우기",
+		"CardType": "None",
+		"Grade": "R",
+		"ActionType": "Skill",
+		"ActionSkillTableId": 10000011,
+		"CostAP": 0,
+		"Shops": "0",
+		"Description": "사용시 최대 체력의 30% 소모, 다음 행동의 효과 2배"
+	},
+	{
+		"Id": 10000012,
+		"Name": "무명원신비법",
+		"CardType": "None",
+		"Grade": "E",
+		"ActionType": "Passive",
+		"ActionSkillTableId": 10000012,
+		"Shops": "0",
+		"Description": "소지시 신식+1, 법력+1"
+	},
+	{
+		"Id": 10000013,
+		"Name": "번천인",
+		"CardType": "None",
+		"Grade": "U",
+		"ActionType": "Skill",
+		"ActionSkillTableId": 10000013
+	},
+	{
+		"Id": 10000014,
+		"Name": "주작선: 염열파",
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000014,
+		"Explain": "주작의 불꽃을 사방으로 방출한다."
+	},
+	{
+		"Id": 10000015,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000015
+	},
+	{
+		"Id": 10000016,
+		"Name": "괴뢰 소환",
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000016
+	},
+	{
+		"Id": 10000017,
+		"Name": "백호 소환",
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000017
+	},
+	{
+		"Id": 10000018,
+		"Name": "귀호 소환",
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000018
+	},
+	{
+		"Id": 10000019,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000019
+	},
+	{
+		"Id": 10000020,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000020
+	},
+	{
+		"Id": 10000021,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000021
+	},
+	{
+		"Id": 10000022,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000022
+	},
+	{
+		"Id": 10000023,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000023
+	},
+	{
+		"Id": 10000024,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000024
+	},
+	{
+		"Id": 10000025,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000025
+	},
+	{
+		"Id": 10000026,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000026
+	},
+	{
+		"Id": 10000027,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000027
+	},
+	{
+		"Id": 10000028,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000028
+	},
+	{
+		"Id": 10000029,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000029
+	},
+	{
+		"Id": 10000030,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000030
+	},
+	{
+		"Id": 10000031,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000031
+	},
+	{
+		"Id": 10000032,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000032
+	},
+	{
+		"Id": 10000033,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000033
+	},
+	{
+		"Id": 10000034,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000034
+	},
+	{
+		"Id": 10000035,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000035
+	},
+	{
+		"Id": 10000036,
+		"CardType": "None",
+		"ActionType": "None",
+		"ActionSkillTableId": 10000036
 	}
 ]

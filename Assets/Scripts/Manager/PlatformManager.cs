@@ -42,6 +42,17 @@ namespace MillenniumOfCultivation
 		}
 
 		/// <summary>
+		/// 입력 종류 프로퍼티.
+		/// </summary>
+		public InputType InputType
+		{
+			get
+			{
+				return InputType.None;
+			}
+		}
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		protected override void OnCreate()

@@ -17,10 +17,10 @@ using MillenniumOfCultivation.Battle;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// CardTable Recordable Data.
+	/// MaterialTable Recordable Data.
 	/// </summary>
 	[JsonObject(MemberSerialization.OptIn)]
-	public class CardTableRecord : IRecordable
+	public class MaterialTableRecord : IRecordable
 	{
 		/// <summary>
 		/// Id.
@@ -35,52 +35,22 @@ namespace MillenniumOfCultivation
 		public string Name { set; get; }
 		
 		/// <summary>
-		/// CardType.
+		/// ItemType.
 		/// </summary>
 		[JsonProperty]
-		public CardType CardType { set; get; }
+		public int ItemType { set; get; }
 		
 		/// <summary>
-		/// Grade.
+		/// MaterialType.
 		/// </summary>
 		[JsonProperty]
-		public GradeType Grade { set; get; }
+		public string MaterialType { set; get; }
 		
 		/// <summary>
-		/// ActionType.
+		/// Icon.
 		/// </summary>
 		[JsonProperty]
-		public CardActionType ActionType { set; get; }
-		
-		/// <summary>
-		/// ActionSkillTableId.
-		/// </summary>
-		[JsonProperty]
-		public int ActionSkillTableId { set; get; }
-		
-		/// <summary>
-		/// AssetPath.
-		/// </summary>
-		[JsonProperty]
-		public string AssetPath { set; get; }
-		
-		/// <summary>
-		/// CostAP.
-		/// </summary>
-		[JsonProperty]
-		public int CostAP { set; get; }
-		
-		/// <summary>
-		/// Explain.
-		/// </summary>
-		[JsonProperty]
-		public string Explain { set; get; }
-		
-		/// <summary>
-		/// Shops.
-		/// </summary>
-		[JsonProperty]
-		public string Shops { set; get; }
+		public string Icon { set; get; }
 		
 		/// <summary>
 		/// Description.
@@ -93,7 +63,7 @@ namespace MillenniumOfCultivation
 			/// </summary>
 			int IRecordable.GetFieldCount()
 			{
-				return 11;
+				return 6;
 			}
 			
 			/// <summary>
@@ -105,15 +75,10 @@ namespace MillenniumOfCultivation
 				{
 					case 0: return "Id";
 					case 1: return "Name";
-					case 2: return "CardType";
-					case 3: return "Grade";
-					case 4: return "ActionType";
-					case 5: return "ActionSkillTableId";
-					case 6: return "AssetPath";
-					case 7: return "CostAP";
-					case 8: return "Explain";
-					case 9: return "Shops";
-					case 10: return "Description";
+					case 2: return "ItemType";
+					case 3: return "MaterialType";
+					case 4: return "Icon";
+					case 5: return "Description";
 					default: return string.Empty;
 				}
 			}
@@ -127,15 +92,10 @@ namespace MillenniumOfCultivation
 				{
 					case 0: return Id.GetType();
 					case 1: return Name.GetType();
-					case 2: return CardType.GetType();
-					case 3: return Grade.GetType();
-					case 4: return ActionType.GetType();
-					case 5: return ActionSkillTableId.GetType();
-					case 6: return AssetPath.GetType();
-					case 7: return CostAP.GetType();
-					case 8: return Explain.GetType();
-					case 9: return Shops.GetType();
-					case 10: return Description.GetType();
+					case 2: return ItemType.GetType();
+					case 3: return MaterialType.GetType();
+					case 4: return Icon.GetType();
+					case 5: return Description.GetType();
 					default: return null;
 				}
 			}
@@ -149,15 +109,10 @@ namespace MillenniumOfCultivation
 				{
 					case 0: return Id;
 					case 1: return Name;
-					case 2: return CardType;
-					case 3: return Grade;
-					case 4: return ActionType;
-					case 5: return ActionSkillTableId;
-					case 6: return AssetPath;
-					case 7: return CostAP;
-					case 8: return Explain;
-					case 9: return Shops;
-					case 10: return Description;
+					case 2: return ItemType;
+					case 3: return MaterialType;
+					case 4: return Icon;
+					case 5: return Description;
 					default: return null;
 				}
 			}
