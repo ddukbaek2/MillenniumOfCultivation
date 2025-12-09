@@ -212,6 +212,11 @@
             JSON 정합성 테스트.
             </summary>
         </member>
+        <member name="T:Crockhead.Table.EnumTable">
+            <summary>
+            열거체 테이블.
+            </summary>
+        </member>
         <member name="T:Crockhead.Table.RawTable">
             <summary>
             원시 테이블. (2차원 배열)

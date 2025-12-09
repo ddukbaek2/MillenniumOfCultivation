@@ -5,21 +5,27 @@ using UnityEngine;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// 던전.
+	/// 맵.
 	/// </summary>
-	public class Dungeon : Disposable
+	public class Map<T> : Disposable
 	{
 		/// <summary>
 		/// 크기.
 		/// </summary>
-		private Map<int> m_Map;
+		public Vector2Int Size { get; }
+
+		/// <summary>
+		/// 데이터.
+		/// </summary>
+		public T[] Data { get; }
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public Dungeon(Vector2Int size) : base()
+		public Map(Vector2Int size) : base()
 		{
-			m_Map = new Map<int>(size);
+			Size = size;
+			Data = new T[size.x * size.y];
 		}
 
 		/// <summary>
@@ -27,6 +33,15 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		protected override void OnDispose(bool explicitDisposing)
 		{
+
+		}
+
+		/// <summary>
+		/// 빌드됨.
+		/// </summary>
+		protected virtual void OnBuild(T[] map)
+		{
+
 		}
 
 		/// <summary>
@@ -34,7 +49,8 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		public void Generate()
 		{
-			m_Map.Generate();
+			var map = Data;
+			OnBuild(map);
 		}
 	}
 }

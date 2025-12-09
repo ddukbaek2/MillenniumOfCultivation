@@ -1,7 +1,10 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
+using DG.Tweening;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace MillenniumOfCultivation.UI
@@ -57,44 +60,52 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnInitialize()
 		{
 			base.OnInitialize();
-
 			SetAnchor(true);
 		}
 
+		/// <summary>
+		/// 등장 연출.
+		/// </summary>
+		public async Task PlayApearAnimation(Action completion)
+		{
+			var content = GetOrAddComponent<RectTransform>("Content");
+			content.anchoredPosition = new Vector2(-364f, 0f);
+			var tweener = content.DOAnchorPosX(0f, 1f);
+			tweener.SetDelay(0.5f);
+			tweener.OnComplete(new TweenCallback(completion));
+			await tweener.AsyncWaitForCompletion();
+		}
+
+		/// <summary>
+		/// 시작.
+		/// </summary>
 		private void OnClickPlay()
 		{
 			OnPlayEvent?.Invoke();
 		}
 
+		/// <summary>
+		/// 설정.
+		/// </summary>
 		private void OnClickOption()
 		{
 			OnOptionEvent?.Invoke();
 		}
 
+		/// <summary>
+		/// 만든이.
+		/// </summary>
 		private void OnClickCredit()
 		{
 			OnCreditEvent?.Invoke();
 		}
 
+		/// <summary>
+		/// 나가기.
+		/// </summary>
 		private void OnClickExit()
 		{
 			OnExitEvent?.Invoke();
 		}
-
-		///// <summary>
-		///// 애니메이션 시작.
-		///// </summary>
-		//public async Task StartAnimation(Action completion)
-		//{
-		//	static IEnumerator BattleProcess(Image overlayImage, Action completion)
-		//	{
-		//		overlayImage.color = Color.black;
-		//		var tween = overlayImage.DOColor(Color.clear, 2f);
-		//		yield return tween.WaitForCompletion();
-		//		completion?.Invoke();
-		//	}
-
-		//	await TaskHelper.StartForeground(BattleProcess(m_OverlayImage, completion));
-		//}
 	}
 }

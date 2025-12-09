@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 484630819406506879}
   - component: {fileID: 3184449143428937152}
   - component: {fileID: 8581850486867751811}
-  - component: {fileID: 3832090082921793932}
+  - component: {fileID: 8932160749476403238}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3832090082921793932
+--- !u!114 &8932160749476403238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4548417135457296103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e5f04c1ab493f4d8c32648eb8b739b, type: 3}
+  m_Script: {fileID: 11500000, guid: b870fdcf84d411549b666ed5e529f4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_RectTransform: {fileID: 3396797843441872148}

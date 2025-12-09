@@ -33,8 +33,16 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnCreate();
 
-			if (IsDestroyed())
-				return;
+			// 멀티터치 잠금.
+			Input.multiTouchEnabled = false;
+		}
+
+		/// <summary>
+		/// 초기화됨.
+		/// </summary>
+		protected override void OnInitialize()
+		{
+			base.OnInitialize();
 
 			// 트랜지션용 오버레이 윈도우. (등록하지 않음)
 			m_TransitionWindow = TransformHelper.GetOrAddComponent<UIWindow>(transform, "TransitionWindow");
@@ -46,9 +54,6 @@ namespace MillenniumOfCultivation.UI
 			//var view = m_TransitionController.View;
 			m_TransitionWindow.Present(m_TransitionController);
 			m_TransitionController.View.gameObject.SetActive(false);
-
-			// 멀티터치 잠금.
-			Input.multiTouchEnabled = false;
 		}
 
 		/// <summary>

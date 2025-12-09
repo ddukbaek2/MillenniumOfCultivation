@@ -7,5 +7,20 @@ namespace MillenniumOfCultivation
 	/// </summary>
 	public class InputManager : SharedClass<InputManager>
 	{
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		protected override void OnCreate()
+		{
+			base.OnCreate();
+		}
+
+		/// <summary>
+		/// 해제됨.
+		/// </summary>
+		protected override void OnDispose()
+		{
+			base.OnDispose();
+		}
 	}
 }

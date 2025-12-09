@@ -1,9 +1,7 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using MillenniumOfCultivation.Battle;
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
 namespace MillenniumOfCultivation.UI

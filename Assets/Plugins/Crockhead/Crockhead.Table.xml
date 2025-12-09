@@ -221,33 +221,38 @@
             모든 레코드 반환.
             </summary>
         </member>
-        <member name="T:Crockhead.Table.Record">
+        <member name="T:Crockhead.Table.Recordable">
             <summary>
             테이블에서 사용되는 1건의 기록 데이터.
             <para>IRecordable 인터페이스 구현체.</para>
             </summary>
         </member>
-        <member name="P:Crockhead.Table.Record.Id">
+        <member name="P:Crockhead.Table.Recordable.Fields">
+            <summary>
+            필드 배열 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Recordable.Id">
             <summary>
             고유 식별자 프로퍼티.
             </summary>
         </member>
-        <member name="M:Crockhead.Table.Record.Crockhead#Table#IRecordable#GetFieldCount">
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldCount">
             <summary>
             필드 갯수.
             </summary>
         </member>
-        <member name="M:Crockhead.Table.Record.Crockhead#Table#IRecordable#GetFieldName(System.Int32)">
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldName(System.Int32)">
             <summary>
             필드 이름.
             </summary>
         </member>
-        <member name="M:Crockhead.Table.Record.Crockhead#Table#IRecordable#GetFieldType(System.Int32)">
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldType(System.Int32)">
             <summary>
             필드 타입.
             </summary>
         </member>
-        <member name="M:Crockhead.Table.Record.Crockhead#Table#IRecordable#GetFieldValue(System.Int32)">
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldValue(System.Int32)">
             <summary>
             필드 값.
             </summary>
@@ -257,7 +262,7 @@
             테이블.
             <para>기록 객체를 보관하는 컬렉션.</para>
             <para>모든 레코드는 동일 컬렉션안에서 정수형 고유식별자를 들고 있으며 해당 레코드의 고유식별자를 키로 사용.</para>
-            <para>IEnumerable.Record 인터페이스 구현체.</para>
+            <para>IEnumerable.Recordable 인터페이스 구현체.</para>
             </summary>
         </member>
         <member name="F:Crockhead.Table.Table.m_Records">
@@ -345,7 +350,7 @@
         <member name="M:Crockhead.Table.Table.System#Collections#Generic#IEnumerable{Crockhead#Table#IRecordable}#GetEnumerator">
             <summary>
             열거 제공자 반환.
-            <para>IEnumerable.Record 인터페이스 구현.</para>
+            <para>IEnumerable.Recordable 인터페이스 구현.</para>
             </summary>
         </member>
         <member name="M:Crockhead.Table.Table.System#Collections#IEnumerable#GetEnumerator">

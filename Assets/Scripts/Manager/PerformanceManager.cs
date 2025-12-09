@@ -24,6 +24,7 @@ namespace MillenniumOfCultivation
 			RenderScale = 0.5f,
 		};
 
+
 		/// <summary>
 		/// 성능: 낮음 설정.
 		/// </summary>
@@ -35,6 +36,7 @@ namespace MillenniumOfCultivation
 			RunInBackground = false,
 			RenderScale = 0.7f,
 		};
+
 
 		/// <summary>
 		/// 성능: 보통 설정.
@@ -48,6 +50,7 @@ namespace MillenniumOfCultivation
 			RenderScale = 1f,
 		};
 
+
 		/// <summary>
 		/// 성능: 높음 설정.
 		/// </summary>
@@ -60,6 +63,7 @@ namespace MillenniumOfCultivation
 			RenderScale = 1.2f,
 		};
 
+
 		/// <summary>
 		/// 성능: 매우 높음 설정.
 		/// </summary>
@@ -71,6 +75,7 @@ namespace MillenniumOfCultivation
 			RunInBackground = true,
 			RenderScale = 1.5f,
 		};
+
 
 		/// <summary>
 		/// 원래의 물리 연산 갱신 주기.

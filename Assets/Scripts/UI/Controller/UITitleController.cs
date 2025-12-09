@@ -35,10 +35,14 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
+			// 이벤트 바인딩.
 			View.OnPlayEvent += OnPlay;
 			View.OnOptionEvent += OnOption;
 			View.OnCreditEvent += OnCredit;
 			View.OnExitEvent += OnExit;
+
+			// 애니메이션 시작.
+			View.PlayApearAnimation(OnCompleteAnimation);
 
 			//DispatchQueue.Instance.RunAsync(async () =>
 			//{
@@ -52,6 +56,13 @@ namespace MillenniumOfCultivation.UI
 			//	var view = battle.View;
 			//	UIManager.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeOut, null);
 			//});
+		}
+
+		/// <summary>
+		/// 애니메이션 완료.
+		/// </summary>
+		private void OnCompleteAnimation()
+		{
 		}
 
 		/// <summary>

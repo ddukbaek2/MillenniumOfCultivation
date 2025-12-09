@@ -29,6 +29,7 @@ namespace MillenniumOfCultivation
 
 			// 공유 인스턴스 캐시 비우기.
 			SharedInstances.Clear();
+			UnityRuntime.Create();
 
 			// 카메라 생성.
 			var assetLoader = new AssetLoader<GameObject>("Assets/Resources/Base/MainCamera.prefab");
@@ -55,7 +56,7 @@ namespace MillenniumOfCultivation
 			MessageManager.Create();
 			BattleManager.Create();
 
-			RunUI();
+			DispatchQueue.Foreground.RunNextFrameAsync(RunUI);
 		}
 
 		/// <summary>

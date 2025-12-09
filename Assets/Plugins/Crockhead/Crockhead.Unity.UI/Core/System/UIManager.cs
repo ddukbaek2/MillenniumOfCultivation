@@ -50,9 +50,6 @@ namespace Crockhead.Unity.UI
 		{
 			base.OnCreate();
 
-			if (IsDestroyed())
-				return;
-
 			// 카메라 설정.
 			if (m_Camera == null)
 			{
@@ -71,6 +68,16 @@ namespace Crockhead.Unity.UI
 
 			// 윈도우 찾아보고 없으면 생성해서 등록.
 			m_Windows = new UIWindows();
+
+		}
+
+		/// <summary>
+		/// 초기화됨.
+		/// </summary>
+		protected override void OnInitialize()
+		{
+			base.OnInitialize();
+
 			var window = TransformHelper.GetOrAddComponent<UIWindow>(transform, "Window");
 			m_Windows.Register(window);
 			window.SetCamera(m_Camera);
