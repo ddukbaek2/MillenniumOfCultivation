@@ -58,11 +58,8 @@ namespace MillenniumOfCultivation.UI
 		private void OnReset()
 		{
 			Debug.Log("[UIBattleController] OnReset()");
-			//DispatchQueue.Instance.RunAsync(static () => {
-
-			//});
-			RuntimeInitializer.Shutdown();
-			RuntimeInitializer.Initialize();
+			DispatchQueue.Foreground.RunNextFrameAsync(RuntimeInitializer.Shutdown);
+			DispatchQueue.Foreground.RunAsync(RuntimeInitializer.Initialize, 2);
 		}
 
 		/// <summary>

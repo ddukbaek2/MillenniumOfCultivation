@@ -30,7 +30,8 @@ namespace MillenniumOfCultivation
 			// 프레임워크 초기화.
 			// 공유 인스턴스 캐시 비우기.
 			SharedInstances.Clear();
-			UnityRuntime.Create();
+			var unityRuntime = UnityRuntime.Create();
+			GameObject.DontDestroyOnLoad(unityRuntime.gameObject);
 
 			// 초기화.
 			Initialize();
@@ -77,9 +78,6 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		private static void RunUI()
 		{
-			Input.multiTouchEnabled = false;
-
-			// 시작.
 			var intro = new UIIntroController();
 			UIManager.Instance.Present(intro);
 		}
