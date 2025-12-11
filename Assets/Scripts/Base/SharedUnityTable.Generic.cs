@@ -1,5 +1,7 @@
 using Crockhead.Table;
 using Crockhead.Unity.Table;
+using System;
+using UnityEngine;
 
 
 namespace MillenniumOfCultivation
@@ -18,8 +20,18 @@ namespace MillenniumOfCultivation
 		{
 			base.OnCreate();
 
-			var reader = new RecordArrayAssetReader<TRecordable>(this);
-			LoadTable(reader);
+			Debug.Log("[SharedUnityTable] OnCreate()");
+
+			try
+			{
+				var reader = new RecordArrayAssetReader<TRecordable>(this);
+				reader.Read();
+				LoadTable(reader);
+			}
+			catch (Exception exception)
+			{
+				Debug.LogException(exception);
+			}
 		}
 
 		/// <summary>
@@ -28,6 +40,13 @@ namespace MillenniumOfCultivation
 		protected override void OnTableDidLoad()
 		{
 			base.OnTableDidLoad();
+
+			Debug.Log("[SharedUnityTable] OnTableDidLoad()");
+
+			foreach (var record in Collection)
+			{
+				Debug.Log($"[{GetType().Name}] Record={record.Id}");
+			}
 		}
 	}
 }

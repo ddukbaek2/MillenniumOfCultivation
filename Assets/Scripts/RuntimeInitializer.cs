@@ -27,15 +27,10 @@ namespace MillenniumOfCultivation
 
 			Debug.Log("[RuntimeInitializer] Run()");
 
+			// 프레임워크 초기화.
 			// 공유 인스턴스 캐시 비우기.
 			SharedInstances.Clear();
 			UnityRuntime.Create();
-
-			// 카메라 생성.
-			var assetLoader = new AssetLoader<GameObject>("Assets/Resources/Base/MainCamera.prefab");
-			assetLoader.Load();
-			var obj = GameObject.Instantiate(assetLoader.Asset);
-			GameObject.DontDestroyOnLoad(obj);
 
 			// 초기화.
 			Initialize();
@@ -51,11 +46,13 @@ namespace MillenniumOfCultivation
 			// 매니저 생성.
 			PlatformManager.Create();
 			PerformanceManager.Create();
+			CameraManager.Create();
 			SoundManager.Create();
 			UIManager.Create();
 			MessageManager.Create();
 			BattleManager.Create();
 
+			// 다음 프레임에 실행.
 			DispatchQueue.Foreground.RunNextFrameAsync(RunUI);
 		}
 
@@ -83,8 +80,6 @@ namespace MillenniumOfCultivation
 			Input.multiTouchEnabled = false;
 
 			// 시작.
-			//var battleController = new UIBattleController(UIManager.Instance.TopWindow);
-			//UIManager.Instance.Present(battleController);		
 			var intro = new UIIntroController();
 			UIManager.Instance.Present(intro);
 		}

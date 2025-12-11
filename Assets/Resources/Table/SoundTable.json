@@ -7,15 +7,21 @@
 	},
 	{
 		"Id": 10000002,
-		"Name": "Sound_UI_Click",
+		"Name": "Sound_UI_Select",
 		"Type": "UI",
-		"AssetPath": "Assets/Resources/Sound/UI/Click.ogg"
+		"AssetPath": "Assets/Resources/Sound/UI/00104.wav"
 	},
 	{
-		"Id": 10000003
+		"Id": 10000003,
+		"Name": "Sound_UI_Cancel",
+		"Type": "UI",
+		"AssetPath": "Assets/Resources/Sound/UI/00103.wav"
 	},
 	{
-		"Id": 10000004
+		"Id": 10000004,
+		"Name": "Sound_UI_Confirm",
+		"Type": "UI",
+		"AssetPath": "Assets/Resources/Sound/UI/00106.wav"
 	},
 	{
 		"Id": 10000005

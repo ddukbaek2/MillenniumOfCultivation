@@ -32,12 +32,34 @@ namespace MillenniumOfCultivation
 		{
 			try
 			{
-				var assetPath = "Assets/Resources/Sound/UI/00103.wav";
+				//var assetPath = "Assets/Resources/Sound/UI/00103.wav";
+				//var assetPathType = AssetPathType.Resources;
+				//var soundType = SoundType.UI;
+				var soundTableRecord = SoundTable.Instance.Find(soundTableId);
+				var assetPath = soundTableRecord.AssetPath;
+				var assetPathType = AssetPathType.Resources; // soundTableRecord.AssetPathType;
+				var soundType = soundTableRecord.Type;
+
+				var sound = Play(assetPath, assetPathType, soundType);
+				return sound;
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// 재생.
+		/// </summary>
+		public Sound Play(string name)
+		{
+			try
+			{
+				var soundTableRecord = SoundTable.Instance.Find(record => record.Name == name);
+				var assetPath = soundTableRecord.AssetPath;
 				var assetPathType = AssetPathType.Resources;
-				var soundType = SoundType.UI;
-				//using var assetReader = new AssetReader<AudioClip>(assetPath, assetPathType);
-				//assetReader.Read();
-				//var audioClip = assetReader.Result;
+				var soundType = soundTableRecord.Type;
 
 				var sound = Play(assetPath, assetPathType, soundType);
 				return sound;

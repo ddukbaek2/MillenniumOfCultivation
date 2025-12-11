@@ -81,6 +81,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnClickPlay()
 		{
+			SoundManager.Instance.Play("Sound_UI_Select");
 			OnPlayEvent?.Invoke();
 		}
 
@@ -89,6 +90,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnClickOption()
 		{
+			SoundManager.Instance.Play("Sound_UI_Select");
 			OnOptionEvent?.Invoke();
 		}
 
@@ -97,6 +99,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnClickCredit()
 		{
+			SoundManager.Instance.Play("Sound_UI_Select");
 			OnCreditEvent?.Invoke();
 		}
 
@@ -105,6 +108,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnClickExit()
 		{
+			SoundManager.Instance.Play("Sound_UI_Select");
 			OnExitEvent?.Invoke();
 		}
 	}
