@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -60,7 +59,7 @@ namespace Crockhead.Unity.UI
 			if (m_EventSystem == null)
 			{
 				m_EventSystem = TransformHelper.GetOrAddComponent<EventSystem>(transform, "EventSystem");
-				m_EventSystem.AddComponent<InputSystemUIInputModule>();
+				TransformHelper.GetOrAddComponent<InputSystemUIInputModule>(m_EventSystem.transform);
 			}
 
 			// 카메라 바인딩.
