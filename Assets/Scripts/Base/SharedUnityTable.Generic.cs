@@ -14,24 +14,20 @@ namespace MillenniumOfCultivation
 		where TRecordable : IRecordable
 	{
 		/// <summary>
+		/// 타입 이름 프로퍼티.
+		/// </summary>
+		public static string TypeName => typeof(TSharedTable).Name;
+
+		/// <summary>
 		/// 생성됨.
 		/// </summary>
 		protected override void OnCreate()
 		{
 			base.OnCreate();
 
-			Debug.Log("[SharedUnityTable] OnCreate()");
+			Debug.Log($"[{TypeName}] OnCreate()");
 
-			try
-			{
-				var reader = new RecordArrayAssetReader<TRecordable>(this);
-				reader.Read();
-				LoadTable(reader);
-			}
-			catch (Exception exception)
-			{
-				Debug.LogException(exception);
-			}
+			Load();
 		}
 
 		/// <summary>
@@ -41,11 +37,28 @@ namespace MillenniumOfCultivation
 		{
 			base.OnTableDidLoad();
 
-			Debug.Log("[SharedUnityTable] OnTableDidLoad()");
+			Debug.Log($"[{TypeName}] OnTableDidLoad()");
 
 			foreach (var record in Collection)
 			{
-				Debug.Log($"[{GetType().Name}] Record={record.Id}");
+				Debug.Log($"[{TypeName}] Record={record.Id}");
+			}
+		}
+
+		/// <summary>
+		/// 불러오기.
+		/// </summary>
+		public void Load()
+		{
+			try
+			{
+				var reader = new RecordArrayAssetReader<TRecordable>(this);
+				reader.Read();
+				LoadTable(reader);
+			}
+			catch (Exception exception)
+			{
+				Debug.LogException(exception);
 			}
 		}
 	}
