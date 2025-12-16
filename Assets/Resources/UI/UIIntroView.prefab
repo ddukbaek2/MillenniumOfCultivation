@@ -281,7 +281,7 @@ MonoBehaviour:
   m_BackgroundImage: {fileID: 590883632289786206}
   m_LogoImage: {fileID: 624047987674153879}
   m_OverlayImage: {fileID: 7388122402195452523}
-  m_TouchArea: {fileID: 5877777442023466324}
+  m_TouchArea: {fileID: 0}
 --- !u!1 &8769291588217379618
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5641359035972850153}
   - component: {fileID: 1792776849311889935}
-  - component: {fileID: 5877777442023466324}
+  - component: {fileID: 5237692712275709556}
   m_Layer: 5
   m_Name: TouchArea
   m_TagString: Untagged
@@ -327,7 +327,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8769291588217379618}
   m_CullTransparentMesh: 1
---- !u!114 &5877777442023466324
+--- !u!114 &5237692712275709556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8769291588217379618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd81785a13a6714691f6e4fda7f97a2, type: 3}
+  m_Script: {fileID: 11500000, guid: d067e62d61720b84bba418b62421caf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -347,3 +347,4 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  m_RectTransform: {fileID: 5641359035972850153}

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 
@@ -50,8 +49,13 @@ namespace Crockhead.Unity.UI
 		{
 			base.OnCreate();
 
-			m_StartSelectionIndex = -1; // inclusive
-			m_EndSelectionIndex = -1; // exclusive
+			m_StartSelectionIndex = -1;
+			m_EndSelectionIndex = -1;
+
+			if (m_LabelView == null)
+			{
+				m_LabelView = GetComponent<UILabelView>();
+			}
 		}
 
 		/// <summary>
@@ -59,8 +63,21 @@ namespace Crockhead.Unity.UI
 		/// </summary>
 		public void SetSelection(int startSelectionIndex, int endSelectionIndex)
 		{
-			m_StartSelectionIndex = startSelectionIndex;
-			m_EndSelectionIndex = endSelectionIndex;
+			if (startSelectionIndex < 0 || endSelectionIndex < 0)
+			{
+				m_StartSelectionIndex = -1;
+				m_EndSelectionIndex = -1;
+			}
+			else if (endSelectionIndex < startSelectionIndex)
+			{
+				m_StartSelectionIndex = endSelectionIndex;
+				m_EndSelectionIndex = startSelectionIndex;
+			}
+			else
+			{
+				m_StartSelectionIndex = startSelectionIndex;
+				m_EndSelectionIndex = endSelectionIndex;
+			}
 
 			// 정점 정보 갱신.
 			SetVerticesDirty();
@@ -71,106 +88,89 @@ namespace Crockhead.Unity.UI
 		/// </summary>
 		protected override void OnPopulateMesh(VertexHelper vertexHelper)
 		{
+			// 정점 비우기.
 			base.OnPopulateMesh(vertexHelper);
 
-			if (m_LabelView == null)
-				return;
-			if (m_StartSelectionIndex < 0 || m_EndSelectionIndex < 0 || m_EndSelectionIndex < m_StartSelectionIndex)
+			// 선택 영역 메쉬 생성.
+			RebuildSelection(vertexHelper, this, m_LabelView, m_StartSelectionIndex, m_EndSelectionIndex);
+		}
+
+		/// <summary>
+		/// 선택 영역 표시를 위한 메쉬 생성.
+		/// </summary>
+		protected static void RebuildSelection(VertexHelper vertexHelper, UIGraphicView graphicView, UILabelView labelView, int startSelectionIndex, int endSelectionIndex)
+		{
+			// 대상이 되는 레이블 뷰가 없을 경우 중단.
+			if (labelView == null)
 				return;
 
-			var textInfo = m_LabelView.textInfo;
+			// 선택 구간이 음수일 경우와 시작 종료 위치가 비정상일 경우 선택 기능을 사용하지 않는 상태이므로 중단.
+			if (startSelectionIndex < 0 || endSelectionIndex < 0 || endSelectionIndex < startSelectionIndex)
+				return;
+
+			// 레이블 뷰에서 출력되는 문자열이 없을 경우 중단.
+			var textInfo = labelView.textInfo;
 			var characterCount = textInfo.characterCount;
 			if (characterCount <= 0)
 				return;
 
-			var startIndex = Mathf.Clamp(m_StartSelectionIndex, 0, characterCount);
-			var endIndex = Mathf.Clamp(m_EndSelectionIndex, 0, characterCount);
-			if (endIndex <= startIndex)
+			// 선택 구간이 실제 문자열 구간을 벗어나지 않도록 정규화.
+			startSelectionIndex = Mathf.Clamp(startSelectionIndex, 0, characterCount - 1);
+			endSelectionIndex = Mathf.Clamp(endSelectionIndex, 0, characterCount - 1);
+
+			// 정규화된 선택 구간의 시작 종료 위치가 비정상일 경우 선택 기능 출력에 문제가 생기므로 중단.
+			if (endSelectionIndex < startSelectionIndex)
 				return;
 
-			var index = startIndex;
-			while (index < endIndex)
+			var vertices = new Vector3[4];
+			foreach (var lineInfo in textInfo.lineInfo)
 			{
-				if (index >= characterCount)
-					break;
+				//// 현재 라인이 보이지 않는 라인이라면 건너뛰기.
+				//if (lineInfo.firstVisibleCharacterIndex < 0 || lineInfo.lastVisibleCharacterIndex < 0)
+				//	continue;
 
-				var line = textInfo.characterInfo[index].lineNumber;
-				var left = float.PositiveInfinity;
-				var right = float.NegativeInfinity;
-				var top = float.NegativeInfinity;
-				var bottom = float.PositiveInfinity;
+				// 현재 라인이 선택 영역이 겹치지 않는 라인이라면 건너뛰기.
+				var intersects = startSelectionIndex <= lineInfo.lastCharacterIndex && lineInfo.firstCharacterIndex <= endSelectionIndex;
+				if (!intersects)
+					continue;
 
-				var current = index;
-				while (current < endIndex && current < characterCount && textInfo.characterInfo[current].lineNumber == line)
-				{
-					var characterInfo = textInfo.characterInfo[current];
+				// 현재 라인의 선택 구간을 실제 보여지는 구간으로 설정.
+				//var startLineIndex = Mathf.Max(startSelectionIndex, lineInfo.firstVisibleCharacterIndex);
+				//var endLineIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastVisibleCharacterIndex);
 
-					switch (characterInfo.character)
-					{
-						case '\n':
-						case '\r':
-							{
-								break;
-							}
+				// 현재 라인의 선택 구간을 설정.
+				var startLineIndex = Mathf.Max(startSelectionIndex, lineInfo.firstCharacterIndex);
+				var endLineIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastCharacterIndex);
 
-						default:
-							{
-								left = Mathf.Min(left, characterInfo.bottomLeft.x);
-								right = Mathf.Max(right, characterInfo.bottomRight.x);
-								top = Mathf.Max(top, characterInfo.topLeft.y);
-								bottom = Mathf.Min(bottom, characterInfo.bottomLeft.y);
-								break;
-							}
-					}
+				// 현재 라인에서는 실제로 한글자도 보여지지 않는다면 건너뛰기.
+				if (startLineIndex > endLineIndex)
+					continue;
 
-					++current;
-				}
+				// 현재 라인의 선택 구간에 대한 글자 정보를 가져옴.
+				var startCharacterInfo = textInfo.characterInfo[startLineIndex];
+				var endCharacterInfo = textInfo.characterInfo[endLineIndex];
 
-				if (!float.IsInfinity(left) && right > left && top > bottom)
-				{
-					UILabelSelectionView.AddQuad(vertexHelper, RectTransform, m_LabelView.RectTransform, left, bottom, right, top, color);
-				}
+				// 첫 글자의 좌하 좌표와 마지막 글자의 우상 좌표를 가져와 범위값 생성.
+				//var minBound = startCharacterInfo.bottomLeft;
+				//var maxBound = endCharacterInfo.topRight;
 
-				index = current;
+				// 첫 글자의 좌측 좌표와 마지막 글자의 우측좌표 + 증가폭 그리고 현재 라인의 상하 좌표를 가져와 범위값 생성.
+				var minBound = new Vector2(startCharacterInfo.origin, lineInfo.descender);
+				var maxBound = new Vector2(endCharacterInfo.origin + endCharacterInfo.xAdvance, lineInfo.ascender);
+
+				// 사각형을 그리기 위한 정점은 LB < LT < RT < RB 로 CW 순서. (0,1,2 < 0,1,3)
+				var worldPosition = labelView.RectTransform.TransformPoint(minBound);
+				vertices[0] = graphicView.RectTransform.InverseTransformPoint(worldPosition);
+				worldPosition = labelView.RectTransform.TransformPoint(new Vector2(minBound.x, maxBound.y));
+				vertices[1] = graphicView.RectTransform.InverseTransformPoint(worldPosition);
+				worldPosition = labelView.RectTransform.TransformPoint(maxBound);
+				vertices[2] = graphicView.RectTransform.InverseTransformPoint(worldPosition);
+				worldPosition = labelView.RectTransform.TransformPoint(new Vector2(maxBound.x, minBound.y));
+				vertices[3] = graphicView.RectTransform.InverseTransformPoint(worldPosition);
+
+				// 사각형 추가.
+				UIGraphicView.AddQuad(vertexHelper, vertices, UIGraphicView.UV, Color.white);
 			}
-		}
-
-		/// <summary>
-		/// 사각형 추가.
-		/// </summary>
-		public static void AddQuad(VertexHelper vertexHelper,
-			RectTransform currentRectTransform, RectTransform targetRectTransform, 
-			float xMin, float yMin, float xMax, float yMax,
-			Color color)
-		{
-			// 레이블 뷰의 문자열 오프셋을 레이블 뷰의 로컬 좌표계로 변경.
-			var w0 = targetRectTransform.TransformPoint(new Vector3(xMin, yMin, 0f));
-			var w1 = targetRectTransform.TransformPoint(new Vector3(xMin, yMax, 0f));
-			var w2 = targetRectTransform.TransformPoint(new Vector3(xMax, yMax, 0f));
-			var w3 = targetRectTransform.TransformPoint(new Vector3(xMax, yMin, 0f));
-
-			// 레이블 뷰의 로컬 좌표계를 현재 뷰의 오프셋으로 변경.
-			var p0 = currentRectTransform.InverseTransformPoint(w0);
-			var p1 = currentRectTransform.InverseTransformPoint(w1);
-			var p2 = currentRectTransform.InverseTransformPoint(w2);
-			var p3 = currentRectTransform.InverseTransformPoint(w3);
-
-			// 정점 추가.
-			var vertexStartIndex = vertexHelper.currentVertCount;
-			var vertex = UIVertex.simpleVert;
-			vertex.color = color;
-			vertex.position = p0;
-			vertexHelper.AddVert(vertex);
-			vertex.position = p1;
-			vertexHelper.AddVert(vertex);
-			vertex.position = p2;
-			vertexHelper.AddVert(vertex);
-			vertex.position = p3;
-			vertexHelper.AddVert(vertex);
-
-			// 삼각형 인덱스 추가.
-			vertexHelper.AddTriangle(vertexStartIndex + 0, vertexStartIndex + 1, vertexStartIndex + 2);
-			vertexHelper.AddTriangle(vertexStartIndex + 0, vertexStartIndex + 2, vertexStartIndex + 3);
 		}
 	}
 }
