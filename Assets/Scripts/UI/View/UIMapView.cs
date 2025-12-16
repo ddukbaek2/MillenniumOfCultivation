@@ -5,10 +5,10 @@ using Crockhead.Unity.UI;
 namespace MillenniumOfCultivation.UI
 {
 	/// <summary>
-	/// 인벤토리 뷰.
+	/// 맵 뷰.
 	/// </summary>
-	[AssetPath("Assets/Resources/UI/UIInventoryView.prefab", AssetPathType.Resources)]
-	public class UIInventoryView : UIPopupView
+	[AssetPath("Assets/Resources/UI/UIMapView.prefab", AssetPathType.Resources)]
+	public class UIMapView : UIPopupView
 	{
 		#region INSPECTOR
 		//[SerializeField] private Image m_LabelView;

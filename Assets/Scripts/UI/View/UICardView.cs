@@ -40,10 +40,10 @@ namespace MillenniumOfCultivation.UI
 			RectTransform.anchorMax = Vector2.one * 0.5f;
 			RectTransform.sizeDelta = new Vector2(240f, 400f);
 
-			if (m_NameLabel == null) m_NameLabel = GetOrAddComponent<UILabelView>("Portrait/Name/Background/Label");
-			if (m_TypeLabel == null) m_TypeLabel = GetOrAddComponent<UILabelView>("Portrait/Type/Background/Label");
-			if (m_CostLabel == null) m_CostLabel = GetOrAddComponent<UILabelView>("Cost/Label");
-			if (m_ExplanationLabel == null) m_ExplanationLabel = GetOrAddComponent<UILabelView>("Explanation/Background/Label");
+			if (m_NameLabel == null) m_NameLabel = GetOrAddComponent<UILabelView>("Portrait/Name/Background/LabelView");
+			if (m_TypeLabel == null) m_TypeLabel = GetOrAddComponent<UILabelView>("Portrait/Type/Background/LabelView");
+			if (m_CostLabel == null) m_CostLabel = GetOrAddComponent<UILabelView>("Cost/LabelView");
+			if (m_ExplanationLabel == null) m_ExplanationLabel = GetOrAddComponent<UILabelView>("Explanation/Background/LabelView");
 			if (m_SelectImage == null) m_SelectImage = GetOrAddComponent<UIImageView>("Select");
 
 			m_Card = null;

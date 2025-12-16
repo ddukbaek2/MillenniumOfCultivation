@@ -27,7 +27,7 @@ namespace MillenniumOfCultivation.UI
 
 			if (m_Label == null)
 			{
-				m_Label = GetOrAddComponent<UILabelView>("Label");
+				m_Label = GetOrAddComponent<UILabelView>("LabelView");
 			}
 		}
 

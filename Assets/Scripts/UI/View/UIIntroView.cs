@@ -19,6 +19,7 @@ namespace MillenniumOfCultivation.UI
 		#region INSPECTOR
 		[SerializeField] private UIImageView m_LogoImage;
 		[SerializeField] private UIImageView m_OverlayImage;
+		[SerializeField] private UIGraphicView m_TouchArea;
 		#endregion
 
 		/// <summary>
@@ -42,6 +43,11 @@ namespace MillenniumOfCultivation.UI
 
 			m_OverlayImage.color = Color.black;
 			m_OverlayImage.gameObject.SetActive(true);
+
+			if (m_TouchArea == null)
+			{
+				m_TouchArea = GetOrAddComponent<UIGraphicView>("TouchArea");
+			}
 		}
 
 		/// <summary>

@@ -1,8 +1,6 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 
 namespace MillenniumOfCultivation.UI
@@ -10,6 +8,7 @@ namespace MillenniumOfCultivation.UI
 	/// <summary>
 	/// 대화 화면 컨트롤러.
 	/// </summary>
+	[UIViewBinding(typeof(UIDialogView), "Assets/Resources/UI/UIDialogView.prefab", AssetPathType.Resources)]
 	public class UIDialogController : UIController<UIDialogView>
 	{
 		/// <summary>
@@ -23,8 +22,9 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 처리.
 		/// </summary>
-		private IEnumerator Process()
+		private IEnumerator ProcessSmoothWrite(int dialogTableId)
 		{
+			//DialogTable
 			var time = 0f;
 			while (time < 1f)
 			{
@@ -55,6 +55,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public void StartDialog(int dialogTableId)
 		{
+			CoroutineHelper.StartCoroutine(ProcessSmoothWrite(dialogTableId));
 		}
 
 		/// <summary>

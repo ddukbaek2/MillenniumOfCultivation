@@ -17,10 +17,10 @@ using MillenniumOfCultivation.Battle;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// MaterialTable Recordable Data.
+	/// DialogTable Recordable Data.
 	/// </summary>
 	[JsonObject(MemberSerialization.OptIn)]
-	public class MaterialTableRecord : IRecordable
+	public class DialogTableRecord : IRecordable
 	{
 		/// <summary>
 		/// Id.
@@ -29,41 +29,35 @@ namespace MillenniumOfCultivation
 		public int Id { set; get; }
 		
 		/// <summary>
-		/// Name.
+		/// Group.
 		/// </summary>
 		[JsonProperty]
-		public string Name { set; get; }
+		public int Group { set; get; }
 		
 		/// <summary>
-		/// ItemType.
+		/// PortraitId.
 		/// </summary>
 		[JsonProperty]
-		public int ItemType { set; get; }
+		public int PortraitId { set; get; }
 		
 		/// <summary>
-		/// MaterialType.
+		/// Type.
 		/// </summary>
 		[JsonProperty]
-		public string MaterialType { set; get; }
+		public int Type { set; get; }
 		
 		/// <summary>
-		/// Icon.
+		/// Value.
 		/// </summary>
 		[JsonProperty]
-		public string Icon { set; get; }
-		
-		/// <summary>
-		/// Description.
-		/// </summary>
-		[JsonProperty]
-		public string Description { set; get; }
+		public string Value { set; get; }
 		
 		/// <summary>
 		/// 필드 갯수.
 		/// </summary>
 		int IRecordable.GetFieldCount()
 		{
-			return 6;
+			return 5;
 		}
 		
 		/// <summary>
@@ -74,11 +68,10 @@ namespace MillenniumOfCultivation
 			switch (index)
 			{
 				case 0: return "Id";
-				case 1: return "Name";
-				case 2: return "ItemType";
-				case 3: return "MaterialType";
-				case 4: return "Icon";
-				case 5: return "Description";
+				case 1: return "Group";
+				case 2: return "PortraitId";
+				case 3: return "Type";
+				case 4: return "Value";
 				default: return string.Empty;
 			}
 		}
@@ -91,11 +84,10 @@ namespace MillenniumOfCultivation
 			switch (index)
 			{
 				case 0: return Id.GetType();
-				case 1: return Name.GetType();
-				case 2: return ItemType.GetType();
-				case 3: return MaterialType.GetType();
-				case 4: return Icon.GetType();
-				case 5: return Description.GetType();
+				case 1: return Group.GetType();
+				case 2: return PortraitId.GetType();
+				case 3: return Type.GetType();
+				case 4: return Value.GetType();
 				default: return null;
 			}
 		}
@@ -108,11 +100,10 @@ namespace MillenniumOfCultivation
 			switch (index)
 			{
 				case 0: return Id;
-				case 1: return Name;
-				case 2: return ItemType;
-				case 3: return MaterialType;
-				case 4: return Icon;
-				case 5: return Description;
+				case 1: return Group;
+				case 2: return PortraitId;
+				case 3: return Type;
+				case 4: return Value;
 				default: return null;
 			}
 		}

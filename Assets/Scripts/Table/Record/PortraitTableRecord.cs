@@ -17,10 +17,10 @@ using MillenniumOfCultivation.Battle;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// MaterialTable Recordable Data.
+	/// PortraitTable Recordable Data.
 	/// </summary>
 	[JsonObject(MemberSerialization.OptIn)]
-	public class MaterialTableRecord : IRecordable
+	public class PortraitTableRecord : IRecordable
 	{
 		/// <summary>
 		/// Id.
@@ -35,35 +35,29 @@ namespace MillenniumOfCultivation
 		public string Name { set; get; }
 		
 		/// <summary>
-		/// ItemType.
+		/// TexturePath.
 		/// </summary>
 		[JsonProperty]
-		public int ItemType { set; get; }
+		public string TexturePath { set; get; }
 		
 		/// <summary>
-		/// MaterialType.
+		/// Color.
 		/// </summary>
 		[JsonProperty]
-		public string MaterialType { set; get; }
+		public string Color { set; get; }
 		
 		/// <summary>
-		/// Icon.
+		/// Introduction.
 		/// </summary>
 		[JsonProperty]
-		public string Icon { set; get; }
-		
-		/// <summary>
-		/// Description.
-		/// </summary>
-		[JsonProperty]
-		public string Description { set; get; }
+		public string Introduction { set; get; }
 		
 		/// <summary>
 		/// 필드 갯수.
 		/// </summary>
 		int IRecordable.GetFieldCount()
 		{
-			return 6;
+			return 5;
 		}
 		
 		/// <summary>
@@ -75,10 +69,9 @@ namespace MillenniumOfCultivation
 			{
 				case 0: return "Id";
 				case 1: return "Name";
-				case 2: return "ItemType";
-				case 3: return "MaterialType";
-				case 4: return "Icon";
-				case 5: return "Description";
+				case 2: return "TexturePath";
+				case 3: return "Color";
+				case 4: return "Introduction";
 				default: return string.Empty;
 			}
 		}
@@ -92,10 +85,9 @@ namespace MillenniumOfCultivation
 			{
 				case 0: return Id.GetType();
 				case 1: return Name.GetType();
-				case 2: return ItemType.GetType();
-				case 3: return MaterialType.GetType();
-				case 4: return Icon.GetType();
-				case 5: return Description.GetType();
+				case 2: return TexturePath.GetType();
+				case 3: return Color.GetType();
+				case 4: return Introduction.GetType();
 				default: return null;
 			}
 		}
@@ -109,10 +101,9 @@ namespace MillenniumOfCultivation
 			{
 				case 0: return Id;
 				case 1: return Name;
-				case 2: return ItemType;
-				case 3: return MaterialType;
-				case 4: return Icon;
-				case 5: return Description;
+				case 2: return TexturePath;
+				case 3: return Color;
+				case 4: return Introduction;
 				default: return null;
 			}
 		}

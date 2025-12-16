@@ -14,7 +14,7 @@ namespace MillenniumOfCultivation.UI
 	public class UITransitionView : UIPanelView
 	{
 		#region INSPECTOR
-		//[SerializeField] private Image m_Label;
+		//[SerializeField] private Image m_LabelView;
 		#endregion
 
 		/// <summary>

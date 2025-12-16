@@ -63,13 +63,22 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
-		/// 재시작.
+		/// 일시정지 & 메뉴화면.
 		/// </summary>
 		private void OnMenu()
 		{
 			Debug.Log("[UIBattleController] OnMenu()");
 
 			//Present();
+		}
+
+		/// <summary>
+		/// 도망. (탈출)
+		/// </summary>
+		private void OnEscape()
+		{
+			// 전투 패배.
+			// 
 		}
 
 		/// <summary>
