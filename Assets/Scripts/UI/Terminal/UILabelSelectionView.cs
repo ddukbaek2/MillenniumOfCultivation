@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -123,8 +125,10 @@ namespace Crockhead.Unity.UI
 				return;
 
 			var vertices = new Vector3[4];
-			foreach (var lineInfo in textInfo.lineInfo)
+			for (var lineIndex = 0; lineIndex < textInfo.lineInfo.Length; ++lineIndex)
 			{
+				var lineInfo = textInfo.lineInfo[lineIndex];
+
 				//// 현재 라인이 보이지 않는 라인이라면 건너뛰기.
 				//if (lineInfo.firstVisibleCharacterIndex < 0 || lineInfo.lastVisibleCharacterIndex < 0)
 				//	continue;
@@ -135,28 +139,31 @@ namespace Crockhead.Unity.UI
 					continue;
 
 				// 현재 라인의 선택 구간을 실제 보여지는 구간으로 설정.
-				//var startLineIndex = Mathf.Max(startSelectionIndex, lineInfo.firstVisibleCharacterIndex);
-				//var endLineIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastVisibleCharacterIndex);
+				//var startCharacterIndex = Mathf.Max(startSelectionIndex, lineInfo.firstVisibleCharacterIndex);
+				//var endCharacterIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastVisibleCharacterIndex);
 
 				// 현재 라인의 선택 구간을 설정.
-				var startLineIndex = Mathf.Max(startSelectionIndex, lineInfo.firstCharacterIndex);
-				var endLineIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastCharacterIndex);
+				var startCharacterIndex = Mathf.Max(startSelectionIndex, lineInfo.firstCharacterIndex);
+				var endCharacterIndex   = Mathf.Min(endSelectionIndex, lineInfo.lastCharacterIndex);
 
 				// 현재 라인에서는 실제로 한글자도 보여지지 않는다면 건너뛰기.
-				if (startLineIndex > endLineIndex)
+				if (startCharacterIndex > endCharacterIndex)
 					continue;
 
 				// 현재 라인의 선택 구간에 대한 글자 정보를 가져옴.
-				var startCharacterInfo = textInfo.characterInfo[startLineIndex];
-				var endCharacterInfo = textInfo.characterInfo[endLineIndex];
+				var startCharacterInfo = textInfo.characterInfo[startCharacterIndex];
+				var endCharacterInfo = textInfo.characterInfo[endCharacterIndex];
 
 				// 첫 글자의 좌하 좌표와 마지막 글자의 우상 좌표를 가져와 범위값 생성.
 				//var minBound = startCharacterInfo.bottomLeft;
 				//var maxBound = endCharacterInfo.topRight;
 
 				// 첫 글자의 좌측 좌표와 마지막 글자의 우측좌표 + 증가폭 그리고 현재 라인의 상하 좌표를 가져와 범위값 생성.
-				var minBound = new Vector2(startCharacterInfo.origin, lineInfo.descender);
-				var maxBound = new Vector2(endCharacterInfo.origin + endCharacterInfo.xAdvance, lineInfo.ascender);
+				//var minBound = new Vector2(startCharacterInfo.origin, lineInfo.descender);
+				//var maxBound = new Vector2(endCharacterInfo.origin + endCharacterInfo.xAdvance, lineInfo.ascender);
+
+				// 범위값 생성.
+				GetBound(textInfo, lineIndex, startCharacterIndex, endCharacterIndex, out var minBound, out var maxBound);
 
 				// 사각형을 그리기 위한 정점은 LB < LT < RT < RB 로 CW 순서. (0,1,2 < 0,1,3)
 				var worldPosition = labelView.RectTransform.TransformPoint(minBound);
@@ -171,6 +178,38 @@ namespace Crockhead.Unity.UI
 				// 사각형 추가.
 				UIGraphicView.AddQuad(vertexHelper, vertices, UIGraphicView.UV, Color.white);
 			}
+		}
+
+		/// <summary>
+		/// 현재 라인에서 지정 텍스트가 포함된 바운드를 반환.
+		/// </summary>
+		private static void GetBound(TMP_TextInfo textInfo, int lineIndex, int startCharacterIndex, int endCharacterIndex, out Vector2 minBound, out Vector2 maxBound)
+		{
+			var lineInfo = textInfo.lineInfo[lineIndex];
+			var characterInfo = textInfo.characterInfo[startCharacterIndex];
+			var left = characterInfo.origin;
+			var right = left;
+
+			for (var index = startCharacterIndex; index <= endCharacterIndex; ++index)
+			{
+				characterInfo = textInfo.characterInfo[index];
+				if (characterInfo.character == '\n' || characterInfo.character == '\r')
+					break;
+
+				var width = Mathf.Max(characterInfo.xAdvance - characterInfo.origin, 0f);
+				right += width;
+			}
+
+			left = Mathf.Max(left, lineInfo.lineExtents.min.x);
+			right = Mathf.Min(right, lineInfo.lineExtents.max.x);
+			if (right < left)
+				right = left;
+
+			var top = lineInfo.ascender;
+			var bottom = lineInfo.descender;
+
+			minBound = new Vector2(left, bottom);
+			maxBound = new Vector2(right, top);
 		}
 	}
 }
