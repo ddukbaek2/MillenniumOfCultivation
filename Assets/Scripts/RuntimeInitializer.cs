@@ -49,6 +49,7 @@ namespace MillenniumOfCultivation
 			PerformanceManager.Create();
 			CameraManager.Create();
 			SoundManager.Create();
+			InputManager.Create();
 			UIManager.Create();
 			MessageManager.Create();
 			BattleManager.Create();

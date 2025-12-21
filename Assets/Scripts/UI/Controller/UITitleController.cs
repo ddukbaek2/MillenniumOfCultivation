@@ -2,6 +2,7 @@ using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using MillenniumOfCultivation.Battle;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -43,6 +44,8 @@ namespace MillenniumOfCultivation.UI
 
 			// 애니메이션 시작.
 			View.PlayApearAnimation(OnCompleteAnimation);
+
+			//TaskHelper.StartForeground();
 
 			//DispatchQueue.Instance.RunAsync(async () =>
 			//{

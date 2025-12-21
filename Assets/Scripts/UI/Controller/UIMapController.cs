@@ -48,6 +48,14 @@ namespace MillenniumOfCultivation.UI
 		}
 
 		/// <summary>
+		/// 등장 완료.
+		/// </summary>
+		protected override void OnViewDidAppear()
+		{
+			base.OnViewDidAppear();
+		}
+
+		/// <summary>
 		/// 일시정지 & 메뉴화면.
 		/// </summary>
 		private void OnMenu()

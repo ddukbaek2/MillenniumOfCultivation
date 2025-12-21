@@ -1,6 +1,7 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using MillenniumOfCultivation.Battle;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,9 +48,49 @@ namespace MillenniumOfCultivation.UI
 			base.OnViewDidLoad();
 
 			View.BindButtonClickEvent("Left/Reset", OnReset);
-			View.BindButtonClickEvent("Left/Menu", OnMenu);
+			View.BindButtonClickEvent("Right/Menu", OnMenu);
 
 			DispatchQueue.Foreground.RunAsync(OnPrepare);
+		}
+
+		/// <summary>
+		/// 뷰 등장 시작됨.
+		/// </summary>
+		protected override void OnViewWillApear()
+		{
+			base.OnViewWillApear();		
+		}
+
+		/// <summary>
+		/// 뷰 등장 완료됨.
+		/// </summary>
+		protected override void OnViewDidAppear()
+		{
+			base.OnViewDidAppear();
+		}
+
+		/// <summary>
+		/// 뷰 퇴장 시작됨.
+		/// </summary>
+		protected override void OnViewWillDisapear()
+		{
+			base.OnViewWillDisapear();
+		}
+
+		/// <summary>
+		/// 뷰 퇴장 완료됨.
+		/// </summary>
+		protected override void OnViewDidDisapear()
+		{
+			base.OnViewDidDisapear();
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private IEnumerator Process()
+		{
+			yield break;
 		}
 
 		/// <summary>
@@ -69,7 +110,8 @@ namespace MillenniumOfCultivation.UI
 		{
 			Debug.Log("[UIBattleController] OnMenu()");
 
-			//Present();
+			var menuPopup = new UIMenuPopupController();
+			Present(menuPopup);
 		}
 
 		/// <summary>
@@ -114,6 +156,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnStart()
 		{
+			CoroutineHelper.StartCoroutine(Process());
 		}
 
 		/// <summary>

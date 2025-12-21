@@ -66,7 +66,7 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 등장 연출.
 		/// </summary>
-		public async Task PlayApearAnimation(Action completion)
+		public async Task PlayApearAnimationAsync(Action completion)
 		{
 			var content = GetOrAddComponent<RectTransform>("Content");
 			content.anchoredPosition = new Vector2(-364f, 0f);
@@ -74,6 +74,20 @@ namespace MillenniumOfCultivation.UI
 			tweener.SetDelay(0.5f);
 			tweener.OnComplete(new TweenCallback(completion));
 			await tweener.AsyncWaitForCompletion();
+		}
+
+		/// <summary>
+		/// 등장 연출.
+		/// </summary>
+		public void PlayApearAnimation(Action completion)
+		{
+			void Continuation(Task task)
+			{
+				completion?.Invoke();
+			}
+
+			var task = PlayApearAnimationAsync(completion);
+			var continuation = task.ContinueWith(Continuation);
 		}
 
 		/// <summary>

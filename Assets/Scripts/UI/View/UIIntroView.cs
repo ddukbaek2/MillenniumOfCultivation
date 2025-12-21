@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -21,6 +22,16 @@ namespace MillenniumOfCultivation.UI
 		[SerializeField] private UIImageView m_OverlayImage;
 		[SerializeField] private UIGraphicView m_TouchArea;
 		#endregion
+
+		/// <summary>
+		/// 인트로 애니메이션 트윈.
+		/// </summary>
+		private Sequence m_Sequence;
+
+		/// <summary>
+		/// 클릭 이벤트 프로퍼티.
+		/// </summary>
+		public Action<PointerEventData> OnClickEvent { set; get; }
 
 		/// <summary>
 		/// 생성됨.
@@ -56,6 +67,11 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnInitialize()
 		{
 			base.OnInitialize();
+
+			if (m_TouchArea != null)
+			{
+				m_TouchArea.OnClickEvent += OnClickEvent;
+			}
 		}
 
 		/// <summary>
@@ -63,6 +79,11 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		protected override void OnDispose()
 		{
+			if (m_TouchArea != null)
+			{
+				m_TouchArea.OnClickEvent -= OnClickEvent;
+			}
+
 			base.OnDispose();
 		}
 
@@ -71,23 +92,36 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public async Task StartAnimation(Action completion)
 		{
-			static IEnumerator Process(UIIntroView view, Action completion)
+			static IEnumerator Process(UIIntroView view, Sequence sequenceTween, Action completion)
 			{
+				// 페이드인.
 				view.m_OverlayImage.color = Color.black;
 				var fadeInTween = view.m_OverlayImage.DOColor(Color.clear, 2f);
+				sequenceTween.Join(fadeInTween);
 
+				// 확대.
 				view.m_LogoImage.transform.localScale = Vector3.one * 1f;
 				var scaleUpTween = view.m_LogoImage.transform.DOScale(Vector3.one * 1.15f, 2f);
-
-				var sequenceTween = DOTween.Sequence();
-				sequenceTween.Join(fadeInTween);
 				sequenceTween.Join(scaleUpTween);
 
 				yield return sequenceTween.WaitForCompletion();
 				completion?.Invoke();
 			}
 
-			await TaskHelper.StartForeground(Process(this, completion));
+			m_Sequence = DOTween.Sequence();
+			await TaskHelper.StartForeground(Process(this, m_Sequence, completion));
+			m_Sequence = null;
+		}
+
+		/// <summary>
+		/// 애니메이션 스킵.
+		/// </summary>
+		public void SkipAnimation()
+		{
+			if (m_Sequence == null)
+				return;
+
+			m_Sequence.Complete();
 		}
 	}
 }

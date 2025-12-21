@@ -33,11 +33,23 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
+			View.OnClickEvent += (pointerEventData) => OnSkipAnimation();
+
 			// 비동기 실행.
 			DispatchQueue.Foreground.RunAsync(async () =>
 			{
 				await View.StartAnimation(OnFinishAnimation);
 			});
+		}
+
+		/// <summary>
+		/// 애니메이션 스킵됨.
+		/// </summary>
+		private void OnSkipAnimation()
+		{
+			Debug.Log("[UIIntroController] OnSkipAnimation()");
+
+			View.SkipAnimation();
 		}
 
 		/// <summary>

@@ -12,7 +12,14 @@ namespace UnityTerminal
 	[UIViewBinding(typeof(UITerminalView), "Assets/Resources/UI/UITerminalView.prefab", AssetPathType.Resources)]
 	public class UITerminalController : UIController<UITerminalView>
 	{
-		StringBuilder m_StringBuilder;
+		/// <summary>
+		/// 문자열 처리기.
+		/// </summary>
+		private StringBuilder m_StringBuilder;
+
+		/// <summary>
+		/// 위치.
+		/// </summary>
 		private int m_Position;
 
 		/// <summary>

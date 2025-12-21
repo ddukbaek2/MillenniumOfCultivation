@@ -1,5 +1,6 @@
 using Crockhead.Unity;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 namespace MillenniumOfCultivation
@@ -9,6 +10,18 @@ namespace MillenniumOfCultivation
 	/// </summary>
 	public class SoundManager : SoundManager<SoundManager>
 	{
+		private bool m_IsCreated;
+
+		/// <summary>
+		/// 생성됨.
+		/// </summary>
+		protected override void OnCreate()
+		{
+			base.OnCreate();
+
+			m_IsCreated = true;
+		}
+
 		/// <summary>
 		/// 애플리케이션 일시정지/재개됨.
 		/// </summary>
@@ -23,6 +36,21 @@ namespace MillenniumOfCultivation
 		protected override void OnApplicationFocus(bool focus)
 		{
 			base.OnApplicationFocus(focus);
+		}
+
+		protected override void Update()
+		{
+			if (!m_IsCreated)
+				return;
+
+			base.Update();
+		}
+
+		/// <summary>
+		/// 미리 로드.
+		/// </summary>
+		public void Preload()
+		{
 		}
 
 		/// <summary>
