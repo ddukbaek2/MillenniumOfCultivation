@@ -56,9 +56,11 @@ namespace MillenniumOfCultivation.UI
 		/// <summary>
 		/// 뷰 등장 시작됨.
 		/// </summary>
-		protected override void OnViewWillApear()
+		protected override void OnViewWillAppear(bool animated)
 		{
-			base.OnViewWillApear();		
+			base.OnViewWillAppear(animated);
+
+			//Debug.Log("")
 		}
 
 		/// <summary>
@@ -67,22 +69,39 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnViewDidAppear()
 		{
 			base.OnViewDidAppear();
+
+
+			// 전투 로그.
+			// 스킬.
+			// 어빌리티.
+			// 아이템.
 		}
 
 		/// <summary>
 		/// 뷰 퇴장 시작됨.
 		/// </summary>
-		protected override void OnViewWillDisapear()
+		protected override void OnViewWillDisappear(bool animated)
 		{
-			base.OnViewWillDisapear();
+			base.OnViewWillDisappear(animated);
 		}
 
 		/// <summary>
 		/// 뷰 퇴장 완료됨.
 		/// </summary>
-		protected override void OnViewDidDisapear()
+		protected override void OnViewDidDisappear()
 		{
-			base.OnViewDidDisapear();
+			base.OnViewDidDisappear();
+		}
+
+		/// <summary>
+		/// 현재 컨트롤러의 메인 뷰가 최상위 화면에 노출됨. (메인뷰의 서브뷰를 타깃으로한 컨트롤러는 해당 이벤트 전달 안됨)
+		/// </summary>
+		protected virtual void OnViewEnterForeground(UIView previous, UIView next, bool backward)
+		{
+		}
+
+		protected virtual void OnBecameInvisible()
+		{
 		}
 
 		/// <summary>
@@ -111,7 +130,8 @@ namespace MillenniumOfCultivation.UI
 			Debug.Log("[UIBattleController] OnMenu()");
 
 			var menuPopup = new UIMenuPopupController();
-			Present(menuPopup);
+			//this.PresentingController
+			PresentAsync(menuPopup);
 		}
 
 		/// <summary>

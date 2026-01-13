@@ -33,7 +33,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnRestart()
 		{
-			//Present()
+			//PresentAsync()
 		}
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace MillenniumOfCultivation.UI
 		private void OnTitle()
 		{
 			var message = new UIMessageController();
-			Present(message);
+			PresentAsync(message);
 		}
 	}
 }

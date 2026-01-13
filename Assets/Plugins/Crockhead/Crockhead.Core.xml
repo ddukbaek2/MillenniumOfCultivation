@@ -11,12 +11,12 @@
         </member>
         <member name="M:Crockhead.Core.Attributes.TryGetAttribute(System.Type,System.Type,System.Attribute@)">
             <summary>
-            어트리뷰트 가져오기.
+            특성 가져오기.
             </summary>
         </member>
         <member name="M:Crockhead.Core.Attributes.TryGetAttribute``1(System.Type,``0@)">
             <summary>
-            어트리뷰트 가져오기.
+            특성 가져오기.
             </summary>
         </member>
         <member name="T:Crockhead.Core.Collections">
@@ -224,7 +224,17 @@
         </member>
         <member name="M:Crockhead.Core.Reflections.TryGetAttribute(System.Type,System.Type,System.Attribute@)">
             <summary>
-            어트리뷰트 가져오기.
+            특성 가져오기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Reflections.SetFieldValue(System.Object,System.String,System.Object)">
+            <summary>
+            필드 값 설정하기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Reflections.GetFieldValue(System.Object,System.String)">
+            <summary>
+            필드 값 가져오기.
             </summary>
         </member>
         <member name="M:Crockhead.Core.Reflections.CreateInstance``1(System.Object[])">
@@ -239,7 +249,17 @@
         </member>
         <member name="M:Crockhead.Core.Reflections.TryGetAttribute``1(System.Type,``0@)">
             <summary>
-            어트리뷰트 가져오기.
+            특성 가져오기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Reflections.SetFieldValue``1(System.Object,System.String,``0)">
+            <summary>
+            필드 값 설정하기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.Reflections.GetFieldValue``1(System.Object,System.String)">
+            <summary>
+            필드 값 가져오기.
             </summary>
         </member>
         <member name="M:Crockhead.Core.Reflections.GetEnumValues``1">
@@ -1535,6 +1555,11 @@
             생성됨.
             </summary>
         </member>
+        <member name="M:Crockhead.Core.FilePathAttribute.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
         <member name="T:Crockhead.Core.IReader`1">
             <summary>
             리더.
@@ -2597,34 +2622,100 @@
             값 존재 유무.
             </summary>
         </member>
-        <member name="T:Crockhead.Core.ThreadDispatcher">
+        <member name="T:Crockhead.Core.BackStitcher">
             <summary>
-            현재 클래스를 생성한 쓰레드의 메시지루프에서 함수를 실행하도록 동기화하는 처리기.
+            되돌아홈질.
             </summary>
         </member>
-        <member name="F:Crockhead.Core.ThreadDispatcher.m_SynchronizationContext">
-            <summary>
-            동기화 컨텍스트.
-            </summary>
-        </member>
-        <member name="P:Crockhead.Core.ThreadDispatcher.SynchronizationContext">
-            <summary>
-            동기화 컨텍스트 프로퍼티.
-            </summary>
-        </member>
-        <member name="M:Crockhead.Core.ThreadDispatcher.#ctor">
+        <member name="M:Crockhead.Core.BackStitcher.#ctor">
             <summary>
             생성됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.ThreadDispatcher.OnDispose(System.Boolean)">
+        <member name="M:Crockhead.Core.BackStitcher.OnDispose(System.Boolean)">
             <summary>
             해제됨.
             </summary>
         </member>
-        <member name="M:Crockhead.Core.ThreadDispatcher.Post(System.Action)">
+        <member name="T:Crockhead.Core.TaskCompletionDispatcher`1">
             <summary>
-            호출 요청.
+            제네릭 태스크 완료 처리기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.TaskCompletionDispatcher`1.m_TaskCompletionSource">
+            <summary>
+            태스크 상태 처리기.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.TaskCompletionDispatcher`1.Task">
+            <summary>
+            태스크 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.TaskCompletionDispatcher`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.TaskCompletionDispatcher`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.TaskCompletionDispatcher`1.RunAsync(System.Threading.Tasks.Task,`0)">
+            <summary>
+            처리.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.TaskCompletionDispatcher`1.RunAsync(System.Threading.Tasks.Task{`0})">
+            <summary>
+            처리.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Crockhead.Core.TaskCompletionDispatcher`1.Wrap(System.Threading.Tasks.Task,`0)" -->
+        <member name="T:Crockhead.Core.ThreadPostDispatcher">
+            <summary>
+            현재 클래스를 생성한 쓰레드의 메시지루프에서 함수를 호출하도록 동기화하는 처리기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Core.ThreadPostDispatcher.m_SynchronizationContext">
+            <summary>
+            동기화 컨텍스트.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Core.ThreadPostDispatcher.SynchronizationContext">
+            <summary>
+            동기화 컨텍스트 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            대상 쓰레드에서 콜백 함수 호출 요청. (기본)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.Post(System.Action)">
+            <summary>
+            대상 쓰레드에서 함수 호출 요청.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.PostAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            대상 쓰레드에서 비동기 함수를 비동기 호출 요청.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Core.ThreadPostDispatcher.PostAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            대상 쓰레드에서 반환값이 있는 비동기 함수를 비동기 호출 요청.
             </summary>
         </member>
         <member name="T:Crockhead.Core.SemanticVersion">

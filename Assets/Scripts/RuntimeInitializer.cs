@@ -16,13 +16,18 @@ namespace MillenniumOfCultivation
 	public static class RuntimeInitializer
 	{
 		/// <summary>
+		/// 메인 씬 이름.
+		/// </summary>
+		public static string MainRuntimeSceneName = "MillenniumOfCultivation";
+
+		/// <summary>
 		/// 시작.
 		/// </summary>
 		[RuntimeInitializeOnLoadMethod]
 		private static void Run()
 		{
 			var activeScene = SceneManager.GetActiveScene();
-			if (activeScene.name != "MillenniumOfCultivation")
+			if (activeScene.name != RuntimeInitializer.MainRuntimeSceneName)
 				return;
 
 			Debug.Log("[RuntimeInitializer] Run()");
@@ -71,16 +76,16 @@ namespace MillenniumOfCultivation
 			Disposables.Dispose(BattleManager.Instance);
 			SoundManager.Dispose();
 			UIManager.Dispose();
-			SceneManager.LoadScene("MillenniumOfCultivation", LoadSceneMode.Single);
+			SceneManager.LoadScene(RuntimeInitializer.MainRuntimeSceneName, LoadSceneMode.Single);
 		}
 
 		/// <summary>
-		/// UI 생성.
+		/// UI 실행.
 		/// </summary>
 		private static void RunUI()
 		{
 			var intro = new UIIntroController();
-			UIManager.Instance.Present(intro);
+			_ = UIManager.Instance.PresentAsync(intro);
 		}
 	}
 }

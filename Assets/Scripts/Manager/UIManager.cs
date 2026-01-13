@@ -9,8 +9,13 @@ namespace MillenniumOfCultivation.UI
 	/// UI 매니저.
 	/// </summary>
 	[AssetPath("Assets/Resources/Base/UIManager.prefab", AssetPathType.Resources)]
-	public class UIManager : UIManager<UIManager>
+	public class UIManager : UIApplication<UIManager>
 	{
+		/// <summary>
+		/// 기본 윈도우.
+		/// </summary>
+		private UIWindow m_Window;
+
 		/// <summary>
 		/// 트랜지션 윈도우.
 		/// </summary>
@@ -44,6 +49,9 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnInitialize();
 
+			// 기본 윈도우 받아오기.
+			m_Window = Top;
+
 			// 트랜지션용 오버레이 윈도우. (등록하지 않음)
 			m_TransitionWindow = TransformHelper.GetOrAddComponent<UIWindow>(transform, "TransitionWindow");
 			m_TransitionWindow.SetCamera(Camera);
@@ -52,8 +60,8 @@ namespace MillenniumOfCultivation.UI
 			m_TransitionController = new UITransitionController();
 			//m_TransitionController.Window = m_TransitionWindow;
 			//var view = m_TransitionController.View;
-			m_TransitionWindow.Present(m_TransitionController);
-			m_TransitionController.View.gameObject.SetActive(false);
+			m_TransitionWindow.PresentAsync(m_TransitionController);
+			m_TransitionWindow.GraphicRaycaster.enabled = false;
 		}
 
 		/// <summary>
@@ -61,6 +69,29 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public void ExecuteCommand(string command)
 		{
+		}
+
+		/// <summary>
+		/// 갱신됨.
+		/// </summary>
+		private void Update()
+		{
+			if (m_Window == null)
+				return;
+
+			var lastController = m_Window.PresentationCoordinator.Last;
+			if (lastController is not UIBattleController)
+				return;
+
+			OnUpdateBattle();
+		}
+
+		/// <summary>
+		/// 임시 전투 업데이트.
+		/// </summary>
+		private void OnUpdateBattle()
+		{
+			Debug.Log("[UIManager] OnUpdateBattle()");
 		}
 	}
 }

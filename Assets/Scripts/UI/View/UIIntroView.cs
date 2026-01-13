@@ -104,7 +104,8 @@ namespace MillenniumOfCultivation.UI
 				var scaleUpTween = view.m_LogoImage.transform.DOScale(Vector3.one * 1.15f, 2f);
 				sequenceTween.Join(scaleUpTween);
 
-				yield return sequenceTween.WaitForCompletion();
+				yield return TweenExtensions.WaitForCompletion(sequenceTween);
+				//yield return sequenceTween.WaitForCompletion();
 				completion?.Invoke();
 			}
 

@@ -4,17 +4,17 @@ using Crockhead.Unity.UI;
 
 namespace MillenniumOfCultivation.UI
 {
-	public class ItemInfo
-	{
-		public int ItemTableId;
-	}
+	//public class ItemInfo
+	//{
+	//	public int ItemTableId;
+	//}
 
 
 	/// <summary>
-	/// 맵 뷰.
+	/// 토스트 아이템 뷰.
 	/// </summary>
-	[AssetPath("Assets/Resources/UI/UIMapItemView.prefab", AssetPathType.Resources)]
-	public class UIMapItemView : UIItemView
+	[AssetPath("Assets/Resources/UI/UIToastItemView.prefab", AssetPathType.Resources)]
+	public class UIToastItemView : UIItemView
 	{
 		#region INSPECTOR
 		//[SerializeField] private Image m_LabelView;

@@ -4,7 +4,6 @@ using DG.Tweening;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 namespace MillenniumOfCultivation.UI
@@ -47,11 +46,6 @@ namespace MillenniumOfCultivation.UI
 			base.OnCreate();
 
 			BackgroundColor = new Color32(255, 178, 0, 255);
-
-			BindButtonClickEvent("Content/Play", OnClickPlay);
-			BindButtonClickEvent("Content/Option", OnClickOption);
-			BindButtonClickEvent("Content/Credit", OnClickCredit);
-			BindButtonClickEvent("Content/Exit", OnClickExit);
 		}
 
 		/// <summary>
@@ -60,7 +54,15 @@ namespace MillenniumOfCultivation.UI
 		protected override void OnInitialize()
 		{
 			base.OnInitialize();
+
+			Debug.Log("[UITitleView] OnInitialize()");
+
 			SetAnchor(true);
+
+			BindButtonClickEvent("LeftBottom/Play", OnClickPlay);
+			BindButtonClickEvent("LeftBottom/Option", OnClickOption);
+			BindButtonClickEvent("LeftBottom/Credit", OnClickCredit);
+			BindButtonClickEvent("LeftBottom/Exit", OnClickExit);
 		}
 
 		/// <summary>
@@ -68,7 +70,7 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		public async Task PlayApearAnimationAsync(Action completion)
 		{
-			var content = GetOrAddComponent<RectTransform>("Content");
+			var content = GetOrAddComponent<RectTransform>("LeftBottom");
 			content.anchoredPosition = new Vector2(-364f, 0f);
 			var tweener = content.DOAnchorPosX(0f, 1f);
 			tweener.SetDelay(0.5f);

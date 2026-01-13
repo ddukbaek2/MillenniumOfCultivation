@@ -1,8 +1,6 @@
 using Crockhead.Unity;
 using Crockhead.Unity.UI;
 using DG.Tweening;
-using MillenniumOfCultivation.Battle;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -36,13 +34,15 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			View.BindButtonClickEvent("Content/Option", OnOption);
-			View.BindButtonClickEvent("Content/Exit", OnExit);
-			View.BindButtonClickEvent("Content/Resume", OnResume);
+			CoroutineHelper.WaitForNextFrame(() =>
+			{
+				View.RectTransform.localScale = Vector3.zero;
+				View.RectTransform.DOScale(1f, 0.5f);
 
-			View.gameObject.SetActive(true);
-			View.RectTransform.localScale = Vector3.zero;
-			View.RectTransform.DOScale(1f, 0.5f);
+				View.BindButtonClickEvent("Content/Option", OnOption);
+				View.BindButtonClickEvent("Content/Exit", OnExit);
+				View.BindButtonClickEvent("Content/Resume", OnResume);
+			});
 		}
 
 		/// <summary>
@@ -64,7 +64,8 @@ namespace MillenniumOfCultivation.UI
 		/// </summary>
 		private void OnResume()
 		{
-			Dismiss();
+			Debug.Log(Window.WindowCoordinator.Count);
+			DismissAsync();
 		}
 	}
 }

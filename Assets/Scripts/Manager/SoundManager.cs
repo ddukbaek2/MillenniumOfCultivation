@@ -22,22 +22,25 @@ namespace MillenniumOfCultivation
 			m_IsCreated = true;
 		}
 
-		/// <summary>
-		/// 애플리케이션 일시정지/재개됨.
-		/// </summary>
-		protected override void OnApplicationPause(bool pause)
-		{
-			base.OnApplicationPause(pause);
-		}
+		///// <summary>
+		///// 애플리케이션 일시정지/재개됨.
+		///// </summary>
+		//protected override void OnApplicationPause(bool pause)
+		//{
+		//	base.OnApplicationPause(pause);
+		//}
+
+		///// <summary>
+		///// 애플리케이션 포커스획득/상실됨.
+		///// </summary>
+		//protected override void OnApplicationFocus(bool focus)
+		//{
+		//	base.OnApplicationFocus(focus);
+		//}
 
 		/// <summary>
-		/// 애플리케이션 포커스획득/상실됨.
+		/// 갱신됨.
 		/// </summary>
-		protected override void OnApplicationFocus(bool focus)
-		{
-			base.OnApplicationFocus(focus);
-		}
-
 		protected override void Update()
 		{
 			if (!m_IsCreated)

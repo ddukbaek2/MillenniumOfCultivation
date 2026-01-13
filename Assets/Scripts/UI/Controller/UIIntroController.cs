@@ -60,10 +60,10 @@ namespace MillenniumOfCultivation.UI
 			Debug.Log("[UIIntroController] OnFinishAnimation()");
 
 			SoundManager.Instance.Play("Assets/Resources/Sound/UI/00106.wav", AssetPathType.Resources, SoundType.UI);
-			//UIManager.Instance.UITransitionController.DoTransitionAsync(UITransitionController.TransitionType.FadeIn);
+			//UIApplication.Instance.UITransitionController.DoTransitionAsync(UITransitionController.TransitionType.FadeIn);
 
 			var title = new UITitleController();
-			Present(title);
+			PresentAsync(title);
 		}
 	}
 }

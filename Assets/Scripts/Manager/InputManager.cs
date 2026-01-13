@@ -1,5 +1,7 @@
 using Crockhead.Core;
+using Crockhead.Unity.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
@@ -42,6 +44,14 @@ namespace MillenniumOfCultivation
 			m_InputActions.Dispose();
 
 			base.OnDispose();
+		}
+
+		/// <summary>
+		/// UI 포커스 셋업.
+		/// </summary>
+		public void FocusUI(IUIView view)
+		{
+			EventSystem.current.SetSelectedGameObject(view.RectTransform.gameObject);
 		}
 
 		/// <summary>

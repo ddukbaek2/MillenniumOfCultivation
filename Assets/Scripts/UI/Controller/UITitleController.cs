@@ -3,6 +3,7 @@ using Crockhead.Unity.UI;
 using MillenniumOfCultivation.Battle;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -36,28 +37,31 @@ namespace MillenniumOfCultivation.UI
 		{
 			base.OnViewDidLoad();
 
-			// 이벤트 바인딩.
-			View.OnPlayEvent += OnPlay;
-			View.OnOptionEvent += OnOption;
-			View.OnCreditEvent += OnCredit;
-			View.OnExitEvent += OnExit;
+			UnityThreadDispatcher.PostAsync(() =>
+			{
+				// 이벤트 바인딩.
+				View.OnPlayEvent += OnPlay;
+				View.OnOptionEvent += OnOption;
+				View.OnCreditEvent += OnCredit;
+				View.OnExitEvent += OnExit;
 
-			// 애니메이션 시작.
-			View.PlayApearAnimation(OnCompleteAnimation);
+				// 애니메이션 시작.
+				View.PlayApearAnimation(OnCompleteAnimation);
+			});
 
 			//TaskHelper.StartForeground();
 
 			//DispatchQueue.Instance.RunAsync(async () =>
 			//{
 			//	var battle = new UIBattleController(Window);
-			//	Present(battle);
+			//	PresentAsync(battle);
 			//});
 
-			//UIManager.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeIn, () =>
+			//UIApplication.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeIn, () =>
 			//{
 			//	var battle = new UIBattleController(Window);
 			//	var view = battle.View;
-			//	UIManager.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeOut, null);
+			//	UIApplication.Instance.UITransitionController.DoTransition(UITransitionController.TransitionType.FadeOut, null);
 			//});
 		}
 
@@ -79,7 +83,7 @@ namespace MillenniumOfCultivation.UI
 			process.Start(player, new List<AIController>() { enemy });
 
 			var battle = new UIBattleController();
-			Present(battle);
+			PresentAsync(battle);
 		}
 
 		/// <summary>
@@ -88,7 +92,7 @@ namespace MillenniumOfCultivation.UI
 		private void OnOption()
 		{
 			var message = new UIMessageController();
-			Present(message);
+			PresentAsync(message);
 		}
 
 		/// <summary>
