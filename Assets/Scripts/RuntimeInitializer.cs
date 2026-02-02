@@ -1,11 +1,8 @@
 using Crockhead.Core;
 using Crockhead.Unity;
-using MillenniumOfCultivation.Battle;
 using MillenniumOfCultivation.UI;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using BattleProcess = MillenniumOfCultivation.Battle.BattleProcess;
 
 
 namespace MillenniumOfCultivation
@@ -55,7 +52,7 @@ namespace MillenniumOfCultivation
 			CameraManager.Create();
 			SoundManager.Create();
 			InputManager.Create();
-			UIManager.Create();
+			UIApp.Create();
 			MessageManager.Create();
 			BattleManager.Create();
 
@@ -70,12 +67,14 @@ namespace MillenniumOfCultivation
 		{
 			Debug.Log("[RuntimeInitializer] Shutdown()");
 
-			Disposables.Dispose(PlatformManager.Instance);
-			Disposables.Dispose(PerformanceManager.Instance);
-			Disposables.Dispose(MessageManager.Instance);
-			Disposables.Dispose(BattleManager.Instance);
+			PlatformManager.Dispose();
+			PlatformManager.Dispose();
+			PerformanceManager.Dispose();
+			MessageManager.Dispose();
+			BattleManager.Dispose();
 			SoundManager.Dispose();
-			UIManager.Dispose();
+			UIApp.Dispose();
+
 			SceneManager.LoadScene(RuntimeInitializer.MainRuntimeSceneName, LoadSceneMode.Single);
 		}
 
@@ -85,7 +84,20 @@ namespace MillenniumOfCultivation
 		private static void RunUI()
 		{
 			var intro = new UIIntroController();
-			_ = UIManager.Instance.PresentAsync(intro);
+			_ = UIApp.Instance.PresentAsync(intro);
+		}
+
+		/// <summary>
+		/// 메인 씬 열기.
+		/// </summary>
+		public static void OpenMainScene()
+		{
+			var activeScene = SceneManager.GetActiveScene();
+			if (activeScene.name != RuntimeInitializer.MainRuntimeSceneName)
+				return;
+
+			Debug.Log("[RuntimeInitializer] OpenMainScene()");
+			SceneManager.LoadScene(RuntimeInitializer.MainRuntimeSceneName, LoadSceneMode.Single);
 		}
 	}
 }

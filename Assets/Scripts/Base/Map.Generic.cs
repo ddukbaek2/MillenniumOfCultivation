@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MillenniumOfCultivation
 {
 	/// <summary>
-	/// 맵.
+	/// 맵 데이터.
 	/// </summary>
 	public class Map<T> : Disposable
 	{
@@ -41,7 +41,6 @@ namespace MillenniumOfCultivation
 		/// </summary>
 		protected virtual void OnBuild(T[] map)
 		{
-
 		}
 
 		/// <summary>

@@ -38,7 +38,7 @@ namespace MillenniumOfCultivation.Tween
 
 
 		[FieldOffset(0)] private ValueType m_Type; // 4byte.
-		[FieldOffset(4)] private int  m_Padding; // 4byte. (placeholder: alignment-padding)
+		[FieldOffset(4)] private int  m_Padding; // 4byte. (placeholder: alignment-Padding)
 
 		[FieldOffset(8)] private bool m_BoolValue; // 1byte.
 		[FieldOffset(8)] private char m_CharValue; // 2byte. (ushort)

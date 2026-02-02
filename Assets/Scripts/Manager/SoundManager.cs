@@ -1,6 +1,4 @@
 using Crockhead.Unity;
-using UnityEngine;
-using UnityEngine.Rendering;
 
 
 namespace MillenniumOfCultivation
@@ -20,6 +18,7 @@ namespace MillenniumOfCultivation
 			base.OnCreate();
 
 			m_IsCreated = true;
+
 		}
 
 		///// <summary>

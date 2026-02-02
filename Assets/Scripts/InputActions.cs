@@ -43,7 +43,7 @@ namespace MillenniumOfCultivation
     ///
     ///     void OnDestroy()
     ///     {
-    ///         m_Actions.Dispose();                              // Destroy asset object.
+    ///         m_Actions.SafeDestroy();                              // Destroy asset object.
     ///     }
     ///
     ///     void OnEnable()

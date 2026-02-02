@@ -80,8 +80,8 @@ namespace MillenniumOfCultivation.Battle
 		protected override void OnDispose(bool explicitDisposing)
 		{
 			//foreach (var controller in m_Controllers)
-			//	Disposables.Dispose(controller);
-			//Disposables.Dispose(m_Context);
+			//	Disposables.SafeDestroy(controller);
+			//Disposables.SafeDestroy(m_Context);
 		}
 
 		/// <summary>

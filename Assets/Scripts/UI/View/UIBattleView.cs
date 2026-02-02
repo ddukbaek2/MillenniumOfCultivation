@@ -35,7 +35,8 @@ namespace MillenniumOfCultivation.UI
 				m_Content = GetOrAddComponent<RectTransform>("Content");
 			}
 
-			BackgroundColor = Color.black;
+			//BackgroundColor = Color.black;
+			BackgroundColor = Color.clear;
 		}
 
 		/// <summary>

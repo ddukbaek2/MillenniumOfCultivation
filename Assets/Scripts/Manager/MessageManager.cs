@@ -250,7 +250,7 @@ namespace MillenniumOfCultivation
 			try
 			{
 				if (string.IsNullOrWhiteSpace(m_ClientId))
-					throw new Exception("Required Try Connect.");
+					throw new Exception("Required Try ConnectAsync.");
 
 				if (IsConnected)
 				{
