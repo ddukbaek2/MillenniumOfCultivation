@@ -11,7 +11,7 @@ namespace Crockhead.Unity.MQTT
 	/// </summary>
 	public class MQTTClientSessionWebGLCore : MQTTClientSessionCore
 	{
-		#region EXTERNAL
+		#region JS_EXTERNAL_FUNCTION
 		[DllImport("__Internal")] private static extern int MQTT_IsConnected(string coreId);
 		[DllImport("__Internal")] private static extern void MQTT_Connect(string coreId, string url, string clientId);
 		[DllImport("__Internal")] private static extern void MQTT_Disconnect(string coreId);

@@ -1,6 +1,4 @@
-using System;
 using System.Threading.Tasks;
-using UnityEngine;
 
 
 namespace Crockhead.Unity.MQTT
@@ -8,61 +6,33 @@ namespace Crockhead.Unity.MQTT
 	/// <summary>
 	/// MQTT 클라이언트 세션 코어 기반 컴포넌트.
 	/// </summary>
-	public abstract class MQTTClientSessionCore : MonoBehaviour
+	public abstract class MQTTClientSessionCore : ClientSessionCore
 	{
-		/// <summary>
-		/// 고유 식별자.
-		/// </summary>
-		private string m_CoreId;
-
-		/// <summary>
-		/// 클라이언트 세션.
-		/// </summary>
-		private MQTTClientSession m_ClientSession;
-
-		/// <summary>
-		/// 고유 식별자 프로퍼티.
-		/// </summary>
-		public string CoreId => m_CoreId;
-
 		/// <summary>
 		/// 연결 되었는지 여부 프로퍼티.
 		/// </summary>
-		public abstract bool IsConnected { get; }
+		public override bool IsConnected { get; }
 
 		/// <summary>
 		/// 클라이언트 세션 프로퍼티.
 		/// </summary>
-		public MQTTClientSession ClientSession { private set => SetClientSession(value); get => m_ClientSession; }
+		public new MQTTClientSession ClientSession { private set => base.SetClientSession(value); get => (MQTTClientSession)base.ClientSession; }
 
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		protected virtual void Awake()
+		protected override void Awake()
 		{
-			m_ClientSession = null;
-			m_CoreId = Guid.NewGuid().ToString();
-			gameObject.name = m_CoreId;
-			gameObject.hideFlags = HideFlags.HideAndDontSave;
-			GameObject.DontDestroyOnLoad(gameObject);
+			base.Awake();
 		}
 
 		/// <summary>
 		/// 파괴됨.
 		/// </summary>
-		protected virtual void OnDestroy()
+		protected override void OnDestroy()
 		{
-			m_ClientSession = null;
+			base.OnDestroy();
 		}
-
-		/// <summary>
-		/// 클라이언트 세션 설정.
-		/// </summary>
-		internal void SetClientSession(MQTTClientSession mqttClientSession)
-		{
-			m_ClientSession = mqttClientSession;
-		}
-
 
 		/// <summary>
 		/// 접속됨.
@@ -160,27 +130,5 @@ namespace Crockhead.Unity.MQTT
 		/// 토픽 구독 해제.
 		/// </summary>
 		public abstract Task UnsubscribeAsync(string topic);
-
-		/// <summary>
-		/// 생성.
-		/// </summary>
-		public static T Create<T>() where T : MQTTClientSessionCore
-		{
-			var gameObject = new GameObject("MQTTClientSessionCore");
-			var instance = gameObject.AddComponent<T>();
-			return instance;
-		}
-
-		/// <summary>
-		/// 해제.
-		/// </summary>
-		public static void SafeDestroy(ref MQTTClientSessionCore core)
-		{
-			if (core == null)
-				return;
-
-			GameObject.Destroy(core.gameObject);
-			core = null;
-		}
 	}
 }

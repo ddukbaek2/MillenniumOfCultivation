@@ -32,6 +32,8 @@ namespace Crockhead.Unity.MQTT
 		protected override void Awake()
 		{
 			base.Awake();
+
+			m_Client = null;
 		}
 
 		/// <summary>
